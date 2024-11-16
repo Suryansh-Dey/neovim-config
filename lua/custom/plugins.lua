@@ -2,6 +2,13 @@ local cmp = require "cmp"
 
 local plugins = {
   {
+    "ggandor/leap.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("custom.configs.leap")
+    end
+  },
+  {
     "L3MON4D3/LuaSnip",
     event = "VeryLazy",
     config = function()
