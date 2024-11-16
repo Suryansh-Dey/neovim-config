@@ -1,5 +1,5 @@
 local M = {}
-M.ui = { theme = 'dark_horizon' }
+M.ui = { theme = 'onedark' }
 M.plugins = "custom.plugins"
 M.mappings = require("custom.mappings")
 vim.opt.relativenumber = true
