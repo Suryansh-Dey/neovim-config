@@ -17,3 +17,5 @@ lspconfig.clangd.setup({
   end,
   capabilities
 })
+lspconfig.html.setup(setup_arg)
+lspconfig.cssls.setup(setup_arg)
