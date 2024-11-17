@@ -30,10 +30,10 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true, desc = "Search symbols in workspace" }
 )
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*",
-    callback = function()
-        if vim.bo.filetype ~= "rust" then
-            vim.lsp.buf.format({ async = false })
-        end
-    end,
+  pattern = "*",
+  callback = function()
+    if vim.bo.filetype ~= "rust" then
+      vim.lsp.buf.format({ async = false })
+    end
+  end,
 })
