@@ -46,7 +46,10 @@ local plugins = {
         "typescript-language-server",
         "prettierd",
         "clangd",
-        "clang-format"
+        "clang-format",
+        "html-lsp",
+        "css-lsp",
+        "eslint-lsp"
       },
     },
   },
@@ -55,6 +58,12 @@ local plugins = {
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
+    end,
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    init = function()
+      require("nvim-ts-autotag").setup()
     end,
   },
   {
