@@ -37,3 +37,27 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
+vim.keymap.set("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>")
+vim.keymap.set("n", "<leader>ds",
+  function()
+    local widgets = require('dap.ui.widgets');
+    local sidebar = widgets.sidebar(widgets.scopes);
+    sidebar.open();
+  end,
+  { desc = "Open debugging sidebar" }
+)
+vim.keymap.set("n", "<leader>dc", function()
+  require('dap').continue()
+end, { desc = "Debugger continue" })
+vim.keymap.set("n", "<leader>dn", function()
+  require('dap').step_over()
+end, { desc = "Debugger step_over" })
+vim.keymap.set("n", "<leader>di", function()
+  require('dap').step_into()
+end, { desc = "Debugger step_into" })
+vim.keymap.set("n", "<leader>do", function()
+  require('dap').step_out()
+end, { desc = "Debugger step_out" })
+vim.keymap.set("n", "<leader>de", function()
+  require('dap').terminate()
+end, { desc = "Debugger terminate" })
