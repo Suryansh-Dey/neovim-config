@@ -38,8 +38,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
-vim.keymap.set("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>")
-vim.keymap.set("n", "<leader>ds",
+vim.keymap.set("n", "<A-b>", "<cmd> DapToggleBreakpoint <CR>")
+vim.keymap.set("n", "<A-s>",
   function()
     local widgets = require('dap.ui.widgets');
     local sidebar = widgets.sidebar(widgets.scopes);
@@ -47,18 +47,18 @@ vim.keymap.set("n", "<leader>ds",
   end,
   { desc = "Open debugging sidebar" }
 )
-vim.keymap.set("n", "<leader>dc", function()
+vim.keymap.set("n", "<A-c>", function()
   require('dap').continue()
 end, { desc = "Debugger continue" })
-vim.keymap.set("n", "<leader>dn", function()
+vim.keymap.set("n", "<A-j>", function()
   require('dap').step_over()
 end, { desc = "Debugger step_over" })
-vim.keymap.set("n", "<leader>di", function()
+vim.keymap.set("n", "<A-d>", function()
   require('dap').step_into()
 end, { desc = "Debugger step_into" })
-vim.keymap.set("n", "<leader>do", function()
+vim.keymap.set("n", "<A-o>", function()
   require('dap').step_out()
 end, { desc = "Debugger step_out" })
-vim.keymap.set("n", "<leader>dx", function()
+vim.keymap.set("n", "<A-x>", function()
   require('dap').terminate()
 end, { desc = "Debugger terminate" })
