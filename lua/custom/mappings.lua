@@ -38,6 +38,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
+vim.keymap.set("n", "<A-e>", function()
+  vim.diagnostic.open_float()
+end)
+-- Debugger mappings
 vim.keymap.set("n", "<A-b>", "<cmd> DapToggleBreakpoint <CR>")
 vim.keymap.set("n", "<A-s>",
   function()
