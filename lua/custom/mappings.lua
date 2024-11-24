@@ -9,11 +9,14 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
--- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>yy", [["+y]], { desc = "Yank to system clipboard" })
-vim.keymap.set("n", "<leader>YY", [["+Y]], { desc = "Yank to system clipboard" })
 
-vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]], { desc = "Delete to system clipboard" })
+-- next greatest remap ever : asbjornHaland
+-- vim.keymap.set({ "n", "v" }, "<leader>yy", [["+y]], { desc = "Yank to system clipboard" })
+-- vim.keymap.set("n", "<leader>YY", [["+Y]], { desc = "Yank to system clipboard" })
+-- vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]], { desc = "Delete to system clipboard" })
+-- above remap dont work for wsl so below is there replacement
+vim.keymap.set("v", "<leader>yy", "!clip.exe<CR>u",
+  { noremap = true, silent = true, desc = "Yank to system clipboard" })
 
 vim.keymap.set("n", "Q", "<nop>")
 
