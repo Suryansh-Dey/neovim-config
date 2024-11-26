@@ -44,6 +44,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.keymap.set("n", "<A-e>", function()
   vim.diagnostic.open_float()
 end)
+vim.keymap.set("n", "<leader>re", function()
+  vim.lsp.buf.rename()
+end)
+-- Save file with Ctrl-s
+local save_opts = { noremap = true, silent = true, desc = "Save the file" }
+vim.keymap.set("n", "<C-s>", ":w<CR>", save_opts)
+vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", save_opts)
+vim.keymap.set("v", "<C-s>", "<Esc>:w<CR>", save_opts)
 -- Debugger mappings
 vim.keymap.set("n", "<A-b>", "<cmd> DapToggleBreakpoint <CR>")
 vim.keymap.set("n", "<A-s>",
