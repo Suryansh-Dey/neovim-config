@@ -50,7 +50,7 @@ end)
 -- Save file with Ctrl-s
 local save_opts = { noremap = true, silent = true, desc = "Save the file" }
 vim.keymap.set("n", "<C-s>", ":w<CR>", save_opts)
-vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>a", save_opts)
+vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", save_opts)
 vim.keymap.set("v", "<C-s>", "<Esc>:w<CR>", save_opts)
 -- Debugger mappings
 vim.keymap.set("n", "<A-b>", "<cmd> DapToggleBreakpoint <CR>")
