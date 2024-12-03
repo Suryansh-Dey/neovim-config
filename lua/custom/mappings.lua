@@ -28,14 +28,6 @@ vim.api.nvim_set_keymap(
   "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>",
   { noremap = true, silent = true, desc = "Search symbols in workspace" }
 )
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function()
-    if vim.bo.filetype ~= "rust" and vim.bo.filetype ~= "javascript" then
-      vim.lsp.buf.format({ async = false })
-    end
-  end,
-})
 vim.keymap.set("n", "<A-e>", function()
   vim.diagnostic.open_float()
 end, { desc = "See error in floating window" })
