@@ -56,18 +56,23 @@ vim.keymap.set("n", "<A-s>",
   end,
   { desc = "Open debugging sidebar" }
 )
+
 vim.keymap.set("n", "<A-c>", function()
   require('dap').continue()
 end, { desc = "Debugger continue" })
+
 vim.keymap.set("n", "<A-j>", function()
   require('dap').step_over()
 end, { desc = "Debugger step_over" })
+
 vim.keymap.set("n", "<A-d>", function()
   require('dap').step_into()
 end, { desc = "Debugger step_into" })
+
 vim.keymap.set("n", "<A-o>", function()
   require('dap').step_out()
 end, { desc = "Debugger step_out" })
+
 vim.keymap.set("n", "<A-x>", function()
   require('dap').terminate()
 end, { desc = "Debugger terminate" })

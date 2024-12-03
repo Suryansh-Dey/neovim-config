@@ -40,8 +40,8 @@ M.luasnip = function(opts)
   vim.api.nvim_create_autocmd("InsertLeave", {
     callback = function()
       if
-        require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-        and not require("luasnip").session.jump_active
+          require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+          and not require("luasnip").session.jump_active
       then
         require("luasnip").unlink_current()
       end
@@ -60,6 +60,26 @@ M.gitsigns = {
   },
   on_attach = function(bufnr)
     utils.load_mappings("gitsigns", { buffer = bufnr })
+    local gs = package.loaded.gitsigns
+
+    vim.keymap.set('n', '<leader>j', function()
+      if vim.wo.diff then return '<leader>j' end
+      vim.schedule(gs.next_hunk)
+      return '<Ignore>'
+    end, { noremap = true, silent = true, buffer = bufnr, desc = "jump bottom git diff" })
+
+    vim.keymap.set('n', '<leader>k', function()
+      if vim.wo.diff then return '<leader>k' end
+      vim.schedule(gs.prev_hunk)
+      return '<Ignore>'
+    end, { noremap = true, silent = true, buffer = bufnr, desc = "jump lower git diff" })
+
+    vim.keymap.set('n', '<leader>ss', gs.stage_hunk,
+      { noremap = true, silent = true, buffer = bufnr, desc = "git stage hunk" })
+    vim.keymap.set('n', '<leader>sr', gs.reset_hunk,
+      { noremap = true, silent = true, buffer = bufnr, desc = "git reset hunk" })
+    vim.keymap.set('n', '<leader>sp', gs.preview_hunk,
+      { noremap = true, silent = true, buffer = bufnr, desc = "git preview hunk" })
   end,
 }
 
