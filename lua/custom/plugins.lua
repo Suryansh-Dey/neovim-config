@@ -49,7 +49,6 @@ local plugins = {
         "clang-format",
         "html-lsp",
         "css-lsp",
-        "eslint-lsp",
         "codelldb"
       },
     },

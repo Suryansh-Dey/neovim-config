@@ -20,4 +20,3 @@ lspconfig.clangd.setup({
 })
 lspconfig.html.setup(setup_arg)
 lspconfig.cssls.setup(setup_arg)
-lspconfig.eslint.setup(setup_arg)
