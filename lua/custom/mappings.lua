@@ -31,7 +31,7 @@ vim.api.nvim_set_keymap(
 vim.keymap.set("n", "<A-e>", function()
   vim.diagnostic.open_float()
 end, { desc = "See error in floating window" })
-vim.keymap.set("n", "<leader>re", function()
+vim.keymap.set("n", "<leader>rn", function()
   vim.lsp.buf.rename()
 end, { desc = "Rename the identifier" })
 -- Save file with Ctrl-s
