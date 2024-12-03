@@ -19,11 +19,6 @@ vim.keymap.set("v", "<leader>yy", "!clip.exe<CR>u",
   { noremap = true, silent = true, desc = "Yank to system clipboard" })
 
 vim.keymap.set("n", "Q", "<nop>")
-
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- Suryansh's remap
 vim.keymap.set("n", "<C-z>", "<cmd>:q<CR>", { desc = "Close buffer" })
 vim.keymap.set("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file" })
@@ -36,7 +31,7 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   callback = function()
-    if vim.bo.filetype ~= "rust" then
+    if vim.bo.filetype ~= "rust" and vim.bo.filetype ~= "javascript" then
       vim.lsp.buf.format({ async = false })
     end
   end,
@@ -44,9 +39,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.keymap.set("n", "<A-e>", function()
   vim.diagnostic.open_float()
 end, { desc = "See error in floating window" })
-vim.keymap.set('n', "<A-k>", function()
-  vim.lsp.buf.hover()
-end, { desc = "Know about the element" })
 vim.keymap.set("n", "<leader>re", function()
   vim.lsp.buf.rename()
 end, { desc = "Rename the identifier" })

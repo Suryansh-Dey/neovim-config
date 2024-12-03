@@ -1,2 +1,2 @@
-vim.keymap.set({ 'n', 'x', 'o' }, '<leader>s', '<Plug>(leap-forward)')
-vim.keymap.set({ 'n', 'x', 'o' }, '<leader>a', '<Plug>(leap-backward)')
+vim.keymap.set({ 'n', 'x', 'o' }, 'f', '<Plug>(leap-forward)')
+vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap-backward)')
