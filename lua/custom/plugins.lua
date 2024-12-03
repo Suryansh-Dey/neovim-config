@@ -2,6 +2,11 @@ local cmp = require "cmp"
 
 local plugins = {
   {
+    "mg979/vim-visual-multi",
+    branch = "master",
+    event = 'VeryLazy'
+  },
+  {
     "ggandor/leap.nvim",
     event = "VeryLazy",
     config = function()

@@ -40,14 +40,6 @@ vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", save_opts)
 vim.keymap.set("v", "<C-s>", "<Esc>:w<CR>", save_opts)
 -- Debugger mappings
 vim.keymap.set("n", "<A-b>", "<cmd> DapToggleBreakpoint <CR>")
-vim.keymap.set("n", "<A-s>",
-  function()
-    local widgets = require('dap.ui.widgets');
-    local sidebar = widgets.sidebar(widgets.scopes);
-    sidebar.open();
-  end,
-  { desc = "Open debugging sidebar" }
-)
 
 vim.keymap.set("n", "<A-c>", function()
   require('dap').continue()
