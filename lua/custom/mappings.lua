@@ -19,8 +19,8 @@ vim.keymap.set("v", "<leader>yy", "!clip.exe<CR>u",
 vim.keymap.set("n", "Q", "<nop>")
 -- Suryansh's remap
 vim.keymap.set("n", "<C-z>", "<cmd>:q<CR>", { desc = "Close buffer" })
-vim.keymap.set("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file" })
-vim.keymap.set('n', '<leader>fS', function()
+vim.keymap.set("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file" })
+vim.keymap.set('n', '<leader>fs', function()
     require('telescope.builtin').lsp_workspace_symbols()
   end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
 )
