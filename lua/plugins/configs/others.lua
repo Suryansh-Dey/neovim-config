@@ -60,26 +60,6 @@ M.gitsigns = {
   },
   on_attach = function(bufnr)
     utils.load_mappings("gitsigns", { buffer = bufnr })
-    local gs = package.loaded.gitsigns
-
-    vim.keymap.set('n', '<A-l>', function()
-      if vim.wo.diff then return '<A-l>' end
-      vim.schedule(gs.next_hunk)
-      return '<Ignore>'
-    end, { noremap = true, silent = true, buffer = bufnr, desc = "jump lower git diff" })
-
-    vim.keymap.set('n', '<A-k>', function()
-      if vim.wo.diff then return '<A-k>' end
-      vim.schedule(gs.prev_hunk)
-      return '<Ignore>'
-    end, { noremap = true, silent = true, buffer = bufnr, desc = "jump upper git diff" })
-
-    vim.keymap.set('n', '<A-s>', gs.stage_hunk,
-      { noremap = true, silent = true, buffer = bufnr, desc = "git stage hunk" })
-    vim.keymap.set('n', '<A-r>', gs.reset_hunk,
-      { noremap = true, silent = true, buffer = bufnr, desc = "git reset hunk" })
-    vim.keymap.set('n', '<A-p>', gs.preview_hunk,
-      { noremap = true, silent = true, buffer = bufnr, desc = "git preview hunk" })
   end,
 }
 

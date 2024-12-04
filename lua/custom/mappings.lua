@@ -20,18 +20,10 @@ vim.keymap.set("n", "Q", "<nop>")
 -- Suryansh's remap
 vim.keymap.set("n", "<C-z>", "<cmd>:q<CR>", { desc = "Close buffer" })
 vim.keymap.set("n", "<leader>fs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file" })
-vim.api.nvim_set_keymap(
-  'n',
-  '<leader>fS',
-  "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<CR>",
-  { noremap = true, silent = true, desc = "Search symbols in workspace" }
+vim.keymap.set('n', '<leader>fS', function()
+    require('telescope.builtin').lsp_workspace_symbols()
+  end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
 )
-vim.keymap.set("n", "<A-e>", function()
-  vim.diagnostic.open_float()
-end, { desc = "See error in floating window" })
-vim.keymap.set("n", "<leader>rn", function()
-  vim.lsp.buf.rename()
-end, { desc = "Rename the identifier" })
 -- Save file with Ctrl-s
 local save_opts = { noremap = true, silent = true, desc = "Save the file" }
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", save_opts)

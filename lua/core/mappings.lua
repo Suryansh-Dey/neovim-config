@@ -168,7 +168,7 @@ M.lspconfig = {
       "LSP definition type",
     },
 
-    ["<leader>ra"] = {
+    ["<leader>rn"] = {
       function()
         require("nvchad.renamer").open()
       end,
