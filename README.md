@@ -19,4 +19,4 @@ go to `~/.config/nvim/lua/core/mappings.lua` and `~/.config/nvim/lua/custom/mapp
 
 1. `Ctrl-n` -> `Alt+f` for file tree
 2. `<leader>rn` renames an identifier instead of toggling relative line number
-3. `<leader>ra` and `<leader>n` was removed. WHY THE FUCK YOU NEED A KEY BINDING TO TOGGLE LINE NUMBER? You may just use command `:set nu!` for that if you feel crazy some day.
+3. `<leader>ra` and `<leader>n` was removed. You need doctor if need keymap for toggling line numbers. You may just use command `:set nu!` for that if you feel crazy some day.
