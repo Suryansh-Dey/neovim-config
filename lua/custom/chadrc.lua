@@ -14,4 +14,5 @@ M.mappings = {
     }
   }
 }
+M.mappings.general = require "custom.configs.harpoon"
 return M
