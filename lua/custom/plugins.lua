@@ -2,6 +2,7 @@ local cmp = require "cmp"
 
 local plugins = {
   {
+    event = "VeryLazy",
     "ThePrimeagen/harpoon",
     config = function()
       require("harpoon").setup({})
