@@ -2,13 +2,6 @@ local cmp = require "cmp"
 
 local plugins = {
   {
-    event = "VeryLazy",
-    "ThePrimeagen/harpoon",
-    config = function()
-      require("harpoon").setup({})
-    end,
-  },
-  {
     'iamcco/markdown-preview.nvim',
     build = 'cd app && npm install',
     ft = { 'markdown' },

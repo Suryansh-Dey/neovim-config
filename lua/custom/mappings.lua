@@ -8,11 +8,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- next greatest remap ever : asbjornHaland
--- vim.keymap.set({ "n", "v" }, "<leader>yy", [["+y]], { desc = "Yank to system clipboard" })
--- vim.keymap.set("n", "<leader>YY", [["+Y]], { desc = "Yank to system clipboard" })
--- vim.keymap.set({ "n", "v" }, "<leader>dd", [["_d]], { desc = "Delete to system clipboard" })
--- above remap dont work for wsl so below is there replacement
+-- remap for wsl copy to windows clipboard
 vim.keymap.set("v", "<leader>yy", "!clip.exe<CR>u",
   { noremap = true, silent = true, desc = "Yank to system clipboard" })
 
@@ -21,9 +17,15 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-z>", "<cmd>:q<CR>", { desc = "Close buffer" })
 vim.keymap.set("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file" })
 vim.keymap.set('n', '<leader>fs', function()
-    require('telescope.builtin').lsp_workspace_symbols()
-  end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
+  require('telescope.builtin').lsp_workspace_symbols()
+end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
 )
+--harpoon++
+for i = 1, 9, 1 do
+  vim.keymap.set("n", string.format("<leader>%s", i), function()
+    vim.api.nvim_set_current_buf(vim.t.bufs[i])
+  end)
+end
 -- Save file with Ctrl-s
 local save_opts = { noremap = true, silent = true, desc = "Save the file" }
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", save_opts)
