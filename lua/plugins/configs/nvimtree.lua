@@ -13,6 +13,8 @@ local options = {
     update_root = false,
   },
   view = {
+    number = true,
+    relativenumber = true,
     adaptive_size = false,
     side = "left",
     width = 30,
