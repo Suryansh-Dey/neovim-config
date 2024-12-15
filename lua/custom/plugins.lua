@@ -2,6 +2,13 @@ local cmp = require "cmp"
 
 local plugins = {
   {
+    'rmagatti/auto-session',
+    lazy = false,
+    opts = {
+      suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+    }
+  },
+  {
     'iamcco/markdown-preview.nvim',
     build = 'cd app && npm install',
     ft = { 'markdown' },
@@ -139,13 +146,6 @@ local plugins = {
     ft = "rust",
     init = function()
       vim.g.rustfmt_autosave = 1
-    end
-  },
-  {
-    "theHamsta/nvim-dap-virtual-text",
-    lazy = false,
-    config = function(_, opts)
-      require("nvim-dap-virtual-text").setup()
     end
   },
   {
