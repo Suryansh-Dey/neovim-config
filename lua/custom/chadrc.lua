@@ -14,5 +14,8 @@ M.mappings = {
     }
   }
 }
-M.ui.hl_override=require("custom.highlights")
+M.ui.hl_override = {
+  LineNr = { fg = "#777777" },
+  CursorLineNr = { fg = "#ffffff" },
+}
 return M
