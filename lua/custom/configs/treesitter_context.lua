@@ -7,3 +7,7 @@ TSContext.setup({
   mode = "topline",            -- Line used to calculate context; options: 'cursor', 'topline'
   separator = nil,             -- Separator between context and content; pass a string for a custom separator
 })
+vim.cmd [[
+    highlight TreesitterContextBottom gui=underline guisp=Grey
+    highlight TreesitterContextLineNumberBottom gui=underline guisp=Grey
+]]
