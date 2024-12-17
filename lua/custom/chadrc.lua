@@ -14,4 +14,5 @@ M.mappings = {
     }
   }
 }
+M.ui.hl_override=require("custom.highlights")
 return M
