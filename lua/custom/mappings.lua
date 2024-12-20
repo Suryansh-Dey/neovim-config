@@ -7,6 +7,10 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<S-M-k>", "<cmd>lprev<CR>")
+vim.keymap.set("n", "<S-M-j>", "<cmd>lnext<CR>")
 
 -- remap for wsl copy to windows clipboard
 vim.keymap.set("v", "<leader>yy", "!clip.exe<CR>u",
@@ -25,13 +29,13 @@ for i = 1, 9, 1 do
     vim.api.nvim_set_current_buf(vim.t.bufs[i])
   end, { desc = string.format("Open %sth Tab", i) })
 end
--- Save and fromat file with Ctrl-s
-vim.keymap.set({ 'i', 'v' }, "<C-s>", "<cmd>lua vim.lsp.buf.format()<CR><Esc><cmd>w<CR>",
+-- Save and format file with Ctrl-s
+vim.keymap.set({ 'i', 'v' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
   { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
 -- Debugger mappings
-vim.keymap.set("n", "<A-b>", "<cmd> DapToggleBreakpoint <CR>")
-vim.keymap.set("n", "<A-c>", function() require('dap').continue() end, { desc = "Debugger continue" })
-vim.keymap.set("n", "<A-j>", function() require('dap').step_over() end, { desc = "Debugger step_over" })
-vim.keymap.set("n", "<A-d>", function() require('dap').step_into() end, { desc = "Debugger step_into" })
-vim.keymap.set("n", "<A-o>", function() require('dap').step_out() end, { desc = "Debugger step_out" })
-vim.keymap.set("n", "<A-x>", function() require('dap').terminate() end, { desc = "Debugger terminate" })
+vim.keymap.set("n", "<M-b>", "<cmd> DapToggleBreakpoint <CR>")
+vim.keymap.set("n", "<M-c>", function() require('dap').continue() end, { desc = "Debugger continue" })
+vim.keymap.set("n", "<M-n>", function() require('dap').step_over() end, { desc = "Debugger step_over" })
+vim.keymap.set("n", "<M-d>", function() require('dap').step_into() end, { desc = "Debugger step_into" })
+vim.keymap.set("n", "<M-o>", function() require('dap').step_out() end, { desc = "Debugger step_out" })
+vim.keymap.set("n", "<M-x>", function() require('dap').terminate() end, { desc = "Debugger terminate" })
