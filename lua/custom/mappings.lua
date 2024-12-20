@@ -26,8 +26,8 @@ for i = 1, 9, 1 do
   end, { desc = string.format("Open %sth Tab", i) })
 end
 -- Save and fromat file with Ctrl-s
-vim.keymap.set({ 'i', 'n', 'v' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR>:w<CR>",
-  { noremap = true, silent = true, desc = "Format then save the file" })
+vim.keymap.set({ 'i', 'v' }, "<C-s>", "<cmd>lua vim.lsp.buf.format()<CR><Esc><cmd>w<CR>",
+  { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
 -- Debugger mappings
 vim.keymap.set("n", "<A-b>", "<cmd> DapToggleBreakpoint <CR>")
 vim.keymap.set("n", "<A-c>", function() require('dap').continue() end, { desc = "Debugger continue" })
