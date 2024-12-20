@@ -14,7 +14,6 @@ vim.keymap.set("v", "<leader>yy", "!clip.exe<CR>u",
 
 vim.keymap.set("n", "Q", "<nop>")
 -- Suryansh's remap
-vim.keymap.set("n", "<C-z>", "<cmd>:q<CR>", { desc = "Close buffer" })
 vim.keymap.set("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file" })
 vim.keymap.set('n', '<leader>fs', function()
   require('telescope.builtin').lsp_workspace_symbols()
@@ -26,29 +25,12 @@ for i = 1, 9, 1 do
     vim.api.nvim_set_current_buf(vim.t.bufs[i])
   end)
 end
--- Save file with Ctrl-s
-local save_opts = { noremap = true, silent = true, desc = "Save the file" }
-vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", save_opts)
-vim.keymap.set("v", "<C-s>", "<Esc>:w<CR>", save_opts)
+-- Save and fromat file with Ctrl-s
+vim.keymap.set({ 'i', 'n', 'v' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR>:w<CR>", { noremap = true, silent = true, desc = "Save the file" })
 -- Debugger mappings
 vim.keymap.set("n", "<A-b>", "<cmd> DapToggleBreakpoint <CR>")
-
-vim.keymap.set("n", "<A-c>", function()
-  require('dap').continue()
-end, { desc = "Debugger continue" })
-
-vim.keymap.set("n", "<A-j>", function()
-  require('dap').step_over()
-end, { desc = "Debugger step_over" })
-
-vim.keymap.set("n", "<A-d>", function()
-  require('dap').step_into()
-end, { desc = "Debugger step_into" })
-
-vim.keymap.set("n", "<A-o>", function()
-  require('dap').step_out()
-end, { desc = "Debugger step_out" })
-
-vim.keymap.set("n", "<A-x>", function()
-  require('dap').terminate()
-end, { desc = "Debugger terminate" })
+vim.keymap.set("n", "<A-c>", function() require('dap').continue() end, { desc = "Debugger continue" })
+vim.keymap.set("n", "<A-j>", function() require('dap').step_over() end, { desc = "Debugger step_over" })
+vim.keymap.set("n", "<A-d>", function() require('dap').step_into() end, { desc = "Debugger step_into" })
+vim.keymap.set("n", "<A-o>", function() require('dap').step_out() end, { desc = "Debugger step_out" })
+vim.keymap.set("n", "<A-x>", function() require('dap').terminate() end, { desc = "Debugger terminate" })
