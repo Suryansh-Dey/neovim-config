@@ -49,21 +49,12 @@ local plugins = {
     end
   },
   {
-    "nvimtools/none-ls.nvim",
-    event = "VeryLazy",
-    opts = function()
-      return require("custom.configs.null-ls")
-    end
-  },
-  {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
         "rust-analyzer",
         "typescript-language-server",
-        "prettierd",
         "clangd",
-        "clang-format",
         "html-lsp",
         "css-lsp",
         "codelldb"
