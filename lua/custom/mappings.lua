@@ -23,10 +23,11 @@ end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
 for i = 1, 9, 1 do
   vim.keymap.set("n", string.format("<leader>%s", i), function()
     vim.api.nvim_set_current_buf(vim.t.bufs[i])
-  end)
+  end, { desc = string.format("Open %sth Tab", i) })
 end
 -- Save and fromat file with Ctrl-s
-vim.keymap.set({ 'i', 'n', 'v' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR>:w<CR>", { noremap = true, silent = true, desc = "Save the file" })
+vim.keymap.set({ 'i', 'n', 'v' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR>:w<CR>",
+  { noremap = true, silent = true, desc = "Format then save the file" })
 -- Debugger mappings
 vim.keymap.set("n", "<A-b>", "<cmd> DapToggleBreakpoint <CR>")
 vim.keymap.set("n", "<A-c>", function() require('dap').continue() end, { desc = "Debugger continue" })
