@@ -22,3 +22,16 @@ If you need some feature which is not available in NVChad by default, check `~/.
 4. `<leader>v` and `<leader>h` was removed. Just use `<A-v>` and `<A-h>`.
 
 **NOTE**: The 'f' motion is remapped to `leap-forward` of leap plugin. *Just use 't' motion or 'f' with just one extra letter making you sure about the motion!*
+
+## nvim-surround remaps
+Since `s` is used for `leap-backward`, following remaps were done:
+``` lua
+{
+normal = "<leader>s", --"ys"
+normal_cur = "<leader>ss", --"yss"
+normal_line = "<leader>S", --"yS"
+normal_cur_line = "<leader>SS", --"ySS"
+delete = "d<leader>", --"ds"
+change = "c<leader>", --"cs"
+}
+```
