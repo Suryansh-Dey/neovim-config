@@ -5,6 +5,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require("lspconfig")
 
 local setup_arg = {
+  on_attach = on_attach,
   capabilities = capabilities
 }
 
