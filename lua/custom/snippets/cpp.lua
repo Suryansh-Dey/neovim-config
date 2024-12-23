@@ -3,7 +3,7 @@ local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
 
-ls.add_snippets("cpp", { s("cp", {
+local snippet = { s("cp", {
   t({ "#include \"../mySTL/mySTL.hpp\"",
     "using namespace std;",
     "int main() {",
@@ -17,4 +17,5 @@ ls.add_snippets("cpp", { s("cp", {
     "}" })
 }
 )
-})
+}
+return snippet

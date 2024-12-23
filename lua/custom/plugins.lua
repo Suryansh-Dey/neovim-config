@@ -26,14 +26,6 @@ local plugins = {
     end
   },
   {
-    "L3MON4D3/LuaSnip",
-    event = "VeryLazy",
-    config = function()
-      require("luasnip").setup()
-      require("custom.snippets")
-    end,
-  },
-  {
     "nvim-treesitter/nvim-treesitter-context",
     event = "VeryLazy",
     init = function()

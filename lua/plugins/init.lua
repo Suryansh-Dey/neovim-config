@@ -27,13 +27,13 @@ local default_plugins = {
       require "base46.term"
       opts.terminals = {
         type_opts = {
-            float = {
-                relative = "editor",
-                row = 0,
-                col = 0,
-                width = vim.o.columns,
-                height = vim.o.lines,
-            },
+          float = {
+            relative = "editor",
+            row = 0,
+            col = 0,
+            width = vim.o.columns,
+            height = vim.o.lines,
+          },
         },
       }
       require("nvterm").setup(opts)
@@ -214,6 +214,15 @@ local default_plugins = {
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "nvimtree")
       require("nvim-tree").setup(opts)
+
+      vim.cmd [[
+   :hi NvimTreeGitDirty guifg=#ffaa00
+   :hi NvimTreeGitStaged guifg=#ffaa00
+   :hi NvimTreeGitDeleted guifg=#ff0000
+   :hi NvimTreeGitMerge guifg=#00ffff
+   :hi NvimTreeGitNew guifg=#00ff00
+   :hi NvimTreeGitIgnored guifg=#888888
+]]
     end,
   },
 
