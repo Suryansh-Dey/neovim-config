@@ -111,6 +111,9 @@ local options = {
     { name = "nvim_lua" },
     { name = "path" },
   },
+  experimental = {
+    ghost_text = true
+  },
 }
 
 if cmp_style ~= "atom" and cmp_style ~= "atom_colored" then
