@@ -147,6 +147,7 @@ local plugins = {
     "hrsh7th/nvim-cmp",
     opts = function()
       local M = require "plugins.configs.cmp"
+      M.experimental = { ghost_text = true }
       table.insert(M.sources, { name = "crates" })
       return M
     end,
