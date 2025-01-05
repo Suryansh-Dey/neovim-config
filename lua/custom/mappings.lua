@@ -32,6 +32,8 @@ end
 -- Save and format file with Ctrl-s
 vim.keymap.set({ 'i', 'v' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
   { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
+vim.keymap.set('n', "<C-s>", "a<cmd>lua vim.lsp.buf.format()<CR><Esc><cmd>w<CR>",
+  { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
 -- Debugger mappings
 vim.keymap.set("n", "<M-b>", "<cmd> DapToggleBreakpoint <CR>")
 vim.keymap.set("n", "<M-c>", function() require('dap').continue() end, { desc = "Debugger continue" })
