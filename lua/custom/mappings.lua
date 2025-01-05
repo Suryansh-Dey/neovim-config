@@ -2,7 +2,6 @@
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
 
-vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
@@ -30,9 +29,7 @@ for i = 1, 9, 1 do
   end, { desc = string.format("Open %sth Tab", i) })
 end
 -- Save and format file with Ctrl-s
-vim.keymap.set({ 'i', 'v' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
-  { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
-vim.keymap.set('n', "<C-s>", "a<cmd>lua vim.lsp.buf.format()<CR><Esc><cmd>w<CR>",
+vim.keymap.set({ 'i', 'n', 'v' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
   { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
 -- Debugger mappings
 vim.keymap.set("n", "<M-b>", "<cmd> DapToggleBreakpoint <CR>")
