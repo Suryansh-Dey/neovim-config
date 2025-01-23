@@ -149,6 +149,11 @@ local plugins = {
       local M = require "plugins.configs.cmp"
       M.experimental = { ghost_text = true }
       table.insert(M.sources, { name = "crates" })
+      M.completion.completeopt = "menu,menuone,noselect"
+      M.mapping["<CR>"] = cmp.mapping.confirm {
+        behavior = cmp.ConfirmBehavior.Insert,
+        select = false,
+      }
       return M
     end,
   }

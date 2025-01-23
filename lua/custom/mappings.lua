@@ -6,10 +6,11 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
-vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
-vim.keymap.set("n", "<S-M-k>", "<cmd>lprev<CR>")
-vim.keymap.set("n", "<S-M-j>", "<cmd>lnext<CR>")
+vim.keymap.set("n", "<leader>k", "<cmd>cprev<CR>")
+vim.keymap.set("n", "<leader>j", "<cmd>cnext<CR>")
+vim.keymap.set("n", "<M-k>", "<cmd>lprev<CR>")
+vim.keymap.set("n", "<M-j>", "<cmd>lnext<CR>")
+vim.keymap.set("n", "<leader><leader>", "<cmd>cclose<CR>")
 
 -- remap for wsl copy to windows clipboard
 vim.keymap.set("v", "<leader>yy", "!clip.exe<CR>u",
