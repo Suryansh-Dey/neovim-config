@@ -160,5 +160,18 @@ return {
       }
       return M
     end,
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = function()
+      vim.cmd [[
+   :hi NvimTreeGitDirty guifg=#ffaa00
+   :hi NvimTreeGitStaged guifg=#ffaa00
+   :hi NvimTreeGitDeleted guifg=#ff0000
+   :hi NvimTreeGitMerge guifg=#00ffff
+   :hi NvimTreeGitNew guifg=#00ff00
+   :hi NvimTreeGitIgnored guifg=#888888
+]]
+    end
   }
 }
