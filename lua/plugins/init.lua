@@ -26,14 +26,14 @@ return {
     "ggandor/leap.nvim",
     event = "VeryLazy",
     config = function()
-      require("custom.configs.leap")
+      require("configs.leap")
     end
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "VeryLazy",
     init = function()
-      require("custom.configs.treesitter_context")
+      require("configs.treesitter_context")
     end,
   },
   {
@@ -72,8 +72,8 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      require "nvchad.configs.lspconfig"
+      require "configs.lspconfig"
     end,
   },
   {
@@ -88,7 +88,7 @@ return {
     ft = { "rust" },
     dependencies = "neovim/nvim-lspconfig",
     config = function()
-      require "custom.configs.rustaceanvim"
+      require "configs.rustaceanvim"
     end
   },
   {
@@ -150,7 +150,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     opts = function()
-      local M = require "plugins.configs.cmp"
+      local M = require "nvchad.configs.cmp"
       M.experimental = { ghost_text = true }
       table.insert(M.sources, { name = "crates" })
       M.completion.completeopt = "menu,menuone,noselect"
