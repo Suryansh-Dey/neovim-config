@@ -120,7 +120,7 @@ map("n", "<leader>/",
   { desc = "Toggle comment"
   })
 
-map("n", "<leader>/",
+map("v", "<leader>/",
   "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
   { desc = "Toggle comment" }
 )

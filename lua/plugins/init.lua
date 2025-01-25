@@ -1,6 +1,20 @@
 local cmp = require "cmp"
 return {
   {
+    "numToStr/Comment.nvim",
+    keys = {
+      { "gcc", mode = "n",          desc = "Comment toggle current line" },
+      { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
+      { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
+      { "gbc", mode = "n",          desc = "Comment toggle current block" },
+      { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
+      { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
+    },
+    config = function(_, opts)
+      require("Comment").setup(opts)
+    end,
+  },
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
@@ -65,7 +79,6 @@ return {
         "clangd",
         "html-lsp",
         "css-lsp",
-        "codelldb"
       },
     },
   },
@@ -83,60 +96,20 @@ return {
     end,
   },
   {
-    "mrcjkb/rustaceanvim",
-    version = "^4",
-    ft = { "rust" },
+    "simrat39/rust-tools.nvim",
     dependencies = "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.rustaceanvim"
+    ft = "rust",
+    opts = function()
+      return require "configs.rust-tools"
+    end,
+    config = function(_, opts)
+      require("rust-tools").setup(opts)
     end
-  },
-  {
-    'mfussenegger/nvim-dap',
-    config = function()
-      local dap, dapui = require("dap"), require("dapui")
-      dap.listeners.before.attach.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.launch.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated.dapui_config = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited.dapui_config = function()
-        dapui.close()
-      end
-    end,
-  },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    keys = {
-      { "<M-b>", "<cmd> DapToggleBreakpoint <CR>",          desc = "Set break point" },
-      { "<M-c>", function() require('dap').continue() end,  desc = "Debugger continue" },
-      { "<M-n>", function() require('dap').step_over() end, desc = "Debugger step_over" },
-      { "<M-d>", function() require('dap').step_into() end, desc = "Debugger step_into" },
-      { "<M-o>", function() require('dap').step_out() end,  desc = "Debugger step_out" },
-      { "<M-x>", function() require('dap').terminate() end, desc = "Debugger terminate" }
-    },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "mfussenegger/nvim-dap"
-    },
-    opts = {
-      handlers = {}
-    }
-  },
-  {
-    'rcarriga/nvim-dap-ui',
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    config = function()
-      require("dapui").setup()
-    end,
   },
   {
     'saecki/crates.nvim',
     ft = { "toml" },
+    tag = 'stable',
     config = function(_, opts)
       local crates = require('crates')
       crates.setup(opts)
@@ -144,15 +117,11 @@ return {
         sources = { { name = "crates" } }
       })
       crates.show()
-      require("core.utils").load_mappings("crates")
     end,
   },
   {
     "rust-lang/rust.vim",
     ft = "rust",
-    init = function()
-      vim.g.rustfmt_autosave = 1
-    end
   },
   {
     "hrsh7th/nvim-cmp",
