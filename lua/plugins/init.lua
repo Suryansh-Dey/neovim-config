@@ -15,11 +15,6 @@ return {
     end,
   },
   {
-    "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
-    opts = require "configs.conform",
-  },
-  {
     'rmagatti/auto-session',
     lazy = false,
     opts = {
