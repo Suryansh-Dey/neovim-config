@@ -135,7 +135,10 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     opts = function()
-      vim.cmd [[
+      local M = require("nvchad.configs.nvimtree")
+      M.view.number = true
+      M.view.relativenumber = true
+          vim.cmd [[
    :hi NvimTreeGitDirty guifg=#ffaa00
    :hi NvimTreeGitStaged guifg=#ffaa00
    :hi NvimTreeGitDeleted guifg=#ff0000
@@ -143,6 +146,7 @@ return {
    :hi NvimTreeGitNew guifg=#00ff00
    :hi NvimTreeGitIgnored guifg=#888888
 ]]
+      return M
     end
   }
 }
