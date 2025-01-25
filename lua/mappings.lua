@@ -2,14 +2,10 @@ local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
--- ThePrimeagen's remap
+
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
 
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
 map("n", "<leader>k", "<cmd>cprev<CR>")
 map("n", "<leader>j", "<cmd>cnext<CR>")
 map("n", "<M-k>", "<cmd>lprev<CR>")
@@ -21,7 +17,6 @@ map("v", "<leader>yy", "!clip.exe<CR>u",
   { noremap = true, silent = true, desc = "Yank to system clipboard" })
 
 map("n", "Q", "<nop>")
--- Suryansh's remap
 map("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file" })
 map('n', '<leader>fs', function()
   require('telescope.builtin').lsp_workspace_symbols()
