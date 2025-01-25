@@ -111,7 +111,14 @@ return {
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
-    event = "VeryLazy",
+    keys = {
+      { "<M-b>", "<cmd> DapToggleBreakpoint <CR>",          desc = "Set break point" },
+      { "<M-c>", function() require('dap').continue() end,  desc = "Debugger continue" },
+      { "<M-n>", function() require('dap').step_over() end, desc = "Debugger step_over" },
+      { "<M-d>", function() require('dap').step_into() end, desc = "Debugger step_into" },
+      { "<M-o>", function() require('dap').step_out() end,  desc = "Debugger step_out" },
+      { "<M-x>", function() require('dap').terminate() end, desc = "Debugger terminate" }
+    },
     dependencies = {
       "williamboman/mason.nvim",
       "mfussenegger/nvim-dap"

@@ -32,12 +32,7 @@ end
 map({ 'i', 'v' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
   { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
 -- Debugger mappings
-map("n", "<M-b>", "<cmd> DapToggleBreakpoint <CR>")
-map("n", "<M-c>", function() require('dap').continue() end, { desc = "Debugger continue" })
-map("n", "<M-n>", function() require('dap').step_over() end, { desc = "Debugger step_over" })
-map("n", "<M-d>", function() require('dap').step_into() end, { desc = "Debugger step_into" })
-map("n", "<M-o>", function() require('dap').step_out() end, { desc = "Debugger step_out" })
-map("n", "<M-x>", function() require('dap').terminate() end, { desc = "Debugger terminate" })
+-- Moved to plugins/init for lazy loading
 
 -- NVChad mappings
 -- go to  beginning and end
