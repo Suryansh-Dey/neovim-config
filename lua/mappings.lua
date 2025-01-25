@@ -273,44 +273,17 @@ map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" }
 
 map("n", "<leader>ma", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
 -- toggle in terminal mode
-map("t", "<A-i>",
-  function()
-    require("nvterm.terminal").toggle "float"
-  end,
-  { desc = "Toggle floating term" })
+map({ "n", "t" }, "<A-v>", function()
+  require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
+end, { desc = "terminal toggleable vertical term" })
 
-map("t", "<A-h>",
-  function()
-    require("nvterm.terminal").toggle "horizontal"
-  end,
-  { desc = "Toggle horizontal term" })
+map({ "n", "t" }, "<A-h>", function()
+  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+end, { desc = "terminal toggleable horizontal term" })
 
-map("t", "<A-v>",
-  function()
-    require("nvterm.terminal").toggle "vertical"
-  end,
-  { desc = "Toggle vertical term" })
-
--- toggle in normal mode
-map("n", "<A-i>",
-  function()
-    require("nvterm.terminal").toggle "float"
-  end,
-  { desc = "Toggle floating term" })
-
-map("n", "<A-h>",
-  function()
-    require("nvterm.terminal").toggle "horizontal"
-  end,
-  { desc = "Toggle horizontal term" })
-
-map("n", "<A-v>",
-  function()
-    require("nvterm.terminal").toggle "vertical"
-  end,
-  { desc = "Toggle vertical term" })
-
--- new
+map({ "n", "t" }, "<A-i>", function()
+  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+end, { desc = "terminal toggle floating term" })
 -- Do not create new terminal you monster!!
 map("n", "<leader>wK",
   function()
