@@ -29,7 +29,7 @@ for i = 1, 9, 1 do
   end, { desc = string.format("Open %sth Tab", i) })
 end
 -- Save and format file with Ctrl-s
-map({ 'i', 'v' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
+map({ 'i', 'v', 'n' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
   { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
 -- Debugger mappings
 -- Moved to plugins/init for lazy loading
@@ -51,9 +51,6 @@ map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
 map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
-
--- save
-map("n", "<C-s>", "<cmd> w <CR>", { desc = "Save file" })
 
 -- Copy all
 map("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
@@ -125,60 +122,12 @@ map("v", "<leader>/",
   { desc = "Toggle comment" }
 )
 
-map("n", "gD",
-  function()
-    vim.lsp.buf.declaration()
-  end,
-  { desc = "LSP declaration" }
-)
-
-map("n", "gd",
-  function()
-    vim.lsp.buf.definition()
-  end,
-  { desc = "LSP definition" }
-)
-
 map("n", "K",
   function()
     vim.lsp.buf.hover()
   end,
   { desc = "LSP hover" }
 )
-
-map("n", "gi",
-  function()
-    vim.lsp.buf.implementation()
-  end,
-  { desc = "LSP implementation" }
-)
-
-map("n", "<leader>ls",
-  function()
-    vim.lsp.buf.signature_help()
-  end,
-  { desc = "LSP signature help" }
-)
-
-map("n", "<leader>D",
-  function()
-    vim.lsp.buf.type_definition()
-  end,
-  { desc = "LSP definition type" })
-
-map("n", "<leader>rn",
-  function()
-    require("nvchad.renamer").open()
-  end,
-  { desc = "LSP rename" })
-
-
-map("n", "<leader>ca",
-  function()
-    vim.lsp.buf.code_action()
-  end,
-  { desc = "LSP code action" })
-
 
 map("n", "gr",
   function()

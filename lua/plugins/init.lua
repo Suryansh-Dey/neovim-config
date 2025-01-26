@@ -138,7 +138,7 @@ return {
       local M = require("nvchad.configs.nvimtree")
       M.view.number = true
       M.view.relativenumber = true
-          vim.cmd [[
+      vim.cmd [[
    :hi NvimTreeGitDirty guifg=#ffaa00
    :hi NvimTreeGitStaged guifg=#ffaa00
    :hi NvimTreeGitDeleted guifg=#ff0000

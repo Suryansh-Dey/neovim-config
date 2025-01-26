@@ -17,9 +17,7 @@ If you need some feature which is not available in NVChad by default, check `~/.
 
 # NVChad's default keymap changes
 1. `Ctrl-n` -> `Alt+f` for file tree
-2. `<leader>rn` renames an identifier instead of toggling relative line number
-3. `<leader>ra` and `<leader>n` was removed. You need doctor if need keymap for toggling line numbers. You may just use command `:set nu!` for that if you feel crazy some day.
-4. `<leader>v` and `<leader>h` was removed. Just use `<A-v>` and `<A-h>`.
+2. `<leader>v` and `<leader>h` was removed. Just use `<A-v>` and `<A-h>`.
 
 **NOTE**: The 'f' motion is remapped to `leap-forward` of leap plugin. *Just use 't' motion or 'f' with just one extra letter making you sure about the motion!*
 
