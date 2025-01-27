@@ -1,12 +1,28 @@
-# Setting up (linux)
+# Pre-requisites
+Same as Pre-requisites of [NVChad](https://nvchad.com/docs/quickstart/install)
+
+# Setting up
 Run the following command in your terminal
+<details>
+<summary>Linux</summary>
+
 ```terminal
-mkdir ~/.config -p && cd ~/.config
-mv nvim nvim-backup
-git clone https://github.com/Suryansh-Dey/nvim-config.git
-mv nvim-config nvim
+mv ~/.config/nvim ~/.config/nvim-backup
+mv ~/.local/share/nvim ~/.local/share/nvim-backup
+git clone https://github.com/Suryansh-Dey/nvim-config.git ~/.config/nvim
 ```
-**Note:** `mv nvim nvim-backup` might raise error if no nvim config file is already there but ignore that. Following command will still do the job!
+</details>
+<details>
+<summary>Windows</summary>
+
+```terminal
+mv $HOME/AppData/Local/nvim $HOME/AppData/Local/nvim-backup
+mv $HOME/AppData/Local/nvim-data $HOME/AppData/Local/nvim-data-backup
+git clone https://github.com/Suryansh-Dey/nvim-config.git $HOME/AppData/Local/nvim
+```
+</details>
+
+**Note:** `mv` commnds might raise error if no nvim config file is already there but ignore that. Following command will still do the job!
 
 # Tip to find a keybinding
 Go to `~/.config/nvim/lua/core/mappings.lua` and `~/.config/nvim/lua/custom/mappings.lua`, and search for the action. You will probably get it's corresponding keybinding here.

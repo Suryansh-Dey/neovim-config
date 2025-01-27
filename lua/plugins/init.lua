@@ -41,7 +41,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "VeryLazy",
-    init = function()
+    config = function()
       require("configs.treesitter_context")
     end,
   },
@@ -80,7 +80,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require "nvchad.configs.lspconfig"
       require "configs.lspconfig"
     end,
   },
