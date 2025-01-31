@@ -14,27 +14,31 @@ map("n", "<leader><leader>", "<cmd>cclose<CR>")
 
 -- remap for wsl copy to windows clipboard
 map("v", "<leader>yy", "!clip.exe<CR>u",
-  { noremap = true, silent = true, desc = "Yank to system clipboard" })
+    { noremap = true, silent = true, desc = "Yank to system clipboard" })
 
 map("n", "Q", "<nop>")
 map("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file" })
 map('n', '<leader>fs', function()
-  require('telescope.builtin').lsp_workspace_symbols()
+    require('telescope.builtin').lsp_workspace_symbols()
 end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
 )
 --harpoon++
 for i = 1, 9, 1 do
-  map("n", string.format("<leader>%s", i), function()
-    vim.api.nvim_set_current_buf(vim.t.bufs[i])
-  end, { desc = string.format("Open %sth Tab", i) })
+    map("n", string.format("<leader>%s", i), function()
+        vim.api.nvim_set_current_buf(vim.t.bufs[i])
+    end, { desc = string.format("Open %sth Tab", i) })
 end
 -- Save and format file with Ctrl-s
 map({ 'i', 'v', 'n' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
-  { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
+    { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
 -- Debugger mappings
 -- Moved to plugins/init for lazy loading
 
 -- NVChad mappings
+map('n', "<leader>rn", function()
+    vim.opt_local.number = true
+    vim.opt_local.relativenumber = true
+end, { desc = "Use relative number" })
 -- go to  beginning and end
 map('i', "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
 map('i', "<C-e>", "<End>", { desc = "End of line" })
@@ -69,10 +73,10 @@ map("n", "<leader>b", "<cmd> enew <CR>", { desc = "New buffer" })
 map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
 
 map("n", "<leader>fm",
-  function()
-    vim.lsp.buf.format { async = true }
-  end,
-  { desc = "LSP formatting" }
+    function()
+        vim.lsp.buf.format { async = true }
+    end,
+    { desc = "LSP formatting" }
 )
 
 map("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), { desc = "Escape terminal mode" })
@@ -90,102 +94,102 @@ map("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text
 
 -- cycle through buffers
 map("n", "<tab>",
-  function()
-    require("nvchad.tabufline").tabuflineNext()
-  end,
-  { desc = "Goto next buffer" })
+    function()
+        require("nvchad.tabufline").tabuflineNext()
+    end,
+    { desc = "Goto next buffer" })
 
 
 map("n", "<S-tab>",
-  function()
-    require("nvchad.tabufline").tabuflinePrev()
-  end,
-  { desc = "Goto prev buffer" })
+    function()
+        require("nvchad.tabufline").tabuflinePrev()
+    end,
+    { desc = "Goto prev buffer" })
 
 -- close buffer + hide terminal buffer
 map("n", "<leader>x",
-  function()
-    require("nvchad.tabufline").close_buffer()
-  end,
-  { desc = "Close buffer" })
+    function()
+        require("nvchad.tabufline").close_buffer()
+    end,
+    { desc = "Close buffer" })
 
 -- toggle comment in both modes
 map("n", "<leader>/",
-  function()
-    require("Comment.api").toggle.linewise.current()
-  end,
-  { desc = "Toggle comment"
-  })
+    function()
+        require("Comment.api").toggle.linewise.current()
+    end,
+    { desc = "Toggle comment"
+    })
 
 map("v", "<leader>/",
-  "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-  { desc = "Toggle comment" }
+    "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+    { desc = "Toggle comment" }
 )
 
 map("n", "K",
-  function()
-    vim.lsp.buf.hover()
-  end,
-  { desc = "LSP hover" }
+    function()
+        vim.lsp.buf.hover()
+    end,
+    { desc = "LSP hover" }
 )
 
 map("n", "gr",
-  function()
-    vim.lsp.buf.references()
-  end,
-  { desc = "LSP references" })
+    function()
+        vim.lsp.buf.references()
+    end,
+    { desc = "LSP references" })
 
 
 map("n", "<leader>lf",
-  function()
-    vim.diagnostic.open_float { border = "rounded" }
-  end,
-  { desc = "Floating diagnostic" })
+    function()
+        vim.diagnostic.open_float { border = "rounded" }
+    end,
+    { desc = "Floating diagnostic" })
 
 
 map("n", "[d",
-  function()
-    vim.diagnostic.goto_prev { float = { border = "rounded" } }
-  end,
-  { desc = "Goto prev" })
+    function()
+        vim.diagnostic.goto_prev { float = { border = "rounded" } }
+    end,
+    { desc = "Goto prev" })
 
 
 map("n", "]d",
-  function()
-    vim.diagnostic.goto_next { float = { border = "rounded" } }
-  end,
-  { desc = "Goto next" }
+    function()
+        vim.diagnostic.goto_next { float = { border = "rounded" } }
+    end,
+    { desc = "Goto next" }
 )
 
 map("n", "<leader>q",
-  function()
-    vim.diagnostic.setloclist()
-  end,
-  { desc = "Diagnostic setloclist" })
+    function()
+        vim.diagnostic.setloclist()
+    end,
+    { desc = "Diagnostic setloclist" })
 
 map("n", "<leader>wa",
-  function()
-    vim.lsp.buf.add_workspace_folder()
-  end,
-  { desc = "Add workspace folder" })
+    function()
+        vim.lsp.buf.add_workspace_folder()
+    end,
+    { desc = "Add workspace folder" })
 
 map("n", "<leader>wr",
-  function()
-    vim.lsp.buf.remove_workspace_folder()
-  end,
-  { desc = "Remove workspace folder" })
+    function()
+        vim.lsp.buf.remove_workspace_folder()
+    end,
+    { desc = "Remove workspace folder" })
 
 map("n", "<leader>wl",
-  function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end,
-  { desc = "List workspace folders" })
+    function()
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end,
+    { desc = "List workspace folders" })
 
 map("v", "<leader>ca",
-  function()
-    vim.lsp.buf.code_action()
-  end,
-  { desc = "LSP code action" })
+    function()
+        vim.lsp.buf.code_action()
+    end,
+    { desc = "LSP code action" })
 
 -- toggle
 map("n", "<A-f>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
@@ -213,93 +217,93 @@ map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" }
 map("n", "<leader>ma", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
 -- toggle in terminal mode
 map({ "n", "t" }, "<A-v>", function()
-  require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
+    require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
 end, { desc = "terminal toggleable vertical term" })
 
 map({ "n", "t" }, "<A-h>", function()
-  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+    require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
 end, { desc = "terminal toggleable horizontal term" })
 
 map({ "n", "t" }, "<A-i>", function()
-  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+    require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "terminal toggle floating term" })
 -- Do not create new terminal you monster!!
 map("n", "<leader>wK",
-  function()
-    vim.cmd "WhichKey"
-  end,
-  { desc = "Which-key all keymaps" })
+    function()
+        vim.cmd "WhichKey"
+    end,
+    { desc = "Which-key all keymaps" })
 map("n", "<leader>wk",
-  function()
-    local input = vim.fn.input "WhichKey: "
-    vim.cmd("WhichKey " .. input)
-  end,
-  { desc = "Which-key query lookup" })
+    function()
+        local input = vim.fn.input "WhichKey: "
+        vim.cmd("WhichKey " .. input)
+    end,
+    { desc = "Which-key query lookup" })
 
 map("n", "<leader>cc",
-  function()
-    local ok, start = require("indent_blankline.utils").get_current_context(
-      vim.g.indent_blankline_context_patterns,
-      vim.g.indent_blankline_use_treesitter_scope
-    )
+    function()
+        local ok, start = require("indent_blankline.utils").get_current_context(
+            vim.g.indent_blankline_context_patterns,
+            vim.g.indent_blankline_use_treesitter_scope
+        )
 
-    if ok then
-      vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
-      vim.cmd [[normal! _]]
-    end
-  end,
+        if ok then
+            vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
+            vim.cmd [[normal! _]]
+        end
+    end,
 
-  { desc = "Jump to current context" }
+    { desc = "Jump to current context" }
 )
 
 -- Navigation through hunks
 map("n", "]c",
-  function()
-    if vim.wo.diff then
-      return "]c"
-    end
-    vim.schedule(function()
-      require("gitsigns").next_hunk()
-    end)
-    return "<Ignore>"
-  end,
-  { desc = "Jump to next hunk", expr = true }
+    function()
+        if vim.wo.diff then
+            return "]c"
+        end
+        vim.schedule(function()
+            require("gitsigns").next_hunk()
+        end)
+        return "<Ignore>"
+    end,
+    { desc = "Jump to next hunk", expr = true }
 )
 
 map("n", "[c",
-  function()
-    if vim.wo.diff then
-      return "[c"
-    end
-    vim.schedule(function()
-      require("gitsigns").prev_hunk()
-    end)
-    return "<Ignore>"
-  end,
-  { desc = "Jump to prev hunk", expr = true }
+    function()
+        if vim.wo.diff then
+            return "[c"
+        end
+        vim.schedule(function()
+            require("gitsigns").prev_hunk()
+        end)
+        return "<Ignore>"
+    end,
+    { desc = "Jump to prev hunk", expr = true }
 )
 
 -- Actions
 map("n", "<leader>rh",
-  function()
-    require("gitsigns").reset_hunk()
-  end,
-  { desc = "Reset hunk" })
+    function()
+        require("gitsigns").reset_hunk()
+    end,
+    { desc = "Reset hunk" })
 
 map("n", "<leader>ph",
-  function()
-    require("gitsigns").preview_hunk()
-  end,
-  { desc = "Preview hunk" })
+    function()
+        require("gitsigns").preview_hunk()
+    end,
+    { desc = "Preview hunk" })
 
 map("n", "<leader>gb",
-  function()
-    package.loaded.gitsigns.blame_line()
-  end,
-  { desc = "Blame line" })
+    function()
+        package.loaded.gitsigns.blame_line()
+    end,
+    { desc = "Blame line" })
 
 map("n", "<leader>td",
-  function()
-    require("gitsigns").toggle_deleted()
-  end,
-  { desc = "Toggle deleted" })
+    function()
+        require("gitsigns").toggle_deleted()
+    end,
+    { desc = "Toggle deleted" })
