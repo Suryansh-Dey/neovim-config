@@ -74,6 +74,7 @@ return {
                 "clangd",
                 "html-lsp",
                 "css-lsp",
+                "pyright",
             },
         },
     },
@@ -147,6 +148,13 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        opts = { ensure_installed = { "html", "css", "javascript", "cpp", "rust" } },
+        opts = { ensure_installed = { "html", "css", "javascript", "cpp", "rust", "markdown", "markdown_inline" } },
     },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        ft = "markdown",
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+        ---@module 'render-markdown'
+        opts = {}
+    }
 }

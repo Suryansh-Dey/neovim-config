@@ -20,6 +20,9 @@ M.term = {
         col = 0,
         width = vim.o.columns,
         height = vim.o.lines,
+    },
+    sizes = {
+        vsp = 0.5
     }
 }
 
