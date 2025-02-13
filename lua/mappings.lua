@@ -22,6 +22,7 @@ map('n', '<leader>fs', function()
     require('telescope.builtin').lsp_workspace_symbols()
 end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
 )
+map('n', "<leader>ft", ":set filetype=", { desc = "Set file type for lsp" })
 --harpoon++
 for i = 1, 9, 1 do
     map("n", string.format("<leader>%s", i), function()

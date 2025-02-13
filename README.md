@@ -49,3 +49,6 @@ delete = "d<leader>", --"ds"
 change = "c<leader>", --"cs"
 }
 ```
+## nvim-tree remaps
+1. `f` -> `<leader>f` since f is used for leap-forward
+2. `s` -> `<leader>s` since s is used for leap-backward

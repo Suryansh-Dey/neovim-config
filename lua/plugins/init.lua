@@ -134,21 +134,11 @@ return {
     },
     {
         "nvim-tree/nvim-tree.lua",
-        opts = function()
-            vim.cmd [[
-   :hi NvimTreeGitDirty guifg=#ffaa00
-   :hi NvimTreeGitStaged guifg=#ffaa00
-   :hi NvimTreeGitDeleted guifg=#ff0000
-   :hi NvimTreeGitMerge guifg=#00ffff
-   :hi NvimTreeGitNew guifg=#00ff00
-   :hi NvimTreeGitIgnored guifg=#888888
-]]
-            return require "nvchad.configs.nvimtree"
-        end
+        opts = require("configs.nvim-tree")
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        opts = { ensure_installed = { "html", "css", "javascript", "cpp", "rust", "markdown", "markdown_inline", "python" } },
+        opts = { ensure_installed = { "html", "css", "javascript", "json", "cpp", "rust", "markdown", "markdown_inline", "python" } },
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',
