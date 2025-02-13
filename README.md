@@ -25,7 +25,7 @@ git clone https://github.com/Suryansh-Dey/nvim-config.git $HOME/AppData/Local/nv
 **Note:** `mv` commnds might raise error if no nvim config file is already there but ignore that. Following command will still do the job!
 
 # Tip to find a keybinding
-Go to `~/.config/nvim/lua/core/mappings.lua` and `~/.config/nvim/lua/custom/mappings.lua`, and search for the action. You will probably get it's corresponding keybinding here.
+Go to `~/.config/nvim/lua/mappings.lua`, and search for the action. You will probably get it's corresponding keybinding here.
 
 OR just google or chatGPT like: *what is the NVChad keymap for opening terminal*. (Answer: *`A-i` for fullscreen and `A-v` or `A-h` for verticle and horizontal terminal*)
 

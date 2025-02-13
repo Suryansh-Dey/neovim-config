@@ -95,14 +95,14 @@ map("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text
 -- cycle through buffers
 map("n", "<tab>",
     function()
-        require("nvchad.tabufline").tabuflineNext()
+        require("nvchad.tabufline").next()
     end,
     { desc = "Goto next buffer" })
 
 
 map("n", "<S-tab>",
     function()
-        require("nvchad.tabufline").tabuflinePrev()
+        require("nvchad.tabufline").prev()
     end,
     { desc = "Goto prev buffer" })
 

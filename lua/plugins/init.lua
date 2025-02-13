@@ -156,5 +156,9 @@ return {
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
         ---@module 'render-markdown'
         opts = {}
+    },
+    {
+        "b0o/schemastore.nvim",
+        ensure_installed = { "vscode-json-languageserver" }
     }
 }

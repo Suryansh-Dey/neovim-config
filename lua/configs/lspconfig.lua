@@ -25,3 +25,11 @@ lspconfig.pyright.setup({
     capabilities = capabilities,
     filetypes = { "python" }
 })
+lspconfig.jsonls.setup {
+    settings = {
+        json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
+        },
+    },
+}
