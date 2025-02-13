@@ -148,7 +148,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        opts = { ensure_installed = { "html", "css", "javascript", "cpp", "rust", "markdown", "markdown_inline" } },
+        opts = { ensure_installed = { "html", "css", "javascript", "cpp", "rust", "markdown", "markdown_inline", "python" } },
     },
     {
         'MeanderingProgrammer/render-markdown.nvim',

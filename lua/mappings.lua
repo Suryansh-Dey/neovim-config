@@ -35,7 +35,7 @@ map({ 'i', 'v', 'n' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR
 -- Moved to plugins/init for lazy loading
 
 -- NVChad mappings
-map('n', "<leader>rn", function()
+map('n', "<leader>n", function()
     vim.opt_local.number = true
     vim.opt_local.relativenumber = true
 end, { desc = "Use relative number" })
