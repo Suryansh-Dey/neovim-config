@@ -1,5 +1,13 @@
+# Supported languages
+- Python
+- Html, Css, Javascript
+- Typescript
+- C++
+- Rust
+- Markdown
+- JSON
 # Pre-requisites
-Same as Pre-requisites of [NVChad](https://nvchad.com/docs/quickstart/install)
+Same as Pre-requisites of [NvChad](https://nvchad.com/docs/quickstart/install)
 
 # Setting up
 Run the following command in your terminal

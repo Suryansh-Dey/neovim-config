@@ -23,6 +23,7 @@ map('n', '<leader>fs', function()
 end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
 )
 map('n', "<leader>ft", ":set filetype=", { desc = "Set file type for lsp" })
+map('n', "<leader>p", "<cmd>Telescope neoclip<CR>", { noremap = true, silent = true, desc = "Select the yank" })
 --harpoon++
 for i = 1, 9, 1 do
     map("n", string.format("<leader>%s", i), function()

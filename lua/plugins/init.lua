@@ -150,5 +150,12 @@ return {
     {
         "b0o/schemastore.nvim",
         ensure_installed = { "vscode-json-languageserver" }
+    },
+    {
+        "AckslD/nvim-neoclip.lua",
+        dependencies = { 'nvim-telescope/telescope.nvim' },
+        config = function()
+            require('neoclip').setup()
+        end,
     }
 }
