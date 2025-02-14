@@ -1,3 +1,5 @@
+![UI](https://github.com/user-attachments/assets/9f4f5c72-d8a6-4a44-9c58-2bb2bbe8b1aa)
+
 # Supported languages
 - Python
 - Html, Css, Javascript
@@ -6,6 +8,7 @@
 - Rust
 - Markdown
 - JSON
+- lua
 # Pre-requisites
 Same as Pre-requisites of [NvChad](https://nvchad.com/docs/quickstart/install)
 
@@ -17,7 +20,7 @@ Run the following command in your terminal
 ```terminal
 mv ~/.config/nvim ~/.config/nvim-backup
 mv ~/.local/share/nvim ~/.local/share/nvim-backup
-git clone https://github.com/Suryansh-Dey/nvim-config.git ~/.config/nvim
+git clone https://github.com/Suryansh-Dey/nvim-config.git ~/.config/nvim && nvim
 ```
 </details>
 <details>
@@ -26,7 +29,7 @@ git clone https://github.com/Suryansh-Dey/nvim-config.git ~/.config/nvim
 ```terminal
 mv $HOME/AppData/Local/nvim $HOME/AppData/Local/nvim-backup
 mv $HOME/AppData/Local/nvim-data $HOME/AppData/Local/nvim-data-backup
-git clone https://github.com/Suryansh-Dey/nvim-config.git $HOME/AppData/Local/nvim
+git clone https://github.com/Suryansh-Dey/nvim-config.git $HOME/AppData/Local/nvim && nvim
 ```
 </details>
 
