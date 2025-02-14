@@ -2,17 +2,17 @@
 
 # Supported languages
 - Python
-- Html, Css, Javascript
+- HTML, Css, Javascript
 - Typescript
 - C++
 - Rust
 - Markdown
 - JSON
-- lua
+- Lua
 # Pre-requisites
 Same as Pre-requisites of [NvChad](https://nvchad.com/docs/quickstart/install)
 
-# Setting up
+# Installation
 Run the following command in your terminal
 <details>
 <summary>Linux</summary>

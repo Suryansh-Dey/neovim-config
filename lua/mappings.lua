@@ -261,9 +261,6 @@ map("n", "<leader>cc",
 -- Navigation through hunks
 map("n", "]c",
     function()
-        if vim.wo.diff then
-            return "]c"
-        end
         vim.schedule(function()
             require("gitsigns").next_hunk()
         end)
@@ -274,9 +271,6 @@ map("n", "]c",
 
 map("n", "[c",
     function()
-        if vim.wo.diff then
-            return "[c"
-        end
         vim.schedule(function()
             require("gitsigns").prev_hunk()
         end)
