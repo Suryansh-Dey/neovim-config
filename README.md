@@ -1,4 +1,4 @@
-![UI](https://github.com/user-attachments/assets/9f4f5c72-d8a6-4a44-9c58-2bb2bbe8b1aa)
+![UI](https://github.com/user-attachments/assets/2e975982-0171-4e4f-8da6-79a84d2792e8)
 
 # Supported languages
 - Python
