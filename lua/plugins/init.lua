@@ -141,6 +141,12 @@ return {
         opts = { ensure_installed = { "html", "css", "javascript", "json", "cpp", "rust", "markdown", "markdown_inline", "python" } },
     },
     {
+        "lukas-reineke/indent-blankline.nvim",
+        opts = {
+            scope = { char = "┋", highlight = "IblScopeChar" },
+        }
+    },
+    {
         'MeanderingProgrammer/render-markdown.nvim',
         ft = "markdown",
         dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },

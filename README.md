@@ -40,7 +40,7 @@ Go to `~/.config/nvim/lua/mappings.lua`, and search for the action. You will pro
 
 OR just google or chatGPT like: *what is the NVChad keymap for opening terminal*. (Answer: *`A-i` for fullscreen and `A-v` or `A-h` for verticle and horizontal terminal*)
 
-If you need some feature which is not available in NVChad by default, check `~/.config/nvim/lua/custom/plugins.lua` with chatGPT. Probably you do have a plugin to get you cover. For eg. run `:MarkdownPreview` to preview markdown, thanks to "iamcco/markdown-preview.nvim" plugin.
+If you need some feature which is not available in NVChad by default, check `~/.config/nvim/lua/plugins/init.lua` with chatGPT. Probably you do have a plugin to get you cover. For eg. run `:MarkdownPreview` to preview markdown, thanks to "iamcco/markdown-preview.nvim" plugin.
 
 # NVChad's default keymap changes
 1. `Ctrl-n` -> `Alt+f` for file tree
