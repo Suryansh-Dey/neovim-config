@@ -1,14 +1,22 @@
 ![UI](https://github.com/user-attachments/assets/2e975982-0171-4e4f-8da6-79a84d2792e8)
 
 # Supported languages
-- Python
-- HTML, Css, Javascript
-- Typescript
-- C++
-- Rust
-- Markdown
-- JSON
-- Lua
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="5%"/> Python
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="5%"/> HTML
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="5%"/> CSS
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="5%"/> JavaScript
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="5%"/> TypeScript
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="5%"/> C++
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/rust-lang/www.rust-lang.org/master/static/images/rust-social-wide-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/rust-lang/www.rust-lang.org/master/static/images/rust-social-wide-light.svg">
+    <img alt="The Rust Programming Language: A language empowering everyone to build reliable and efficient software"
+         src="https://raw.githubusercontent.com/rust-lang/www.rust-lang.org/master/static/images/rust-social-wide-light.svg"
+         width="10%">
+  </picture> Rust
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original.svg" width="5%"/> Lua
+
+**Markdown**, **JSON**
 # Pre-requisites
 Same as Pre-requisites of [NvChad](https://nvchad.com/docs/quickstart/install)
 
@@ -63,3 +71,5 @@ change = "c<leader>", --"cs"
 ## nvim-tree remaps
 1. `f` -> `<leader>f` since f is used for leap-forward
 2. `s` -> `<leader>s` since s is used for leap-backward
+# Daily usage
+Refer to the wiki section to know how I use it to be blazingly fast!
