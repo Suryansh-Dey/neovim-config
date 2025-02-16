@@ -1,4 +1,4 @@
-![UI](https://github.com/user-attachments/assets/2e975982-0171-4e4f-8da6-79a84d2792e8)
+![UI](https://github.com/user-attachments/assets/725f8b91-88d7-4ea4-9c21-628052544ca5)
 
 # Supported languages
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="5%"/> Python
@@ -28,7 +28,7 @@ Run the following command in your terminal
 ```terminal
 mv ~/.config/nvim ~/.config/nvim-backup
 mv ~/.local/share/nvim ~/.local/share/nvim-backup
-git clone https://github.com/Suryansh-Dey/nvim-config.git ~/.config/nvim && nvim
+git clone https://github.com/Suryansh-Dey/neovim-config.git ~/.config/nvim && nvim
 ```
 </details>
 <details>
@@ -37,12 +37,13 @@ git clone https://github.com/Suryansh-Dey/nvim-config.git ~/.config/nvim && nvim
 ```terminal
 mv $HOME/AppData/Local/nvim $HOME/AppData/Local/nvim-backup
 mv $HOME/AppData/Local/nvim-data $HOME/AppData/Local/nvim-data-backup
-git clone https://github.com/Suryansh-Dey/nvim-config.git $HOME/AppData/Local/nvim && nvim
+git clone https://github.com/Suryansh-Dey/neovim-config.git $HOME/AppData/Local/nvim && nvim
 ```
 </details>
 
-**Note:** `mv` commnds might raise error if no nvim config file is already there but ignore that. Following command will still do the job!
-
+*`mv` commnds might raise error if no nvim config file is already there but ignore that. Following command will still do the job!*  
+Now run `:MasonInstallAll` command in neovim  
+Done!!
 # Tip to find a keybinding
 Go to `~/.config/nvim/lua/mappings.lua`, and search for the action. You will probably get it's corresponding keybinding here.
 
@@ -72,4 +73,4 @@ change = "c<leader>", --"cs"
 1. `f` -> `<leader>f` since f is used for leap-forward
 2. `s` -> `<leader>s` since s is used for leap-backward
 # Daily usage
-Refer to the wiki section to know how I use it to be blazingly fast!
+Refer to the [wiki](https://github.com/Suryansh-Dey/neovim-config/wiki) tab to know how I use it to be blazingly fast!
