@@ -6,17 +6,29 @@ map("i", "jk", "<ESC>")
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
 
-map("n", "<leader>k", "<cmd>cprev<CR>")
-map("n", "<leader>j", "<cmd>cnext<CR>")
-map("n", "<M-k>", "<cmd>lprev<CR>")
-map("n", "<M-j>", "<cmd>lnext<CR>")
-map("n", "<leader><leader>", "<cmd>cclose<CR>")
+map("n", "<leader>k", "<cmd>cprev<CR><cmd>cclose<CR>", { desc = "Move to next in quick fix list" })
+map("n", "<leader>j", "<cmd>cnext<CR><cmd>cclose<CR>", { desc = "Move to next in quick fix list" })
+map("n", "<leader>K", "<cmd>lprev<CR><cmd>lclose<CR>", { desc = "Move to next in location list" })
+map("n", "<leader>J", "<cmd>lnext<CR><cmd>lclose<CR>", { desc = "Move to next in location list" })
+
+local previous_win = nil
+vim.api.nvim_create_autocmd("WinLeave", {
+    callback = function()
+        previous_win = vim.api.nvim_get_current_win()
+    end
+})
+vim.keymap.set("n", "Q", function()
+    if previous_win and vim.api.nvim_win_is_valid(previous_win) then
+        vim.api.nvim_win_close(previous_win, false)
+    else
+        print("No valid previous window to close")
+    end
+end, { desc = "Close the previously focused window" })
 
 -- remap for wsl copy to windows clipboard
 map("v", "<leader>yy", "!clip.exe<CR>u",
     { noremap = true, silent = true, desc = "Yank to system clipboard" })
 
-map("n", "Q", "<nop>")
 map("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file" })
 map('n', '<leader>fs', function()
     require('telescope.builtin').lsp_workspace_symbols()

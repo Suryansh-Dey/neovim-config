@@ -72,5 +72,5 @@ change = "c<leader>", --"cs"
 ## nvim-tree remaps
 1. `f` -> `<leader>f` since f is used for leap-forward
 2. `s` -> `<leader>s` since s is used for leap-backward
-# Daily usage
+# Daily usage and troubleshooting
 Refer to the [wiki](https://github.com/Suryansh-Dey/neovim-config/wiki) tab to know how I use it to be blazingly fast!
