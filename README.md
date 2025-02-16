@@ -27,13 +27,13 @@ Run the following command in your terminal
 <details>
 <summary>Clean cache of old setup</summary>
     
-    ```terminal
-    rm -rf ~/.local/state/nvim
-    rm -rf ~/.local/share/nvim
-    ```
+ ```bash
+ rm -rf ~/.local/state/nvim
+ rm -rf ~/.local/share/nvim
+ ```
 </details>
 
-```terminal
+```bash
 mv ~/.config/nvim ~/.config/nvim-backup
 mv ~/.local/share/nvim ~/.local/share/nvim-backup
 git clone https://github.com/Suryansh-Dey/neovim-config.git ~/.config/nvim && nvim
@@ -43,14 +43,14 @@ git clone https://github.com/Suryansh-Dey/neovim-config.git ~/.config/nvim && nv
 <summary>Windows</summary>
 <details>
 <summary>Clean cache of old setup</summary>
-    
-    ```terminal
-    rm -Force $HOME\AppData\Local\nvim-data
-    ```
-</details>
 In powershell
+    
+```powershell
+rm -Force $HOME\AppData\Local\nvim-data
+```
+</details>
 
-```terminal
+```powershell
 mv $HOME/AppData/Local/nvim $HOME/AppData/Local/nvim-backup
 mv $HOME/AppData/Local/nvim-data $HOME/AppData/Local/nvim-data-backup
 git clone https://github.com/Suryansh-Dey/neovim-config.git $HOME/AppData/Local/nvim && nvim
