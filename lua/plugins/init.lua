@@ -138,7 +138,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        opts = { ensure_installed = { "html", "css", "javascript", "json", "cpp", "rust", "markdown", "markdown_inline", "python" } },
+        opts = { ensure_installed = { "html", "css", "javascript", "json", "cpp", "rust", "markdown", "python" } },
     },
     {
         "lukas-reineke/indent-blankline.nvim",
