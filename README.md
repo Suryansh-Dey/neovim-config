@@ -41,9 +41,9 @@ git clone https://github.com/Suryansh-Dey/neovim-config.git ~/.config/nvim && nv
 </details>
 <details>
 <summary>Windows</summary>
+In powershell
 <details>
 <summary>Clean cache of old setup</summary>
-In powershell
     
 ```powershell
 rm -Force $HOME\AppData\Local\nvim-data
