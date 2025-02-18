@@ -52,6 +52,19 @@ for i = 1, 9, 1 do
         require("nvchad.tabufline").goto_buf(vim.t.bufs[i])
     end, { desc = string.format("Open %sth Tab", i) })
 end
+local tab_count = #vim.t.bufs
+vim.api.nvim_create_autocmd('BufEnter', {
+    callback = function(args)
+        if tab_count < #vim.t.bufs then
+            vim.api.nvim_input("<C-o>")
+            vim.schedule(function()
+                previous_buf = vim.api.nvim_get_current_buf()
+                vim.api.nvim_set_current_buf(args.buf)
+            end)
+        end
+        tab_count = #vim.t.bufs
+    end
+})
 vim.keymap.set('n', "<leader><leader>", function()
     if previous_buf and vim.api.nvim_buf_is_valid(previous_buf) then
         local current_buf = vim.api.nvim_get_current_buf()
