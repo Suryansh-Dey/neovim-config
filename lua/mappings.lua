@@ -47,7 +47,7 @@ for i = 1, 9, 1 do
             if vim.t.bufs[i] ~= current_buf then
                 previous_buf = current_buf
             end
-            vim.api.nvim_set_current_buf(vim.t.bufs[i])
+            require("nvchad.tabufline").goto_buf(vim.t.bufs[i])
         else
             print("There are only", #vim.t.bufs)
         end
@@ -56,7 +56,7 @@ end
 vim.keymap.set('n', "<leader><leader>", function()
     if previous_buf and vim.api.nvim_buf_is_valid(previous_buf) then
         local current_buf = vim.api.nvim_get_current_buf()
-        vim.api.nvim_set_current_buf(previous_buf)
+        require("nvchad.tabufline").goto_buf(previous_buf)
         previous_buf = current_buf
     else
         print("No valid previous buffer to open")
@@ -73,7 +73,9 @@ end, { noremap = true })
 map({ 'i', 'v', 'n' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
     { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
 -- Debugger mappings
--- Moved to plugins/init for lazy loading
+-- -- Moved to plugins/init for lazy loading
+-- Reply to Shreyas
+map('n', "<leader>tm", ":lua require('nvchad.tabufline').move_buf()<Left>", { desc = "Move the tab position" })
 
 -- NVChad mappings
 map('n', "<leader>n", function()
