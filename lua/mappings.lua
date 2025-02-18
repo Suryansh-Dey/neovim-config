@@ -42,15 +42,14 @@ map('n', "<leader>P", "<cmd>Telescope neoclip plus<CR>",
 local previous_buf = nil
 for i = 1, 9, 1 do
     map("n", string.format("<leader>%s", i), function()
-        if i <= #vim.t.bufs then
-            local current_buf = vim.api.nvim_get_current_buf()
-            if vim.t.bufs[i] ~= current_buf then
-                previous_buf = current_buf
-            end
-            require("nvchad.tabufline").goto_buf(vim.t.bufs[i])
-        else
-            print("There are only", #vim.t.bufs)
+        if i > #vim.t.bufs then
+            i = #vim.t.bufs
         end
+        local current_buf = vim.api.nvim_get_current_buf()
+        if vim.t.bufs[i] ~= current_buf then
+            previous_buf = current_buf
+        end
+        require("nvchad.tabufline").goto_buf(vim.t.bufs[i])
     end, { desc = string.format("Open %sth Tab", i) })
 end
 vim.keymap.set('n', "<leader><leader>", function()
@@ -75,7 +74,25 @@ map({ 'i', 'v', 'n' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR
 -- Debugger mappings
 -- -- Moved to plugins/init for lazy loading
 -- Reply to Shreyas
-map('n', "<leader>tm", ":lua require('nvchad.tabufline').move_buf()<Left>", { desc = "Move the tab position" })
+local function buf_index(bufnr)
+    for i, value in ipairs(vim.t.bufs) do
+        if value == bufnr then
+            return i
+        end
+    end
+end
+
+map('n', "<leader>tm", function()
+    local n = tonumber(vim.fn.input("Move tab by (negetive number to move left): "))
+    local current_idx = buf_index(vim.api.nvim_get_current_buf())
+    if current_idx + n > #vim.t.bufs then
+        n = #vim.t.bufs - current_idx
+    end
+    if current_idx + n < 1 then
+        n = -current_idx + 1
+    end
+    require('nvchad.tabufline').move_buf(n)
+end, { desc = "Move the tab position" })
 
 -- NVChad mappings
 map('n', "<leader>n", function()
