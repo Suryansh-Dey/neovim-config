@@ -42,11 +42,15 @@ map('n', "<leader>P", "<cmd>Telescope neoclip plus<CR>",
 local previous_buf = nil
 for i = 1, 9, 1 do
     map("n", string.format("<leader>%s", i), function()
-        local current_buf = vim.api.nvim_get_current_buf()
-        if vim.t.bufs[i] ~= current_buf then
-            previous_buf = current_buf
+        if i <= #vim.t.bufs then
+            local current_buf = vim.api.nvim_get_current_buf()
+            if vim.t.bufs[i] ~= current_buf then
+                previous_buf = current_buf
+            end
+            vim.api.nvim_set_current_buf(vim.t.bufs[i])
+        else
+            print("There are only", #vim.t.bufs)
         end
-        vim.api.nvim_set_current_buf(vim.t.bufs[i])
     end, { desc = string.format("Open %sth Tab", i) })
 end
 vim.keymap.set('n', "<leader><leader>", function()
@@ -58,6 +62,13 @@ vim.keymap.set('n', "<leader><leader>", function()
         print("No valid previous buffer to open")
     end
 end, { desc = "Open the previously focused buffer" })
+vim.keymap.set('n', "<C-o>", function()
+    local current_buf = vim.api.nvim_get_current_buf()
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>", true, false, true), "n", false)
+    if previous_buf ~= current_buf then
+        previous_buf = current_buf
+    end
+end, { noremap = true })
 -- Save and format file with Ctrl-s
 map({ 'i', 'v', 'n' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
     { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
@@ -145,7 +156,6 @@ map("n", "<S-tab>",
 map("n", "<leader>x",
     function()
         require("nvchad.tabufline").close_buffer()
-        previous_buf = nil
     end,
     { desc = "Close buffer" })
 
@@ -154,8 +164,7 @@ map("n", "<leader>/",
     function()
         require("Comment.api").toggle.linewise.current()
     end,
-    { desc = "Toggle comment"
-    })
+    { desc = "Toggle comment" })
 
 map("v", "<leader>/",
     "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
