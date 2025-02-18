@@ -24,19 +24,15 @@ vim.keymap.set("n", "Q", function()
     end
 end, { desc = "Close the previously focused window" })
 
--- remap for wsl copy to windows clipboard
-map("v", "<leader>yy", "!clip.exe<CR>u",
-    { noremap = true, silent = true, desc = "Yank to system clipboard" })
-
 map("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file" })
 map('n', '<leader>fs', function()
     require('telescope.builtin').lsp_workspace_symbols()
 end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
 )
 map('n', "<leader>ft", ":set filetype=", { desc = "Set file type for lsp" })
-map('n', "<leader>p", "<cmd>Telescope neoclip \" extra=star<CR>",
+map('n', "<leader>y", "<cmd>Telescope neoclip \" extra=star<CR>",
     { noremap = true, silent = true, desc = "Put yank nvim clipboard" })
-map('n', "<leader>P", "<cmd>Telescope neoclip plus<CR>",
+map('n', "<leader>Y", "<cmd>Telescope neoclip plus<CR>",
     { noremap = true, silent = true, desc = "Put yank to system clipboard" })
 --harpoon++
 local previous_buf = nil
@@ -56,7 +52,7 @@ local tab_count = #vim.t.bufs
 vim.api.nvim_create_autocmd('BufEnter', {
     callback = function(args)
         if tab_count < #vim.t.bufs then
-            vim.api.nvim_input("<C-o>")
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>", true, false, true), "n", false)
             vim.schedule(function()
                 previous_buf = vim.api.nvim_get_current_buf()
                 vim.api.nvim_set_current_buf(args.buf)
