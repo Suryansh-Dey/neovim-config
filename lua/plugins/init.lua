@@ -1,6 +1,19 @@
 local cmp = require "cmp"
 return {
     {
+        "williamboman/mason.nvim",
+        opts = {
+            ensure_installed = {
+                "rust-analyzer",
+                "typescript-language-server",
+                "clangd",
+                "html-lsp",
+                "css-lsp",
+                "pyright",
+            },
+        },
+    },
+    {
         "numToStr/Comment.nvim",
         keys = {
             { "gcc", mode = "n",          desc = "Comment toggle current line" },
@@ -64,19 +77,6 @@ return {
                 }
             )
         end
-    },
-    {
-        "williamboman/mason.nvim",
-        opts = {
-            ensure_installed = {
-                "rust-analyzer",
-                "typescript-language-server",
-                "clangd",
-                "html-lsp",
-                "css-lsp",
-                "pyright",
-            },
-        },
     },
     {
         "neovim/nvim-lspconfig",

@@ -39,11 +39,25 @@ map('n', "<leader>p", "<cmd>Telescope neoclip \" extra=star<CR>",
 map('n', "<leader>P", "<cmd>Telescope neoclip plus<CR>",
     { noremap = true, silent = true, desc = "Put yank to system clipboard" })
 --harpoon++
+local previous_buf = nil
 for i = 1, 9, 1 do
     map("n", string.format("<leader>%s", i), function()
+        local current_buf = vim.api.nvim_get_current_buf()
+        if vim.t.bufs[i] ~= current_buf then
+            previous_buf = current_buf
+        end
         vim.api.nvim_set_current_buf(vim.t.bufs[i])
     end, { desc = string.format("Open %sth Tab", i) })
 end
+vim.keymap.set('n', "<leader><leader>", function()
+    if previous_buf and vim.api.nvim_buf_is_valid(previous_buf) then
+        local current_buf = vim.api.nvim_get_current_buf()
+        vim.api.nvim_set_current_buf(previous_buf)
+        previous_buf = current_buf
+    else
+        print("No valid previous buffer to open")
+    end
+end, { desc = "Open the previously focused buffer" })
 -- Save and format file with Ctrl-s
 map({ 'i', 'v', 'n' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
     { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
@@ -85,7 +99,10 @@ map("n", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move 
 map("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 
 -- new buffer
-map("n", "<leader>b", "<cmd> enew <CR>", { desc = "New buffer" })
+map("n", "<leader>b", function()
+    previous_buf = vim.api.nvim_get_current_buf()
+    vim.cmd [[enew]]
+end, { desc = "New buffer" })
 map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
 
 map("n", "<leader>fm",
@@ -111,6 +128,7 @@ map("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text
 -- cycle through buffers
 map("n", "<tab>",
     function()
+        previous_buf = vim.api.nvim_get_current_buf()
         require("nvchad.tabufline").next()
     end,
     { desc = "Goto next buffer" })
@@ -118,6 +136,7 @@ map("n", "<tab>",
 
 map("n", "<S-tab>",
     function()
+        previous_buf = vim.api.nvim_get_current_buf()
         require("nvchad.tabufline").prev()
     end,
     { desc = "Goto prev buffer" })
@@ -126,6 +145,7 @@ map("n", "<S-tab>",
 map("n", "<leader>x",
     function()
         require("nvchad.tabufline").close_buffer()
+        previous_buf = nil
     end,
     { desc = "Close buffer" })
 
