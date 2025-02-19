@@ -50,13 +50,10 @@ for i = 1, 9, 1 do
 end
 local tab_count = #vim.t.bufs
 vim.api.nvim_create_autocmd('BufEnter', {
-    callback = function(args)
+    callback = function()
         if tab_count < #vim.t.bufs then
-            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>", true, false, true), "n", false)
-            vim.schedule(function()
-                previous_buf = vim.api.nvim_get_current_buf()
-                vim.api.nvim_set_current_buf(args.buf)
-            end)
+            local jumplist = vim.fn.getjumplist()
+            previous_buf = jumplist[1][jumplist[2]].bufnr
         end
         tab_count = #vim.t.bufs
     end
