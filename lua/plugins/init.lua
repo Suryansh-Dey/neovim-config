@@ -138,7 +138,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        opts = { ensure_installed = { "html", "css", "javascript", "json", "cpp", "rust", "markdown", "python", "markdown_inline" } },
+        opts = { ensure_installed = { "html", "css", "javascript", "json", "cpp", "rust", "markdown", "python" } },
     },
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -157,12 +157,5 @@ return {
         config = function()
             require('neoclip').setup()
         end,
-    },
-    {
-        'MeanderingProgrammer/render-markdown.nvim',
-        ft = "markdown",
-        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-        ---@module 'render-markdown'
-        opts = {}
     }
 }
