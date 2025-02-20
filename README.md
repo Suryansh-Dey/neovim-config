@@ -59,7 +59,7 @@ git clone https://github.com/Suryansh-Dey/neovim-config.git $HOME/AppData/Local/
 
 *`mv` commnds might raise error if no nvim config file is already there but ignore that. Following command will still do the job!*  
 Now run `:MasonInstallAll` command in neovim  
-All done!!
+All done!! *[Troubleshooting](https://github.com/Suryansh-Dey/neovim-config/wiki)*
 # Tip to find a keybinding
 Go to `~/.config/nvim/lua/mappings.lua`, and search for the action. You will probably get it's corresponding keybinding here.
 
@@ -67,14 +67,17 @@ OR just google or chatGPT like: *what is the NVChad keymap for opening terminal*
 
 If you need some feature which is not available in NVChad by default, check `~/.config/nvim/lua/plugins/init.lua` with chatGPT. Probably you do have a plugin to get you cover. For eg. run `:MarkdownPreview` to preview markdown, thanks to "iamcco/markdown-preview.nvim" plugin.
 
-# NVChad's default keymap changes
+# Default keymap changes
+- The `f` motion is remapped to *leap-forward* of leap plugin. *Just use `t` motion or `f` with just one extra letter making you sure about the motion!*
+- The `s` motion is remapped to *leap-backward*.
+- The operation `c`, `x`,`C`, `X` and `S` do **NOT store deleted text** in clipboard. But `d` and `D` does as it does.
+## NVChad's default keymap changes
 1. `Ctrl-n` -> `Alt+f` for file tree
 2. `<leader>v` and `<leader>h` was removed. Just use `<A-v>` and `<A-h>`.
 
-**NOTE**: The 'f' motion is remapped to `leap-forward` of leap plugin. *Just use 't' motion or 'f' with just one extra letter making you sure about the motion!*
 
-## nvim-surround remaps
-Since `s` is used for `leap-backward`, following remaps were done:
+### nvim-surround remaps
+Since `s` is used for *leap-backward*, following remaps were done:
 ``` lua
 {
 normal = "<leader>s", --"ys"
@@ -85,8 +88,8 @@ delete = "d<leader>", --"ds"
 change = "c<leader>", --"cs"
 }
 ```
-## nvim-tree remaps
-1. `f` -> `<leader>f` since f is used for leap-forward
-2. `s` -> `<leader>s` since s is used for leap-backward
+### nvim-tree remaps
+1. `f` -> `<leader>f` since f is used for *leap-forward*
+2. `s` -> `<leader>s` since s is used for *leap-backward*
 # Daily usage
 Refer to the [wiki](https://github.com/Suryansh-Dey/neovim-config/wiki) tab to know how I use it to be blazingly fast!

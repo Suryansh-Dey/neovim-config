@@ -4,6 +4,12 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
+-- Stopping unnecessary yanks
+map({ "n", "v" }, "S", '"_S', { noremap = true, silent = true })
+map({ "n", "v" }, "c", '"_c', { noremap = true, silent = true })
+map({ "n", "v" }, "C", '"_C', { noremap = true, silent = true })
+map({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
+map({ "n", "v" }, "X", '"_X', { noremap = true, silent = true })
 
 map("n", "<leader>k", "<cmd>cprev<CR><cmd>cclose<CR>", { desc = "Move to next in quick fix list" })
 map("n", "<leader>j", "<cmd>cnext<CR><cmd>cclose<CR>", { desc = "Move to next in quick fix list" })
