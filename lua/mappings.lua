@@ -4,16 +4,9 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
--- Stopping unnecessary yanks
-map({ "n", "v" }, "<leader>d", 'd', { noremap = true, silent = true, desc = "yank and delete" })
-map({ "n", "v" }, "<leader>D", 'D', { noremap = true, silent = true, desc = "yank and delete right" })
-map({ "n", "v" }, "d", '"_d', { noremap = true, silent = true })
-map({ "n", "v" }, "D", '"_D', { noremap = true, silent = true })
-map({ "n", "v" }, "S", '"_S', { noremap = true, silent = true })
-map({ "n", "v" }, "c", '"_c', { noremap = true, silent = true })
-map({ "n", "v" }, "C", '"_C', { noremap = true, silent = true })
 map({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 map({ "n", "v" }, "X", '"_X', { noremap = true, silent = true })
+map({ "n", "v", "x" }, "<leader>p", '"0p', { desc = "Paste last yank" })
 
 map("n", "<leader>k", "<cmd>cprev<CR><cmd>cclose<CR>", { desc = "Move to next in quick fix list", silent = true })
 map("n", "<leader>j", "<cmd>cnext<CR><cmd>cclose<CR>", { desc = "Move to next in quick fix list", silent = true })
@@ -26,7 +19,7 @@ vim.api.nvim_create_autocmd("WinLeave", {
         previous_win = vim.api.nvim_get_current_win()
     end
 })
-vim.keymap.set("n", "Q", function()
+vim.keymap.set("n", "<leader>q", function()
     if previous_win and vim.api.nvim_win_is_valid(previous_win) then
         vim.api.nvim_win_close(previous_win, false)
     else
@@ -39,7 +32,7 @@ map('n', '<leader>fs', function()
     require('telescope.builtin').lsp_workspace_symbols()
 end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
 )
-map('n', "<leader>ft", ":set filetype=", { desc = "Set file type for lsp" })
+map('n', "<leader>ct", ":set filetype=", { desc = "Set file type for lsp" })
 map('n', "<leader>y", "<cmd>Telescope neoclip \" extra=star<CR>",
     { noremap = true, silent = true, desc = "Put yank nvim clipboard" })
 map('n', "<leader>Y", "<cmd>Telescope neoclip plus<CR>",
@@ -241,7 +234,7 @@ map("n", "]d",
     { desc = "Goto next" }
 )
 
-map("n", "<leader>q",
+map("n", "<leader>lq",
     function()
         vim.diagnostic.setloclist()
     end,
@@ -289,7 +282,7 @@ map("n", "<leader>cm", "<cmd> Telescope git_commits <CR>", { desc = "Git commits
 map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "Git status" })
 
 -- pick a hidden term
-map("n", "<leader>pt", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term" })
+map("n", "<leader>ft", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term" })
 
 -- theme switcher
 map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" })
@@ -307,7 +300,15 @@ end, { desc = "terminal toggleable horizontal term" })
 map({ "n", "t" }, "<A-i>", function()
     require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "terminal toggle floating term" })
--- Do not create new terminal you monster!!
+
+map("n", "<leader>h", function()
+    require("nvchad.term").new { pos = "sp" }
+end, { desc = "terminal new horizontal term" })
+
+map("n", "<leader>v", function()
+    require("nvchad.term").new { pos = "vsp" }
+end, { desc = "terminal new vertical term" })
+
 map("n", "<leader>wK",
     function()
         vim.cmd "WhichKey"
@@ -322,18 +323,9 @@ map("n", "<leader>wk",
 
 map("n", "<leader>cc",
     function()
-        local ok, start = require("indent_blankline.utils").get_current_context(
-            vim.g.indent_blankline_context_patterns,
-            vim.g.indent_blankline_use_treesitter_scope
-        )
-
-        if ok then
-            vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
-            vim.cmd [[normal! _]]
-        end
+        require("treesitter-context").go_to_context(vim.v.count1)
     end,
-
-    { desc = "Jump to current context" }
+    { desc = "Jump to sticky context", silent = true }
 )
 
 -- Navigation through hunks
@@ -364,7 +356,7 @@ map("n", "<leader>rh",
     end,
     { desc = "Reset hunk" })
 
-map("n", "<leader>ph",
+map("n", "<leader>gh",
     function()
         require("gitsigns").preview_hunk()
     end,
