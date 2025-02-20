@@ -70,7 +70,7 @@ If you need some feature which is not available in NVChad by default, check `~/.
 # Default keymap changes
 - The `f` motion is remapped to *leap-forward* of leap plugin. *Just use `t` motion or `f` with just one extra letter making you sure about the motion!*
 - The `s` motion is remapped to *leap-backward*.
-- The operation `c`, `x`,`C`, `X` and `S` do **NOT store deleted text** in clipboard. But `d` and `D` does as it does.
+- The operation `d`, `c`, `x`,`D`, `C`, `X` and `S` do **NOT store deleted text** in clipboard. *Use `<leader>d` to yank and delete*
 ## NVChad's default keymap changes
 1. `Ctrl-n` -> `Alt+f` for file tree
 2. `<leader>v` and `<leader>h` was removed. Just use `<A-v>` and `<A-h>`.
