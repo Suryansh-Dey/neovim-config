@@ -5,8 +5,8 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
 -- Stopping unnecessary yanks
-map({ "n", "v" }, "<leader>d", 'd', { noremap = true, silent = true })
-map({ "n", "v" }, "<leader>D", 'D', { noremap = true, silent = true })
+map({ "n", "v" }, "<leader>d", 'd', { noremap = true, silent = true, desc = "yank and delete" })
+map({ "n", "v" }, "<leader>D", 'D', { noremap = true, silent = true, desc = "yank and delete right" })
 map({ "n", "v" }, "d", '"_d', { noremap = true, silent = true })
 map({ "n", "v" }, "D", '"_D', { noremap = true, silent = true })
 map({ "n", "v" }, "S", '"_S', { noremap = true, silent = true })
@@ -15,10 +15,10 @@ map({ "n", "v" }, "C", '"_C', { noremap = true, silent = true })
 map({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 map({ "n", "v" }, "X", '"_X', { noremap = true, silent = true })
 
-map("n", "<leader>k", "<cmd>cprev<CR><cmd>cclose<CR>", { desc = "Move to next in quick fix list" })
-map("n", "<leader>j", "<cmd>cnext<CR><cmd>cclose<CR>", { desc = "Move to next in quick fix list" })
-map("n", "<leader>K", "<cmd>lprev<CR><cmd>lclose<CR>", { desc = "Move to next in location list" })
-map("n", "<leader>J", "<cmd>lnext<CR><cmd>lclose<CR>", { desc = "Move to next in location list" })
+map("n", "<leader>k", "<cmd>cprev<CR><cmd>cclose<CR>", { desc = "Move to next in quick fix list", silent = true })
+map("n", "<leader>j", "<cmd>cnext<CR><cmd>cclose<CR>", { desc = "Move to next in quick fix list", silent = true })
+map("n", "<leader>K", "<cmd>lprev<CR><cmd>lclose<CR>", { desc = "Move to next in location list", silent = true })
+map("n", "<leader>J", "<cmd>lnext<CR><cmd>lclose<CR>", { desc = "Move to next in location list", silent = true })
 
 local previous_win = nil
 vim.api.nvim_create_autocmd("WinLeave", {
@@ -34,7 +34,7 @@ vim.keymap.set("n", "Q", function()
     end
 end, { desc = "Close the previously focused window" })
 
-map("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file" })
+map("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file", silent = true })
 map('n', '<leader>fs', function()
     require('telescope.builtin').lsp_workspace_symbols()
 end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
