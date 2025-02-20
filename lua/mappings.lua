@@ -35,7 +35,7 @@ map('n', "<leader>y", "<cmd>Telescope neoclip \" extra=star<CR>",
 map('n', "<leader>Y", "<cmd>Telescope neoclip plus<CR>",
     { noremap = true, silent = true, desc = "Put yank to system clipboard" })
 --harpoon++
-local previous_buf = nil
+local previous_buf = {}
 for i = 1, 9, 1 do
     map("n", string.format("<leader>%s", i), function()
         if i > #vim.t.bufs then
@@ -43,7 +43,7 @@ for i = 1, 9, 1 do
         end
         local current_buf = vim.api.nvim_get_current_buf()
         if vim.t.bufs[i] ~= current_buf then
-            previous_buf = current_buf
+            previous_buf[vim.api.nvim_get_current_win()] = current_buf
         end
         require("nvchad.tabufline").goto_buf(vim.t.bufs[i])
     end, { desc = string.format("Open %sth Tab", i) })
@@ -53,16 +53,16 @@ vim.api.nvim_create_autocmd('BufEnter', {
     callback = function()
         if tab_count < #vim.t.bufs then
             local jumplist = vim.fn.getjumplist()
-            previous_buf = jumplist[1][jumplist[2]].bufnr
+            previous_buf[vim.api.nvim_get_current_win()] = jumplist[1][jumplist[2]].bufnr
         end
         tab_count = #vim.t.bufs
     end
 })
 vim.keymap.set('n', "<leader><leader>", function()
-    if previous_buf and vim.api.nvim_buf_is_valid(previous_buf) then
+    if previous_buf[vim.api.nvim_get_current_win()] and vim.api.nvim_buf_is_valid(previous_buf[vim.api.nvim_get_current_win()]) then
         local current_buf = vim.api.nvim_get_current_buf()
-        require("nvchad.tabufline").goto_buf(previous_buf)
-        previous_buf = current_buf
+        require("nvchad.tabufline").goto_buf(previous_buf[vim.api.nvim_get_current_win()])
+        previous_buf[vim.api.nvim_get_current_win()] = current_buf
     else
         print("No valid previous buffer to open")
     end
@@ -70,8 +70,8 @@ end, { desc = "Open the previously focused buffer" })
 vim.keymap.set('n', "<C-o>", function()
     local current_buf = vim.api.nvim_get_current_buf()
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-o>", true, false, true), "n", false)
-    if previous_buf ~= current_buf then
-        previous_buf = current_buf
+    if previous_buf[vim.api.nvim_get_current_win()] ~= current_buf then
+        previous_buf[vim.api.nvim_get_current_win()] = current_buf
     end
 end, { noremap = true })
 -- Save and format file with Ctrl-s
@@ -136,7 +136,7 @@ map("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Mov
 
 -- new buffer
 map("n", "<leader>b", function()
-    previous_buf = vim.api.nvim_get_current_buf()
+    previous_buf[vim.api.nvim_get_current_win()] = vim.api.nvim_get_current_buf()
     vim.cmd [[enew]]
 end, { desc = "New buffer" })
 map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
@@ -164,7 +164,7 @@ map("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text
 -- cycle through buffers
 map("n", "<tab>",
     function()
-        previous_buf = vim.api.nvim_get_current_buf()
+        previous_buf[vim.api.nvim_get_current_win()] = vim.api.nvim_get_current_buf()
         require("nvchad.tabufline").next()
     end,
     { desc = "Goto next buffer" })
@@ -172,7 +172,7 @@ map("n", "<tab>",
 
 map("n", "<S-tab>",
     function()
-        previous_buf = vim.api.nvim_get_current_buf()
+        previous_buf[vim.api.nvim_get_current_win()] = vim.api.nvim_get_current_buf()
         require("nvchad.tabufline").prev()
     end,
     { desc = "Goto prev buffer" })
