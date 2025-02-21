@@ -157,5 +157,9 @@ return {
         config = function()
             require('neoclip').setup()
         end,
+    },
+    {
+        "folke/which-key.nvim",
+        ft = { 'text', "markdown" }
     }
 }
