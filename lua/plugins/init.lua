@@ -1,4 +1,3 @@
-local cmp = require "cmp"
 return {
     {
         "williamboman/mason.nvim",
@@ -86,7 +85,8 @@ return {
     },
     {
         "windwp/nvim-ts-autotag",
-        init = function()
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
             require("nvim-ts-autotag").setup()
         end,
     },
@@ -121,6 +121,7 @@ return {
     {
         "hrsh7th/nvim-cmp",
         opts = function()
+            local cmp = require "cmp"
             local M = require "nvchad.configs.cmp"
             M.experimental = { ghost_text = true }
             table.insert(M.sources, { name = "crates" })
@@ -160,6 +161,7 @@ return {
     },
     {
         "folke/which-key.nvim",
-        ft = { 'text', "markdown" }
+        ft = { 'text', "markdown" },
+        keys = { "z=" }
     }
 }
