@@ -1,14 +1,10 @@
 require "nvchad.options"
 
--- add yours here!
-
 local o = vim.o
 o.cursorlineopt = 'both'
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.scrolloff = 5
-vim.opt.spell = true
-vim.opt.spelllang = { 'en_us' }
 o.expandtab = true
 o.shiftwidth = 4
 o.smartindent = true
@@ -18,3 +14,13 @@ o.softtabstop = 4
 vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "#00ff00", bg = "NONE" })
 vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#ffaa00", bg = "NONE" })
 vim.api.nvim_set_hl(0, "GitSignsDelete", { fg = "#ff0000", bg = "NONE" })
+
+vim.api.nvim_create_augroup("SpellCheck", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = "SpellCheck",
+  pattern = { "markdown", "text" },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = { 'en_us' }
+  end,
+})
