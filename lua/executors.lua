@@ -4,15 +4,15 @@ return {
         vim.keymap.set('n', '<leader>xi', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "float", id = "floatTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in full screen terminal" })
         vim.keymap.set('n', '<leader>xv', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "vsp", id = "vtoggleTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in vertical terminal" })
         vim.keymap.set('n', '<leader>xh', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "sp", id = "htoggleTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in horizontal terminal" })
     end,
 
     ["python"] = function()
@@ -20,15 +20,15 @@ return {
         vim.keymap.set('n', '<leader>xi', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "float", id = "floatTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in full screen terminal" })
         vim.keymap.set('n', '<leader>xv', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "vsp", id = "vtoggleTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in vertical terminal" })
         vim.keymap.set('n', '<leader>xh', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "sp", id = "htoggleTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in horizontal terminal" })
     end,
 
     ["cpp"] = function()
@@ -37,15 +37,15 @@ return {
         vim.keymap.set('n', '<leader>xi', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "float", id = "floatTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in full screen terminal" })
         vim.keymap.set('n', '<leader>xv', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "vsp", id = "vtoggleTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in vertical terminal" })
         vim.keymap.set('n', '<leader>xh', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "sp", id = "htoggleTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in horizontal terminal" })
     end,
 
     ["c"] = function()
@@ -54,15 +54,15 @@ return {
         vim.keymap.set('n', '<leader>xi', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "float", id = "floatTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in full screen terminal" })
         vim.keymap.set('n', '<leader>xv', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "vsp", id = "vtoggleTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in vertical terminal" })
         vim.keymap.set('n', '<leader>xh', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "sp", id = "htoggleTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in horizontal terminal" })
     end,
 
     ["rust"] = function()
@@ -70,28 +70,28 @@ return {
         vim.keymap.set('n', '<leader>xi', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "float", id = "floatTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in full screen terminal" })
         vim.keymap.set('n', '<leader>xv', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "vsp", id = "vtoggleTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in vertical terminal" })
         vim.keymap.set('n', '<leader>xh', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "sp", id = "htoggleTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in horizontal terminal" })
 
         local TestCmd = "cd " .. vim.fn.expand("%:p:h") .. "; cargo test;exit"
         vim.keymap.set('n', '<leader>Xi', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "float", id = "floatTerm", cmd = TestCmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in full screen terminal" })
         vim.keymap.set('n', '<leader>Xv', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "vsp", id = "vtoggleTerm", cmd = TestCmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in vertical terminal" })
         vim.keymap.set('n', '<leader>Xh', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "sp", id = "htoggleTerm", cmd = TestCmd }
-        end, { buffer = true, desc = "Execute current file" })
+        end, { buffer = true, desc = "Execute current file in horizontal terminal" })
     end
 }

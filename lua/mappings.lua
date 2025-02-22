@@ -15,7 +15,7 @@ map("n", "<leader>j", "<cmd>cnext<CR><cmd>cclose<CR>", { desc = "Move to next in
 map("n", "<leader>K", "<cmd>lprev<CR><cmd>lclose<CR>", { desc = "Move to next in location list", silent = true })
 map("n", "<leader>J", "<cmd>lnext<CR><cmd>lclose<CR>", { desc = "Move to next in location list", silent = true })
 
-vim.keymap.set("n", "<leader>q", function()
+map("n", "<leader>q", function()
     vim.api.nvim_win_close(vim.fn.win_getid(vim.fn.winnr('#')), false)
 end, { desc = "Close the previously focused window" })
 
@@ -38,7 +38,7 @@ for i = 1, 9, 1 do
         require("nvchad.tabufline").goto_buf(vim.t.bufs[i])
     end, { desc = string.format("Open %sth Tab", i) })
 end
-vim.keymap.set('n', "<leader><leader>", "<C-^>"
+map('n', "<leader><leader>", "<C-^>"
 , { silent = true, desc = "Open the previously focused buffer" })
 
 vim.api.nvim_create_augroup("executeFile", { clear = true })
@@ -75,6 +75,16 @@ map('n', "<leader>tm", function()
     end
     require('nvchad.tabufline').move_buf(n)
 end, { desc = "Move the tab position" })
+map('n', "<leader><Left>", function()
+    if buf_index(vim.api.nvim_get_current_buf()) > 1 then
+        require('nvchad.tabufline').move_buf(-1)
+    end
+end, { desc = "Move the tab left" })
+map('n', "<leader><Right>", function()
+    if buf_index(vim.api.nvim_get_current_buf()) < #vim.t.bufs then
+        require('nvchad.tabufline').move_buf(1)
+    end
+end, { desc = "Move the tab right" })
 
 -- NVChad mappings
 map('n', "<leader>n", function()
