@@ -62,10 +62,12 @@ Now run `:MasonInstallAll` command in neovim
 All done!! *Refer [troubleshooting](https://github.com/Suryansh-Dey/neovim-config/wiki/Troubleshooting) for help.*
 # Tip to find a keybinding
 Go to `~/.config/nvim/lua/mappings.lua`, and search for the action. You will probably get it's corresponding keybinding here.
+- `desc` tells what this key binding does so you can search using `/` to get related keybinding.
+- The second argument of `map` represents the key stoke need to the action.
 
-OR just google or chatGPT like: *what is the NVChad keymap for opening terminal*. (Answer: *`A-i` for fullscreen and `A-v` or `A-h` for vertical and horizontal terminal*)
+OR just google or chatGPT like: *what is the NVChad keymap for opening terminal*. (Answer: *`A-i` for full screen and `A-v` or `A-h` for vertical and horizontal terminal*)
 
-If you need some feature which is not available in NVChad by default, check `~/.config/nvim/lua/plugins/init.lua` with chatGPT. Probably you do have a plugin to get you cover. For eg. run `:MarkdownPreview` to preview markdown, thanks to "iamcco/markdown-preview.nvim" plugin.
+If you need some feature which is not available in config already, just open an [GitHub issue](https://github.com/Suryansh-Dey/neovim-config/issues)! I love configuring neovim and maintaining this repository.
 
 # Default keymap changes
 1. The `f` motion is remapped to *leap-forward* of leap plugin. *Just use `t` motion or `f` with just one extra letter making you sure about the motion!*
