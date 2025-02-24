@@ -161,7 +161,7 @@ map("n", "<S-tab>",
     { desc = "Goto prev buffer" })
 
 -- close buffer + hide terminal buffer
-map("n", "<leader>d",
+map("n", "Q",
     function()
         require("nvchad.tabufline").close_buffer()
     end,

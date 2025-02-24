@@ -63,7 +63,7 @@ All done!! *Refer [troubleshooting](https://github.com/Suryansh-Dey/neovim-confi
 # Tip to find a keybinding
 Go to `~/.config/nvim/lua/mappings.lua`, and search for the action. You will probably get it's corresponding keybinding here.
 - `desc` tells what this key binding does so you can search using `/` to get related keybinding.
-- The second argument of `map` represents the key stoke need to the action.
+- The second argument of `map` represents the key stoke needed for the action.
 
 OR just google or chatGPT like: *what is the NVChad keymap for opening terminal*. (Answer: *`A-i` for full screen and `A-v` or `A-h` for vertical and horizontal terminal*)
 
@@ -78,7 +78,7 @@ If you need some feature which is not available in config already, just open an 
 2. `<leader>q` -> `<leader>lq` to put diagnostics in location list.
 3. `<leader>ph` -> `<leader>gh` to see git change.
 4. `<leader>pt` -> `<leader>ft` to find terminal.
-5. `<leader>x` -> `<leader>d` to close tab.
+5. `<leader>x` -> `Q` to close tab.
 
 
 ### nvim-surround remaps
