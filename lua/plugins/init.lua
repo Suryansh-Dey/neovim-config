@@ -163,5 +163,19 @@ return {
         "folke/which-key.nvim",
         ft = { 'text', "markdown" },
         keys = { "z=" }
+    },
+    {
+        "hrsh7th/cmp-cmdline",
+        event = "CmdlineEnter",
+        config = function()
+            local cmp = require("cmp")
+            cmp.setup.cmdline(':', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    { name = 'cmdline', keyword_length = 2 },
+                    { name = 'path' },
+                }
+            })
+        end
     }
 }
