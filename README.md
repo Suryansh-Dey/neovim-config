@@ -78,7 +78,7 @@ If you need some feature which is not available in config already, just open an 
 2. `<leader>q` -> `<leader>lq` to put diagnostics in location list.
 3. `<leader>ph` -> `<leader>gh` to see git change.
 4. `<leader>pt` -> `<leader>ft` to find terminal.
-5. `<leader>x` -> `Q` to close tab.
+5. `<leader>x` -> `Q` to close buffer.
 
 
 ### nvim-surround remaps
