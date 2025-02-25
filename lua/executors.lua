@@ -1,6 +1,6 @@
 return {
     ["javascript"] = function()
-        local cmd = "npm start && exit; clear; node " .. vim.fn.expand("%") .. ";exit"
+        local cmd = "node " .. vim.fn.expand("%") .. ";exit"
         vim.keymap.set('n', '<leader>xi', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "float", id = "floatTerm", cmd = cmd }
@@ -70,28 +70,28 @@ return {
         vim.keymap.set('n', '<leader>xi', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "float", id = "floatTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file in full screen terminal" })
+        end, { buffer = true, desc = "Execute current project in full screen terminal" })
         vim.keymap.set('n', '<leader>xv', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "vsp", id = "vtoggleTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file in vertical terminal" })
+        end, { buffer = true, desc = "Execute current project in vertical terminal" })
         vim.keymap.set('n', '<leader>xh', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "sp", id = "htoggleTerm", cmd = cmd }
-        end, { buffer = true, desc = "Execute current file in horizontal terminal" })
+        end, { buffer = true, desc = "Execute current project in horizontal terminal" })
 
         local TestCmd = "cd " .. vim.fn.expand("%:p:h") .. "; cargo test;exit"
         vim.keymap.set('n', '<leader>Xi', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "float", id = "floatTerm", cmd = TestCmd }
-        end, { buffer = true, desc = "Execute current file in full screen terminal" })
+        end, { buffer = true, desc = "Execute tests in full screen terminal" })
         vim.keymap.set('n', '<leader>Xv', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "vsp", id = "vtoggleTerm", cmd = TestCmd }
-        end, { buffer = true, desc = "Execute current file in vertical terminal" })
+        end, { buffer = true, desc = "Execute tests in vertical terminal" })
         vim.keymap.set('n', '<leader>Xh', function()
             vim.cmd('w')
             require("nvchad.term").new { pos = "sp", id = "htoggleTerm", cmd = TestCmd }
-        end, { buffer = true, desc = "Execute current file in horizontal terminal" })
+        end, { buffer = true, desc = "Execute tests in horizontal terminal" })
     end
 }
