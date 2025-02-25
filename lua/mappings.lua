@@ -1,8 +1,8 @@
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("o", "iq", 'i"', { desc = 'inner ""' })
-map("o", "aq", 'a"', { desc = '"" block' })
+map({ "o", "x" }, "iq", 'i"', { desc = 'inner ""' })
+map({ "o", "x" }, "aq", 'a"', { desc = '"" block' })
 
 map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
 map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
@@ -10,10 +10,10 @@ map({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 map({ "n", "v" }, "X", '"_X', { noremap = true, silent = true })
 map({ "n", "v", "x" }, "<leader>p", '"0p', { desc = "Paste last yank" })
 
-map("n", "<leader>k", "<cmd>cprev<CR>", { desc = "Jump prev of quick fix list", silent = true })
-map("n", "<leader>j", "<cmd>cnext<CR>", { desc = "Jump next of quick fix list", silent = true })
-map("n", "<leader>K", "<cmd>lprev<CR>", { desc = "Jump prev of location list", silent = true })
-map("n", "<leader>J", "<cmd>lnext<CR>", { desc = "Jump next of location list", silent = true })
+map("n", "[q", "<cmd>cprev<CR>", { desc = "Jump prev of quick fix list", silent = true })
+map("n", "]q", "<cmd>cnext<CR>", { desc = "Jump next of quick fix list", silent = true })
+map("n", "[l", "<cmd>lprev<CR>", { desc = "Jump prev of location list", silent = true })
+map("n", "]l", "<cmd>lnext<CR>", { desc = "Jump next of location list", silent = true })
 
 map("n", "<leader>q", function()
     vim.api.nvim_win_close(vim.fn.win_getid(vim.fn.winnr('#')), false)
