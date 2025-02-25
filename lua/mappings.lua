@@ -309,7 +309,7 @@ map("n", "<leader>cc",
 )
 
 -- Navigation through hunks
-map("n", "]c",
+map("n", "]h",
     function()
         vim.schedule(function()
             require("gitsigns").next_hunk()
@@ -319,7 +319,7 @@ map("n", "]c",
     { desc = "Jump to next hunk", expr = true }
 )
 
-map("n", "[c",
+map("n", "[h",
     function()
         vim.schedule(function()
             require("gitsigns").prev_hunk()

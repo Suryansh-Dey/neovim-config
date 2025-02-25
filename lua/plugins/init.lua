@@ -183,5 +183,11 @@ return {
                 }
             })
         end
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        event = "VeryLazy",
+        require 'nvim-treesitter.configs'.setup(require("configs.TSTextobjects"))
     }
 }
