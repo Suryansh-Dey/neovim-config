@@ -13,24 +13,24 @@ return {
         move = {
             enable = true,
             goto_next_start = {
-                ["]M"] = "@function.outer",
+                ["]M"] = { query = "@function.outer", desc = "Next function start" },
                 ["]C"] = { query = "@class.outer", desc = "Next class start" },
-                ["]Z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+                ["]Z"] = { query = "@local.scope", query_group = "locals", desc = "Next scope start" },
             },
             goto_previous_start = {
-                ["[m"] = "@function.outer",
-                ["[c"] = "@class.outer",
-                ["[z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+                ["[m"] = { query = "@function.outer", desc = "Prev function start" },
+                ["[c"] = { query = "@class.outer", desc = "Prev class start" },
+                ["[z"] = { query = "@local.scope", query_group = "locals", desc = "Prev scope start" },
             },
             goto_next_end = {
-                ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
-                ["]m"] = "@function.outer",
-                ["]c"] = { query = "@class.outer", desc = "Next class start" },
+                ["]m"] = { desc = "@function.outer", query = "Next function end" },
+                ["]c"] = { query = "@class.outer", desc = "Next class end" },
+                ["]z"] = { query = "@local.scope", query_group = "locals", desc = "Next scope end" },
             },
             goto_previous_end = {
-                ["[M"] = "@function.outer",
-                ["[C"] = "@class.outer",
-                ["[Z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+                ["[M"] = { query = "@function.outer", desc = "Prev function end" },
+                ["[C"] = { query = "@class.outer", desc = "Prev class end" },
+                ["[Z"] = { query = "@local.scope", query_group = "locals", desc = "Next scope end" },
             },
         }
     },
