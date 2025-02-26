@@ -80,7 +80,7 @@ If you need some feature which is not available in config already, just open an 
 4. `<leader>pt` -> `<leader>ft` to find terminal.
 5. `<leader>x` -> `Q` to close buffer.
 6. `]c` -> `]h` to jump to next hunk.
-6. `[c` -> `[h` to jump to previous hunk.
+7. `[c` -> `[h` to jump to previous hunk.
 
 
 ### nvim-surround remaps

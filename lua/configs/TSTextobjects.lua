@@ -27,7 +27,7 @@ return {
                 ["[z"] = { query = "@fold", query_group = "folds", desc = "Prev fold start" },
             },
             goto_next_end = {
-                ["]m"] = { desc = "@function.outer", query = "Next method end" },
+                ["]m"] = { query = "@function.outer", desc = "Next method end" },
                 ["]c"] = { query = "@class.outer", desc = "Next class end" },
                 ["<leader>j"] = { query = "@local.scope", query_group = "locals", desc = "Next scope end" },
                 ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold end" },
