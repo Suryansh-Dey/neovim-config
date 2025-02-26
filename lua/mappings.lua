@@ -54,7 +54,12 @@ end
 map({ 'i', 'v', 'n' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
     { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
 -- oil.vim
-vim.keymap.set('n', "<BS>", require("oil").toggle_float, { desc = "Open parent directory" })
+vim.keymap.set('n', "<BS>", function()
+    require("oil").open()
+end, { desc = "Open parent directory" })
+vim.keymap.set('n', "<leader>o", function()
+    require("oil").open_float()
+end, { desc = "Open parent directory in floating window" })
 -- Debugger mappings
 -- -- Moved to plugins/init for lazy loading
 -- Reply to Shreyas
