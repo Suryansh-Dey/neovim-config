@@ -53,6 +53,8 @@ end
 -- Save and format file with Ctrl-s
 map({ 'i', 'v', 'n' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
     { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
+-- oil.vim
+vim.keymap.set('n', "<BS>", require("oil").toggle_float, { desc = "Open parent directory" })
 -- Debugger mappings
 -- -- Moved to plugins/init for lazy loading
 -- Reply to Shreyas

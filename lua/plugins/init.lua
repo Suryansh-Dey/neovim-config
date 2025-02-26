@@ -47,7 +47,8 @@ return {
         "ggandor/leap.nvim",
         event = "VeryLazy",
         config = function()
-            require("configs.leap")
+            vim.keymap.set({ 'n', 'x', 'o' }, 'f', '<Plug>(leap-forward)')
+            vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap-backward)')
         end
     },
     {
@@ -172,7 +173,7 @@ return {
             cmp.setup.cmdline(':', {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = {
-                    { name = 'cmdline', keyword_length = 2 },
+                    { name = 'cmdline' },
                     { name = 'path' },
                 },
                 formatting = {
@@ -189,5 +190,13 @@ return {
         dependencies = "nvim-treesitter/nvim-treesitter",
         event = "VeryLazy",
         require 'nvim-treesitter.configs'.setup(require("configs.TSTextobjects"))
+    },
+    {
+        'stevearc/oil.nvim',
+        ---@module 'oil'
+        ---@type oil.SetupOpts
+        opts = {},
+        dependencies = "nvim-tree/nvim-web-devicons",
+        lazy = false,
     }
 }
