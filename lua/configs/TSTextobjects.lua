@@ -8,8 +8,8 @@ return {
                 ["if"] = { query = "@function.inner", desc = "inner function" },
                 ["ac"] = { query = "@class.outer", desc = "class outer" },
                 ["ic"] = { query = "@class.inner", desc = "inner class" },
-                ["ab"] = { query = "@block.outer", desc = "block outer" },
-                ["ib"] = { query = "@block.inner", desc = "inner block" },
+                ["al"] = { query = "@block.outer", desc = "block outer" },
+                ["il"] = { query = "@block.inner", desc = "inner block" },
             },
         },
         move = {

@@ -7,7 +7,10 @@ local lspconfig = require("lspconfig")
 
 local setup_arg = {
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
+    init_options = {
+        maxTsServerMemory = 4096
+    }
 }
 
 lspconfig.ts_ls.setup(setup_arg)
