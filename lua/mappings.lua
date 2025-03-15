@@ -82,12 +82,12 @@ map('n', "<leader>tm", function()
     end
     require('nvchad.tabufline').move_buf(n)
 end, { desc = "Move the tab position" })
-map('n', "<leader><Left>", function()
+map('n', "<M-Left>", function()
     if buf_index(vim.api.nvim_get_current_buf()) > 1 then
         require('nvchad.tabufline').move_buf(-1)
     end
 end, { desc = "Move the tab left" })
-map('n', "<leader><Right>", function()
+map('n', "<M-Right>", function()
     if buf_index(vim.api.nvim_get_current_buf()) < #vim.t.bufs then
         require('nvchad.tabufline').move_buf(1)
     end
