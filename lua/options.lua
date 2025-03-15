@@ -26,3 +26,12 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
     group = vim.api.nvim_create_augroup("SpellCheck", { clear = true })
 })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "json",
+    callback = function()
+        vim.bo.shiftwidth = 2
+        vim.bo.tabstop = 2
+        vim.bo.expandtab = true
+        o.softtabstop = 2
+    end,
+})
