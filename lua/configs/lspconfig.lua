@@ -16,7 +16,6 @@ local setup_arg = {
 lspconfig.ts_ls.setup(setup_arg)
 lspconfig.clangd.setup({
     on_attach = function(client, bufnr)
-        client.server_capabilities.signatureHelpProvider = false
         on_attach(client, bufnr)
     end,
     capabilities

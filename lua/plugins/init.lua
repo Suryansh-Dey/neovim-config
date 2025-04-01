@@ -124,7 +124,12 @@ return {
         opts = function()
             local cmp = require "cmp"
             local M = require "nvchad.configs.cmp"
-            M.experimental = { ghost_text = true }
+            M.experimental = {
+                ghost_text = {
+                    hl_group = 'Comment',
+                    hl_group_selected = "CmpItemAbbrMatch"
+                }
+            }
             table.insert(M.sources, { name = "crates" })
             M.completion.completeopt = "menu,menuone,noselect"
             M.mapping["<CR>"] = cmp.mapping.confirm {

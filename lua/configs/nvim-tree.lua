@@ -8,6 +8,7 @@ return function()
    :hi NvimTreeGitIgnored guifg=#888888
 ]]
     local config = require "nvchad.configs.nvimtree"
+    config.git = { ignore = false }
     config.on_attach = function(bufnr)
         local api = require("nvim-tree.api")
         local function opts(desc)
