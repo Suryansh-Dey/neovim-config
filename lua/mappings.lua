@@ -206,6 +206,9 @@ map("n", "<leader>lf",
     end,
     { desc = "Floating diagnostic" })
 
+map("n", "<leader>sh", function()
+    vim.lsp.buf.signature_help()
+end, { desc = "Signature help" })
 
 map("n", "[d",
     function()
@@ -246,6 +249,11 @@ map("n", "<leader>wl",
     { desc = "List workspace folders" })
 
 map("v", "<leader>ca",
+    function()
+        vim.lsp.buf.code_action()
+    end,
+    { desc = "LSP code action" })
+map("n", "<leader>ca",
     function()
         vim.lsp.buf.code_action()
     end,
