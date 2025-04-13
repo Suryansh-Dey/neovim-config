@@ -1,5 +1,5 @@
 return {
-    ["javascript"] = function()
+    ["javascript,typescript"] = function()
         local cmd = "node " .. vim.fn.expand("%") .. ";exit"
         vim.keymap.set('n', '<leader>xi', function()
             vim.cmd('w')

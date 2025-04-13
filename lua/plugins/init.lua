@@ -23,6 +23,7 @@ return {
             { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
         },
         config = function(_, opts)
+            opts.pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
             require("Comment").setup(opts)
         end,
     },
@@ -133,7 +134,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        opts = { ensure_installed = { "html", "css", "javascript", "json", "cpp", "rust", "markdown", "python" } },
+        opts = { ensure_installed = { "html", "css", "javascript", "tsx", "typescript", "json", "cpp", "rust", "markdown", "python" } },
     },
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -196,5 +197,9 @@ return {
             }
         },
         dependencies = "nvim-tree/nvim-web-devicons",
+    },
+    {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        opts = { enable_autocmd = false }
     }
 }

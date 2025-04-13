@@ -9,30 +9,4 @@ return
         change = "c<leader>",
     },
     move_cursor = "sticky",
-    surrounds = {
-        ["("] = {
-            add = { "(", ")" },
-            find = "%b()",
-            delete = "^(%()().-(%))()$",
-            change = {
-                target = "^().-()$",
-            },
-        },
-        ["{"] = {
-            add = { "{", "}" },
-            find = "%b{}",
-            delete = "^(%{)().-(%})()$",
-            change = {
-                target = "^().-()$",
-            },
-        },
-        ["["] = {
-            add = { "[", "]" },
-            find = "%b[]",
-            delete = "^(%[)().-(%])()$",
-            change = {
-                target = "^().-()$",
-            },
-        },
-    },
 }
