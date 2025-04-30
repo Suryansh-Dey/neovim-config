@@ -1,4 +1,4 @@
-![UI](https://github.com/user-attachments/assets/9b20431b-ab4d-4e61-b6c4-5b9519154623)
+![image](https://github.com/user-attachments/assets/379e111d-5eec-4b57-858c-c89aa8b3be1d)
 
 # Supported languages
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="5%"/> Python
@@ -18,7 +18,9 @@
 
 **Markdown**, **JSON**
 # Pre-requisites
-Same as Pre-requisites of [NvChad](https://nvchad.com/docs/quickstart/install)
+- gcc/g++
+- npm
+- Pre-requisites of [NvChad](https://nvchad.com/docs/quickstart/install)
 
 # Installation
 Run the following command in your terminal
@@ -72,7 +74,7 @@ If you need some feature which is not available in config already, just open an 
 # Default keymap changes
 1. The `m` motion is remapped to *leap-forward* of leap plugin. Use `<leader>m` for mark.
 2. The `s` motion is remapped to *leap-backward*.
-3. `;` -> `:` to open cmd. Works at normal mode only.
+
 ## NVChad's default keymap changes
 1. `Ctrl-n` -> `Alt+f` for file tree
 2. `<leader>q` -> `<leader>lq` to put diagnostics in location list.
