@@ -48,7 +48,7 @@ return {
         "ggandor/leap.nvim",
         event = "VeryLazy",
         config = function()
-            vim.keymap.set({ 'n', 'x', 'o' }, 'f', '<Plug>(leap-forward)')
+            vim.keymap.set({ 'n', 'x', 'o' }, 'm', '<Plug>(leap-forward)')
             vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap-backward)')
         end
     },
@@ -109,7 +109,7 @@ return {
         ft = "rust",
     },
     {
-        "hrsh7th/nvim-cmp",
+        "suryansh-dey/nvim-cmp",
         opts = function()
             local cmp = require "cmp"
             local M = require "nvchad.configs.cmp"

@@ -70,7 +70,7 @@ OR just google or chatGPT like: *what is the NVChad keymap for opening terminal*
 If you need some feature which is not available in config already, just open an [GitHub issue](https://github.com/Suryansh-Dey/neovim-config/issues)! I love configuring neovim and maintaining this repository.
 
 # Default keymap changes
-1. The `f` motion is remapped to *leap-forward* of leap plugin. *Just use `t` motion or `f` with just one extra letter making you sure about the motion!*
+1. The `m` motion is remapped to *leap-forward* of leap plugin. Use `<leader>m` for mark.
 2. The `s` motion is remapped to *leap-backward*.
 3. `;` -> `:` to open cmd. Works at normal mode only.
 ## NVChad's default keymap changes
@@ -81,7 +81,6 @@ If you need some feature which is not available in config already, just open an 
 5. `<leader>x` -> `Q` to close buffer.
 6. `]c` -> `]h` to jump to next hunk.
 7. `[c` -> `[h` to jump to previous hunk.
-
 
 ### nvim-surround remaps
 Since `s` is used for *leap-backward*, following remaps were done:
@@ -96,7 +95,7 @@ change = "c<leader>", --"cs"
 }
 ```
 ### nvim-tree remaps
-1. `f` -> `<leader>f` since f is used for *leap-forward*
+1. `m` -> `<leader>m` since m is used for *leap-forward*
 2. `s` -> `<leader>s` since s is used for *leap-backward*
 # Daily usage
 Refer to the [wiki](https://github.com/Suryansh-Dey/neovim-config/wiki) tab to know how I use it to be blazingly fast!

@@ -1,6 +1,6 @@
 local map = vim.keymap.set
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", "<leader>;", ":", { desc = "CMD enter command mode" })
 map({ "o", "x" }, "iq", 'i"', { desc = 'inner ""' })
 map({ "o", "x" }, "aq", 'a"', { desc = '"" block' })
 
@@ -9,6 +9,7 @@ map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
 map({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 map({ "n", "v" }, "X", '"_X', { noremap = true, silent = true })
 map({ "n", "v", "x" }, "<leader>p", '"0p', { desc = "Paste last yank" })
+map('n', '<leader>m', 'm', { desc = "Set mark" })
 
 map("n", "[q", "<cmd>cprev<CR>", { desc = "Jump prev of quick fix list", silent = true })
 map("n", "]q", "<cmd>cnext<CR>", { desc = "Jump next of quick fix list", silent = true })
@@ -193,13 +194,6 @@ map("n", "K",
     { desc = "LSP hover" }
 )
 
-map("n", "gr",
-    function()
-        vim.lsp.buf.references()
-    end,
-    { desc = "LSP references" })
-
-
 map("n", "<leader>lf",
     function()
         vim.diagnostic.open_float { border = "rounded" }
@@ -247,17 +241,6 @@ map("n", "<leader>wl",
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end,
     { desc = "List workspace folders" })
-
-map("v", "<leader>ca",
-    function()
-        vim.lsp.buf.code_action()
-    end,
-    { desc = "LSP code action" })
-map("n", "<leader>ca",
-    function()
-        vim.lsp.buf.code_action()
-    end,
-    { desc = "LSP code action" })
 
 -- toggle
 map("n", "<A-f>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
