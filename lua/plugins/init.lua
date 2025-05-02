@@ -186,19 +186,6 @@ return {
         require 'nvim-treesitter.configs'.setup(require("configs.TSTextobjects"))
     },
     {
-        'stevearc/oil.nvim',
-        cmd = "Oil",
-        ---@module 'oil'
-        ---@type oil.SetupOpts
-        opts = {
-            keymaps = {
-                ["s"] = false,
-                ["f"] = false
-            }
-        },
-        dependencies = "nvim-tree/nvim-web-devicons",
-    },
-    {
         'JoosepAlviste/nvim-ts-context-commentstring',
         opts = { enable_autocmd = false }
     }
