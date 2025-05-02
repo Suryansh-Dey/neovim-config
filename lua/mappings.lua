@@ -180,12 +180,9 @@ map("v", "<leader>/",
     { desc = "Toggle comment" }
 )
 
-map("n", "K",
-    function()
-        vim.lsp.buf.hover()
-    end,
-    { desc = "LSP hover" }
-)
+map('n', 'K', function()
+    vim.lsp.buf.hover({ border = 'rounded' })
+end, { desc = 'LSP documentation' })
 
 map("n", "<leader>lf",
     function()
