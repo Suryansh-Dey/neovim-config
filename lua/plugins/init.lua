@@ -1,3 +1,4 @@
+vim.api.nvim_set_hl(0, "to-future-hi", { bg = "#005555", fg = "#ffffff", bold = true })
 return {
     {
         "williamboman/mason.nvim",
@@ -109,7 +110,7 @@ return {
         ft = "rust",
     },
     {
-        "suryansh-dey/nvim-cmp",
+        "hrsh7th/nvim-cmp",
         opts = function()
             local cmp = require "cmp"
             local M = require "nvchad.configs.cmp"
@@ -188,5 +189,10 @@ return {
     {
         'JoosepAlviste/nvim-ts-context-commentstring',
         opts = { enable_autocmd = false }
+    },
+    {
+        "suryansh-dey/to-future.nvim",
+        event = "VeryLazy",
+        opts = { all_hl = "Comment", char_hl = "to-future-hi" },
     }
 }
