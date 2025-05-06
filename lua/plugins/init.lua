@@ -182,6 +182,9 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         config = function()
+            vim.o.foldenable = true
+            vim.o.foldlevel = 99
+            vim.o.foldlevelstart = 99
             require('ufo').setup({
                 provider_selector = function()
                     return { 'treesitter', 'indent' }
@@ -209,5 +212,4 @@ return {
         branch = "master",
         event = 'VeryLazy'
     }
-
 }
