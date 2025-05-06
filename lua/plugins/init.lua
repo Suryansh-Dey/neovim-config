@@ -1,4 +1,3 @@
-vim.api.nvim_set_hl(0, "to-future-hi", { bg = "#005555", fg = "#ffffff", bold = true })
 return {
     {
         "williamboman/mason.nvim",
@@ -39,11 +38,6 @@ return {
         'iamcco/markdown-preview.nvim',
         build = 'cd app && npm install',
         ft = { 'markdown' },
-    },
-    {
-        "mg979/vim-visual-multi",
-        branch = "master",
-        event = 'VeryLazy'
     },
     {
         "ggandor/leap.nvim",
@@ -181,6 +175,21 @@ return {
         end
     },
     {
+        "kevinhwang91/nvim-ufo",
+        event = "VeryLazy",
+        dependencies = {
+            "kevinhwang91/promise-async",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require('ufo').setup({
+                provider_selector = function()
+                    return { 'treesitter', 'indent' }
+                end
+            })
+        end
+    },
+    {
         "nvim-treesitter/nvim-treesitter-textobjects",
         dependencies = "nvim-treesitter/nvim-treesitter",
         event = "VeryLazy",
@@ -196,19 +205,9 @@ return {
         opts = { all_hl = "Comment", char_hl = "to-future-hi" },
     },
     {
-        "kevinhwang91/nvim-ufo",
-        event = "VeryLazy",
-        dependencies = {
-            "kevinhwang91/promise-async",
-            "nvim-treesitter/nvim-treesitter",
-        },
-        config = function()
-            require('ufo').setup({
-                provider_selector = function()
-                    return { 'treesitter', 'indent' }
-                end
-            })
-        end
+        "mg979/vim-visual-multi",
+        branch = "master",
+        event = 'VeryLazy'
     }
 
 }
