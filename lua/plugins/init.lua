@@ -194,5 +194,21 @@ return {
         "suryansh-dey/to-future.nvim",
         event = "VeryLazy",
         opts = { all_hl = "Comment", char_hl = "to-future-hi" },
+    },
+    {
+        "kevinhwang91/nvim-ufo",
+        event = "VeryLazy",
+        dependencies = {
+            "kevinhwang91/promise-async",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require('ufo').setup({
+                provider_selector = function()
+                    return { 'treesitter', 'indent' }
+                end
+            })
+        end
     }
+
 }

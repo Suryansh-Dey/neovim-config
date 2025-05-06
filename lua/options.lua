@@ -36,3 +36,4 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
     group = vim.api.nvim_create_augroup("IndentationOfJson", { clear = true })
 })
+vim.cmd [[ highlight Folded gui=italic ]]
