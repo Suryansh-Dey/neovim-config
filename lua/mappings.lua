@@ -1,6 +1,5 @@
 local map = vim.keymap.set
 
-map("n", "<leader>;", ":", { desc = "CMD enter command mode" })
 map({ "o", "x" }, "iq", 'i"', { desc = 'inner ""' })
 map({ "o", "x" }, "aq", 'a"', { desc = '"" block' })
 

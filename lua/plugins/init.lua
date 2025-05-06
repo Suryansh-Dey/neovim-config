@@ -156,7 +156,10 @@ return {
     },
     {
         "hrsh7th/cmp-cmdline",
-        event = "CmdlineEnter",
+        keys = {
+            { ':',         mode = 'n' },
+            { "<leader>;", ":",       mode = "n", { desc = "CMD enter command mode" } }
+        },
         config = function()
             local cmp = require("cmp")
             cmp.setup.cmdline(':', {
