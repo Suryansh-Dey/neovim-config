@@ -100,4 +100,4 @@ change = "c<leader>", --"cs"
 1. `m` -> `<leader>m` since m is used for *leap-forward*
 2. `s` -> `<leader>s` since s is used for *leap-backward*
 # Daily usage
-Refer to the [wiki](https://github.com/Suryansh-Dey/neovim-config/wiki) tab to know how I use it to be blazingly fast!
+Refer to the [wiki](https://github.com/Suryansh-Dey/neovim-config/wiki/Key-bindings-to-get-started) tab to know how I use it to be blazingly fast!
