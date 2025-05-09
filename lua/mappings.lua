@@ -4,8 +4,6 @@ map("n", "<leader>;", ":", { desc = "CMD enter command mode" })
 map({ "o", "x" }, "iq", 'i"', { desc = 'inner ""' })
 map({ "o", "x" }, "aq", 'a"', { desc = '"" block' })
 
-map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
-map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
 map({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 map({ "n", "v" }, "X", '"_X', { noremap = true, silent = true })
 map({ "n", "v", "x" }, "<leader>p", '"0p', { desc = "Paste last yank" })
@@ -191,7 +189,7 @@ map("n", "<leader>lf",
     { desc = "Floating diagnostic" })
 
 map("n", "<leader>sh", function()
-    vim.lsp.buf.signature_help()
+    vim.lsp.buf.signature_help({ border = "rounded" })
 end, { desc = "Signature help" })
 
 map("n", "[d",
