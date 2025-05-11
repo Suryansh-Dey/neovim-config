@@ -1,6 +1,17 @@
 return {
     { import = "nvchad.blink.lazyspec" },
     {
+        "Saghen/blink.cmp",
+        opts = {
+            cmdline = {
+                completion = {
+                    menu = { auto_show = true },
+                    list = { selection = { preselect = false, auto_insert = true } }
+                },
+            }
+        }
+    },
+    {
         "suryansh-dey/ui"
     },
     {

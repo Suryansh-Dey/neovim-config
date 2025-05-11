@@ -244,7 +244,7 @@ map("n", "<leader>fo", "<cmd> Telescope oldfiles <CR>", { desc = "Find oldfiles"
 map("n", "<leader>fz", "<cmd> Telescope current_buffer_fuzzy_find <CR>", { desc = "Find in current buffer" })
 
 -- git
-map("n", "<leader>cm", "<cmd> Telescope git_commits <CR>", { desc = "Git commits" })
+map("n", "<leader>gc", "<cmd> Telescope git_commits <CR>", { desc = "Git commits" })
 map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "Git status" })
 
 -- pick a hidden term
