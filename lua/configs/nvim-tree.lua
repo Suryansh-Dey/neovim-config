@@ -22,14 +22,24 @@ return function()
         end
 
         api.config.mappings.default_on_attach(bufnr)
-        vim.keymap.set({ 'n', 'x', 'o' }, 'm', '<Plug>(leap-forward)', opts("Leap forward"))
+        vim.keymap.set({ 'n', 'x', 'o' }, 'f', '<Plug>(leap-forward)', opts("Leap forward"))
         vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap-backward)', opts("Leap backward"))
         vim.keymap.set("n", "<leader>s", api.node.run.system, opts("Run System"))
-        vim.keymap.set("n", "<leader>m", api.marks.toggle, opts("Toggle Bookmark"))
+        vim.keymap.set("n", "<leader>f", api.live_filter.start, opts("Live Filter: Start"))
         vim.keymap.set('n', "<leader>o", function()
             api.node.open.edit()
             api.tree.close()
         end, opts("Open file and close file tree"))
+        --- Oil.nvim who?
+        vim.keymap.set({ 'x', 'o' }, "m", function()
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
+            local start_line = vim.fn.line('v')
+            local end_line = vim.fn.line('.')
+            for i = start_line, end_line, end_line > start_line and 1 or -1 do
+                api.marks.toggle()
+                vim.api.nvim_win_set_cursor(0, { i, 0 })
+            end
+        end, opts("Toggle Bookmark All"))
     end
     return config
 end

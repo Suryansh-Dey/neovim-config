@@ -131,7 +131,7 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         opts = {
-            scope = { char = "┋", highlight = "IblScopeChar" },
+            scope = { char = "┋" },
         }
     },
     {

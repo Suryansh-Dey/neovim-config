@@ -33,7 +33,7 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo.expandtab = true
         vim.bo.softtabstop = 2
     end,
-    group = vim.api.nvim_create_augroup("IndentationOfJson", { clear = true })
+    group = vim.api.nvim_create_augroup("2-space-indentation", { clear = true })
 })
 vim.cmd [[ highlight Folded gui=italic ]]
 vim.api.nvim_set_hl(0, "to-future-hi", { bg = "#005555", fg = "#ffffff", bold = true })

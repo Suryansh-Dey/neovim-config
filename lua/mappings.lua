@@ -253,7 +253,7 @@ map("n", "<leader>ft", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term"
 -- theme switcher
 map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" })
 
-map("n", "<leader>ma", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
+map("n", "<leader>fb", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
 -- toggle in terminal mode
 map({ "n", "t" }, "<A-v>", function()
     require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
