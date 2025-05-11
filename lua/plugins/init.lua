@@ -9,6 +9,7 @@ return {
                 "html-lsp",
                 "css-lsp",
                 "pyright",
+                "tailwindcss"
             },
         },
     },
@@ -65,6 +66,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
+            require("nvchad.configs.lspconfig").defaults()
             require "configs.lspconfig"
         end,
     },
