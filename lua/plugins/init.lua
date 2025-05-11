@@ -1,4 +1,8 @@
 return {
+    { import = "nvchad.blink.lazyspec" },
+    {
+        "suryansh-dey/ui"
+    },
     {
         "williamboman/mason.nvim",
         opts = {
@@ -106,26 +110,6 @@ return {
         ft = "rust",
     },
     {
-        "hrsh7th/nvim-cmp",
-        opts = function()
-            local cmp = require "cmp"
-            local M = require "nvchad.configs.cmp"
-            M.experimental = {
-                ghost_text = {
-                    hl_group = 'Comment',
-                    hl_group_selected = "CmpItemAbbrMatch"
-                }
-            }
-            table.insert(M.sources, { name = "crates" })
-            M.completion.completeopt = "menu,menuone,noselect"
-            M.mapping["<CR>"] = cmp.mapping.confirm {
-                behavior = cmp.ConfirmBehavior.Insert,
-                select = false,
-            }
-            return M
-        end,
-    },
-    {
         "nvim-tree/nvim-tree.lua",
         opts = require("configs.nvim-tree")
     },
@@ -155,26 +139,6 @@ return {
         "folke/which-key.nvim",
         ft = { 'text', "markdown" },
         keys = { "z=" }
-    },
-    {
-        "hrsh7th/cmp-cmdline",
-        event = "CmdlineEnter",
-        config = function()
-            local cmp = require("cmp")
-            cmp.setup.cmdline(':', {
-                mapping = cmp.mapping.preset.cmdline(),
-                sources = {
-                    { name = 'cmdline' },
-                    { name = 'path' },
-                },
-                formatting = {
-                    format = function(_, vim_item)
-                        vim_item.kind = ""
-                        return vim_item
-                    end,
-                }
-            })
-        end
     },
     {
         "kevinhwang91/nvim-ufo",
