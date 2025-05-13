@@ -1,4 +1,5 @@
 ![Modern UI with git integration](https://github.com/user-attachments/assets/269a7232-c476-4d92-a64d-be19635df1c3)
+A fully-featured, blazing-fast Neovim setup designed for modern developers. This configuration integrates the latest plugins, a sleek UI, and more—built on top of [NvChad](https://nvchad.com) for maximum efficiency.
 
 # Supported languages
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="5%"/> Python

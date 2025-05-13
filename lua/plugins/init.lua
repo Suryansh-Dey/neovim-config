@@ -179,7 +179,7 @@ return {
     {
         "suryansh-dey/to-future.nvim",
         event = "VeryLazy",
-        opts = { all_hl = "Comment", char_hl = "to-future-hi" },
+        opts = { all_hl = { "to-future-hi-1", "to-future-hi-2", "to-future-hi-3", "to-future-hi-4", "Comment" } },
     },
     {
         "mg979/vim-visual-multi",
