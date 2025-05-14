@@ -1,6 +1,17 @@
 return {
     { import = "nvchad.blink.lazyspec" },
     {
+        "nvchad/ui",
+        enbaled = false,
+    },
+    {
+        "suryansh-dey/ui",
+        lazy = false,
+        config = function()
+            require "nvchad"
+        end,
+    },
+    {
         "Saghen/blink.cmp",
         opts = {
             cmdline = {
