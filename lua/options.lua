@@ -36,7 +36,3 @@ vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("2-space-indentation", { clear = true })
 })
 vim.cmd [[ highlight Folded gui=italic ]]
-vim.api.nvim_set_hl(0, "to-future-hi-1", { bg = "#ffffff", fg = "#000000", bold = true })
-vim.api.nvim_set_hl(0, "to-future-hi-2", { bg = "#ffff00", fg = "#000000", bold = true })
-vim.api.nvim_set_hl(0, "to-future-hi-3", { bg = "#ff8800", fg = "#000000", bold = true })
-vim.api.nvim_set_hl(0, "to-future-hi-4", { bg = "#ff0000", fg = "#000000", bold = true })
