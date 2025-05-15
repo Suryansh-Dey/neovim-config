@@ -152,6 +152,15 @@ return {
         end,
     },
     {
+
+        "nvim-telescope/telescope.nvim",
+        opts = {
+            defaults = {
+                file_ignore_patterns = { "node_modules" }
+            }
+        }
+    },
+    {
         "folke/which-key.nvim",
         ft = { 'text', "markdown" },
         keys = { "z=" }
