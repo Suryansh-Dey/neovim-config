@@ -1,8 +1,10 @@
 local map = vim.keymap.set
 
-map("n", "<leader>;", ":", { desc = "CMD enter command mode" })
+map("n", "<leader>;", function()
+    local char = vim.fn.getcharstr()
+    return '<cmd>' .. char .. '<CR>'
+end, { expr = true, desc = "1 char CMD" })
 map({ "o", "x" }, "iq", 'i"', { desc = 'inner ""' })
-map({ "o", "x" }, "aq", 'a"', { desc = '"" block' })
 
 map({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 map({ "n", "v" }, "X", '"_X', { noremap = true, silent = true })
