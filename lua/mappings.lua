@@ -162,7 +162,7 @@ map("n", "<S-tab>",
     { desc = "Goto prev buffer" })
 
 -- close buffer + hide terminal buffer
-map("n", "<leader>cb",
+map("n", "<M-x>",
     function()
         require("nvchad.tabufline").close_buffer()
     end,
@@ -329,6 +329,12 @@ map("n", "<leader>gh",
         require("gitsigns").preview_hunk()
     end,
     { desc = "Preview hunk" })
+
+map("n", "<leader>gs",
+    function()
+        require("gitsigns").stage_hunk()
+    end,
+    { desc = "Stage hunk" })
 
 map("n", "<leader>gb",
     function()
