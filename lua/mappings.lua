@@ -93,7 +93,7 @@ map('n', "<leader>n", function()
     vim.opt_local.relativenumber = true
 end, { desc = "Use relative number" })
 -- go to  beginning and end
-map('i', "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
+map('i', "<C-i>", "<ESC>^i", { desc = "Beginning of line" })
 map('i', "<C-e>", "<End>", { desc = "End of line" })
 
 -- navigate within insert mode
