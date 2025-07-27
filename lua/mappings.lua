@@ -93,7 +93,7 @@ map('n', "<leader>n", function()
     vim.opt_local.relativenumber = true
 end, { desc = "Use relative number" })
 -- go to  beginning and end
-map('i', "<C-b>", "<ESC>^i", { desc = "Beginning of line" })
+map('i', "<C-i>", "<ESC>^i", { desc = "Beginning of line" })
 map('i', "<C-e>", "<End>", { desc = "End of line" })
 
 -- navigate within insert mode
@@ -110,7 +110,7 @@ map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 
 -- Copy all
-map("n", "<C-c>", "<cmd> %y+ <CR>", { desc = "Copy whole file" })
+map("n", "<C-c>", "<ESC>ggvG", { desc = "Select whole file" })
 
 -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
 -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
