@@ -101,7 +101,7 @@ map('i', "<C-h>", "<Left>", { desc = "Move left" })
 map('i', "<C-l>", "<Right>", { desc = "Move right" })
 map('i', "<C-j>", "<Down>", { desc = "Move down" })
 map('i', "<C-k>", "<Up>", { desc = "Move up" })
-map({ 'i', 'o', 'x', 'n' }, "<C-f>", "<ESC>", { desc = "Esc" })
+map('i', "<C-b>", "<ESC>bi", { desc = "Move up" })
 
 map("n", "<Esc>", "<cmd> noh <CR>", { desc = "Clear highlights" })
 -- switch between windows
