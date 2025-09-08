@@ -27,6 +27,7 @@ return {
         opts = {
             ensure_installed = {
                 "rust-analyzer",
+                "jdtls",
                 "typescript-language-server",
                 "clangd",
                 "html-lsp",
@@ -131,7 +132,7 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        opts = { ensure_installed = { "html", "css", "javascript", "tsx", "typescript", "json", "cpp", "rust", "markdown", "python" } },
+        opts = { ensure_installed = { "html", "css", "javascript", "tsx", "typescript", "json", "cpp", "rust", "markdown", "python", "java" } },
     },
     {
         "lukas-reineke/indent-blankline.nvim",

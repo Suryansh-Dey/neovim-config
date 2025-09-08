@@ -5,6 +5,7 @@ vim.lsp.enable "clangd"
 vim.lsp.enable "cssls"
 vim.lsp.enable "pyright"
 vim.lsp.enable "tailwindcss"
+vim.lsp.enable "jdtls"
 vim.lsp.config("jsonls", {
     settings = {
         json = {
