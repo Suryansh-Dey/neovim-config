@@ -66,5 +66,9 @@ return {
     ["html"] = function()
         local cmd = "cd " .. vim.fn.expand("%:p:h") .. "&&live-server"
         execute_terminal(cmd)
+    end,
+    ["java"] = function()
+        local cmd = string.format("java %s", vim.fn.expand("%"))
+        execute_terminal(cmd)
     end
 }
