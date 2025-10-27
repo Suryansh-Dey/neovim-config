@@ -15,6 +15,7 @@ using Oset = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 template <typename T>
 using Omset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
 constexpr int M = 1000000007;
+//constexpr int M = 998244353;
 #define int long long
 
 void solve() {{
@@ -22,9 +23,9 @@ void solve() {{
 }}
 
 signed main() {{
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-    std::cout.tie(nullptr);
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout << fixed << setprecision(6);
     int tc;
     cin >> tc;
     while (tc--)
@@ -36,6 +37,11 @@ signed main() {{
 ),
     s("fr", {
         t("for(int i=0;i<"), i(1), t(";i++) {"),
+        t({ "", "\t" }), i(0),
+        t({ "", "}" })
+    }),
+    s("frr", {
+        t("for(int i="), i(1), t(";i>=0;i--) {"),
         t({ "", "\t" }), i(0),
         t({ "", "}" })
     })

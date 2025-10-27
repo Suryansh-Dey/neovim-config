@@ -42,12 +42,25 @@ return {
     end,
 
     ["cpp"] = function()
-        local cmd = string.format("g++ %s -o %s && ./%s", vim.fn.expand("%"), vim.fn.expand("%:t:r"),
-            vim.fn.expand("%:t:r"))
-        execute_terminal(cmd)
-        local test_cmd = string.format("g++ %s -o %s && ./%s<test.txt", vim.fn.expand("%"), vim.fn.expand("%:t:r"),
-            vim.fn.expand("%:t:r"))
-        execute_terminal_test(test_cmd)
+        local filename = vim.fn.expand("%")
+        local outname = vim.fn.expand("%:t:r")
+        local fast_flags = "-std=c++17 -O2 -Wall"
+        local fast_compile = string.format("g++ %s %s -o %s", fast_flags, filename, outname)
+        local fast_cmd = string.format("%s && ./%s", fast_compile, outname)
+        local fast_test_cmd = string.format("%s && ./%s < test.txt", fast_compile, outname)
+
+        execute_terminal(fast_cmd)
+        execute_terminal_test(fast_test_cmd)
+
+        local debug_flags =
+        "-std=c++17 -Wall -Wextra -Wshadow -g -O0 -D_GLIBCXX_DEBUG -fsanitize=address -fsanitize=undefined"
+        local debug_outname = outname .. "_debug"
+        local debug_compile = string.format("g++ %s %s -o %s", debug_flags, filename, debug_outname)
+        local debug_cmd = string.format("%s && ./%s", debug_compile, debug_outname)
+        local debug_test_cmd = string.format("%s && ./%s < test.txt", debug_compile, debug_outname)
+
+        execute_terminal(debug_cmd)
+        execute_terminal_test(debug_test_cmd)
     end,
 
     ["c"] = function()

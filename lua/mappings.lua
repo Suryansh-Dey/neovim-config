@@ -8,6 +8,9 @@ map({ "o", "x" }, "iq", 'i"', { desc = 'inner ""' })
 
 map({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 map({ "n", "v" }, "X", '"_X', { noremap = true, silent = true })
+map({ "n", "x", "o" }, "c", '"_c', { noremap = true, silent = true })
+map({ "n", "x", "o" }, "C", '"_C', { noremap = true, silent = true })
+map({ "n", "x", "o" }, "S", '"_S', { noremap = true, silent = true })
 map({ "n", "v", "x" }, "<leader>p", '"0p', { desc = "Paste last yank" })
 map('n', '<leader>m', 'm', { desc = "Set mark" })
 
