@@ -15,8 +15,10 @@ using Oset = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node
 template <typename T>
 using Omset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
 constexpr int M = 1000000007;
+//constexpr int M = 998244353;
 #define int long long
 
+int arr[200001];
 void solve() {{
     {}
 }}
@@ -24,7 +26,6 @@ void solve() {{
 signed main() {{
     std::ios::sync_with_stdio(false);
     std::cin.tie(nullptr);
-    std::cout.tie(nullptr);
     int tc;
     cin >> tc;
     while (tc--)
