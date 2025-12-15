@@ -70,7 +70,7 @@ return {
     end,
 
     ["rust"] = function()
-        local cmd = "cd " .. vim.fn.expand("%:p:h") .. "; cargo run"
+        local cmd = "cd " .. vim.fn.expand("%:p:h") .. "; cargo run " .. vim.fn.expand("%")
         execute_terminal(cmd)
 
         local test_cmd = "cd " .. vim.fn.expand("%:p:h") .. "; cargo test -- --nocapture"
