@@ -74,8 +74,8 @@ OR just google or chatGPT like: *what is the NVChad keymap for opening terminal*
 If you need some feature which is not available in config already, just open an [GitHub issue](https://github.com/Suryansh-Dey/neovim-config/issues)! I love configuring neovim and maintaining this repository.
 
 # Default keymap changes
-1. The `m` motion is remapped to *leap-forward* of leap plugin. Use `<leader>m` for mark.
-2. The `s` motion is remapped to *leap-backward*.
+1. The `s` motion is remapped to *flash-jump*.
+2. The `m` motion is remapped to *flash-scope-jump* of [flash plugin](https://github.com/folke/flash.nvim). Use `<leader>m` for mark.
 
 ## NVChad's default keymap changes
 1. `Ctrl-n` -> `Alt+f` for file tree
@@ -87,7 +87,7 @@ If you need some feature which is not available in config already, just open an 
 7. `[c` -> `[h` to jump to previous hunk.
 
 ### nvim-surround remaps
-Since `s` is used for *leap-backward*, following remaps were done:
+Since `s` is used for *flash-jump*, following remaps were done:
 ``` lua
 {
 normal = "<leader>s", --"ys"
@@ -99,7 +99,6 @@ change = "c<leader>", --"cs"
 }
 ```
 ### nvim-tree remaps
-1. `m` -> `<leader>m` since m is used for *leap-forward*
-2. `s` -> `<leader>s` since s is used for *leap-backward*
+2. `s` -> `<leader>s` since s is used for *flash-jump*
 # Daily usage
 Refer to the [wiki](https://github.com/Suryansh-Dey/neovim-config/wiki/Key-bindings-to-get-started) tab to know how I use it to be blazingly fast!

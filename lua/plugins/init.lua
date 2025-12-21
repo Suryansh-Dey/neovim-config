@@ -65,12 +65,13 @@ return {
         ft = { 'markdown' },
     },
     {
-        "ggandor/leap.nvim",
+        "folke/flash.nvim",
         event = "VeryLazy",
-        config = function()
-            vim.keymap.set({ 'n', 'x', 'o' }, 'm', '<Plug>(leap-forward)')
-            vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap-backward)')
-        end
+        keys = {
+            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Jump cursor" },
+            { "m", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Jump out of scope" },
+            { "m", mode = "o",               function() require("flash").remote() end,     desc = "Remote Flash" },
+        },
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
@@ -137,8 +138,8 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         opts = {
-            scope = { char = "┋" },
-        }
+            scope = { char = "┋" }
+        },
     },
     {
         "b0o/schemastore.nvim",
@@ -193,11 +194,6 @@ return {
     {
         'JoosepAlviste/nvim-ts-context-commentstring',
         opts = { enable_autocmd = false }
-    },
-    {
-        "suryansh-dey/to-future.nvim",
-        event = "VeryLazy",
-        opts = {}
     },
     {
         "mg979/vim-visual-multi",
