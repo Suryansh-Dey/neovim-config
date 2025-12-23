@@ -4,13 +4,15 @@ map("n", "<leader>;", function()
     local char = vim.fn.getcharstr()
     return '<cmd>' .. char .. '<CR>'
 end, { expr = true, desc = "1 char CMD" })
-map({ "o", "x" }, "iq", 'i"', { desc = 'inner ""' })
 
 map({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 map({ "n", "v" }, "X", '"_X', { noremap = true, silent = true })
 map({ "n", "x", "o" }, "c", '"_c', { noremap = true, silent = true })
 map({ "n", "x", "o" }, "C", '"_C', { noremap = true, silent = true })
 map({ "n", "x", "o" }, "S", '"_S', { noremap = true, silent = true })
+
+-- yank to system clipboard
+map({ "n", "v" }, "<C-c>", "\"+y", { desc = "Copy to system clipboard" })
 map({ "n", "v", "x" }, "<leader>p", '"0p', { desc = "Paste last yank" })
 map('n', '<leader>m', 'm', { desc = "Set mark" })
 
@@ -30,9 +32,9 @@ end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
 )
 map('n', "<leader>ct", ":set filetype=", { desc = "Set file type for lsp" })
 map('n', "<leader>y", "<cmd>Telescope neoclip \" extra=star<CR>",
-    { noremap = true, silent = true, desc = "Put yank nvim clipboard" })
+    { noremap = true, silent = true, desc = "Open clipboard history" })
 map('n', "<leader>Y", "<cmd>Telescope neoclip plus<CR>",
-    { noremap = true, silent = true, desc = "Put yank to system clipboard" })
+    { noremap = true, silent = true, desc = "Open clipboard history and put to system clipboard" })
 --harpoon++
 for i = 1, 9, 1 do
     map("n", string.format("<leader>%s", i), function()
