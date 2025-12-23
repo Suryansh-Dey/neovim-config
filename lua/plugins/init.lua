@@ -12,6 +12,11 @@ return {
         end,
     },
     {
+        "suryansh-dey/to-future.nvim",
+        event = "VeryLazy",
+        opts = {}
+    },
+    {
         "Saghen/blink.cmp",
         opts = {
             cmdline = {
@@ -67,6 +72,16 @@ return {
     {
         "folke/flash.nvim",
         event = "VeryLazy",
+        opts = {
+            jump = {
+                nohlsearch = true,
+            },
+            modes = {
+                char = {
+                    enabled = false,
+                }
+            },
+        },
         keys = {
             { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Jump cursor" },
             { "m", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Jump out of scope" },
