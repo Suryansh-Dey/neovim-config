@@ -37,4 +37,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
     group = vim.api.nvim_create_augroup("2-space-indentation", { clear = true })
 })
-vim.cmd [[ highlight Folded gui=italic ]]
+vim.cmd [[ highlight Folded gui=italic 
+highlight FlashBackdrop guifg=#545c7e
+]]
