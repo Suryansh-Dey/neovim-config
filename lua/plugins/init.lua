@@ -87,7 +87,6 @@ return {
         },
         keys = {
             { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Jump cursor" },
-            { "m", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Jump out of scope" },
             { "m", mode = "o",               function() require("flash").remote() end,     desc = "Remote Flash" },
         },
     },

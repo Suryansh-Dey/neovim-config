@@ -12,9 +12,11 @@ map({ "n", "x", "o" }, "C", '"_C', { noremap = true, silent = true })
 map({ "n", "x", "o" }, "S", '"_S', { noremap = true, silent = true })
 
 -- yank to system clipboard
-map({ "n", "v" }, "<C-c>", "\"+y", { desc = "Copy to system clipboard" })
+map("v", "<C-c>", "\"+y", { desc = "Copy to system clipboard" })
 map({ "n", "v", "x" }, "<leader>p", '"0p', { desc = "Paste last yank" })
-map('n', '<leader>m', 'm', { desc = "Set mark" })
+map('n', '<leader>m', 'm', { noremap = true, desc = "Set mark" })
+map('n', 'm', '<C-o>', { desc = "Jump to previous position" })
+map('n', 'M', '<C-i>', { desc = "Jump next in jumplist" })
 
 map("n", "<leader>k", "<cmd>cprev<CR><cmd>cclose<CR>", { desc = "Jump prev of quick fix list", silent = true })
 map("n", "<leader>j", "<cmd>cnext<CR><cmd>cclose<CR>", { desc = "Jump next of quick fix list", silent = true })
@@ -59,8 +61,6 @@ end
 -- Save and format file with Ctrl-s
 map({ 'i', 'v', 'n' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
     { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
--- Debugger mappings
--- -- Moved to plugins/init for lazy loading
 -- Reply to Shreyas
 local function buf_index(bufnr)
     for i, value in ipairs(vim.t.bufs) do
@@ -70,17 +70,6 @@ local function buf_index(bufnr)
     end
 end
 
-map('n', "<leader>tm", function()
-    local n = tonumber(vim.fn.input("Move tab by (negetive number to move left): "))
-    local current_idx = buf_index(vim.api.nvim_get_current_buf())
-    if current_idx + n > #vim.t.bufs then
-        n = #vim.t.bufs - current_idx
-    end
-    if current_idx + n < 1 then
-        n = -current_idx + 1
-    end
-    require('nvchad.tabufline').move_buf(n)
-end, { desc = "Move the tab position" })
 map('n', "<M-Left>", function()
     if buf_index(vim.api.nvim_get_current_buf()) > 1 then
         require('nvchad.tabufline').move_buf(-1)
