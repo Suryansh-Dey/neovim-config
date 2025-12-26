@@ -37,6 +37,7 @@ map('n', "<leader>y", "<cmd>Telescope neoclip \" extra=star<CR>",
     { noremap = true, silent = true, desc = "Open clipboard history" })
 map('n', "<leader>Y", "<cmd>Telescope neoclip plus<CR>",
     { noremap = true, silent = true, desc = "Open clipboard history and put to system clipboard" })
+--Multicursor mapping at ./configs/multicursor.lua
 --harpoon++
 for i = 1, 9, 1 do
     map("n", string.format("<leader>%s", i), function()

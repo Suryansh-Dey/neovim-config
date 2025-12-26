@@ -86,8 +86,8 @@ return {
             },
         },
         keys = {
-            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,       desc = "Jump cursor" },
-            { "m", mode = "o",               function() require("flash").remote() end,     desc = "Remote Flash" },
+            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,   desc = "Jump cursor" },
+            { "m", mode = "o",               function() require("flash").remote() end, desc = "Remote Flash" },
         },
     },
     {
@@ -213,8 +213,11 @@ return {
         opts = { enable_autocmd = false }
     },
     {
-        "mg979/vim-visual-multi",
-        branch = "master",
-        event = 'VeryLazy'
+        "jake-stewart/multicursor.nvim",
+        branch = "1.0",
+        event = "VeryLazy",
+        config = function ()
+            require("configs.multicursor")
+        end
     }
 }
