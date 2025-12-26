@@ -62,6 +62,16 @@ return {
         lazy = false,
         opts = {
             suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+            no_restore_cmds = {
+                function()
+                    if vim.fn.argc() > 0 then
+                        local line = vim.fn.line "'\""
+                        if line > 1 and line <= vim.fn.line "$" then
+                            vim.cmd 'normal! g`"'
+                        end
+                    end
+                end
+            }
         }
     },
     {
@@ -185,24 +195,6 @@ return {
         keys = { "z=" }
     },
     {
-        "kevinhwang91/nvim-ufo",
-        event = "VeryLazy",
-        dependencies = {
-            "kevinhwang91/promise-async",
-            "nvim-treesitter/nvim-treesitter",
-        },
-        config = function()
-            vim.o.foldenable = true
-            vim.o.foldlevel = 99
-            vim.o.foldlevelstart = 99
-            require('ufo').setup({
-                provider_selector = function()
-                    return { 'treesitter', 'indent' }
-                end
-            })
-        end
-    },
-    {
         "nvim-treesitter/nvim-treesitter-textobjects",
         dependencies = "nvim-treesitter/nvim-treesitter",
         event = "VeryLazy",
@@ -216,7 +208,7 @@ return {
         "jake-stewart/multicursor.nvim",
         branch = "1.0",
         event = "VeryLazy",
-        config = function ()
+        config = function()
             require("configs.multicursor")
         end
     }

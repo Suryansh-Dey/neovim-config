@@ -11,8 +11,6 @@ o.shiftwidth = 4
 o.smartindent = true
 o.tabstop = 4
 o.softtabstop = 4
-o.foldmethod = "expr"
-o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.g.mkdp_auto_close = 0
 
 vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "#00ff00", bg = "NONE" })
@@ -37,6 +35,4 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
     group = vim.api.nvim_create_augroup("2-space-indentation", { clear = true })
 })
-vim.cmd [[ highlight Folded gui=italic 
-highlight FlashBackdrop guifg=#545c7e
-]]
+vim.api.nvim_set_hl(0, "FlashBackdrop", { fg = vim.api.nvim_get_hl(0, { name = "Comment" }).fg })
