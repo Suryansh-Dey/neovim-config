@@ -47,7 +47,7 @@ for i = 1, 9, 1 do
         require("nvchad.tabufline").goto_buf(vim.t.bufs[i])
     end, { desc = string.format("Open %sth Tab", i) })
 end
-map('n', "<leader><leader>", "<C-^>"
+map('n', "<leader>a", "<C-^>"
 , { silent = true, desc = "Open the previously focused buffer" })
 
 vim.api.nvim_create_augroup("executeFile", { clear = true })

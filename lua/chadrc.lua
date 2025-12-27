@@ -27,9 +27,6 @@ M.term = {
 }
 
 M.ui = {
-    statusline = {
-        order = { "%=", "diagnostics", "%=" },
-    },
     tabufline = {
         modules = {
             btns = function()
