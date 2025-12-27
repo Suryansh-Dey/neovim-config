@@ -25,5 +25,14 @@ M.term = {
         vsp = 0.5
     }
 }
+M.ui = {
+    tabufline = {
+        modules = {
+            btns = function()
+                return ""
+            end,
+        },
+    }
+}
 
 return M

@@ -15,9 +15,9 @@ set({ "n", "x" }, "<M-p>", function() mc.matchAddCursor(-1) end)
 set({ "n", "x" }, "<M-P>", function() mc.matchSkipCursor(-1) end)
 
 -- Add and remove cursors with control + left click.
-set("n", "<c-leftmouse>", mc.handleMouse)
-set("n", "<c-leftdrag>", mc.handleMouseDrag)
-set("n", "<c-leftrelease>", mc.handleMouseRelease)
+set("n", "<M-leftmouse>", mc.handleMouse)
+set("n", "<M-leftdrag>", mc.handleMouseDrag)
+set("n", "<M-leftrelease>", mc.handleMouseRelease)
 
 -- Mappings defined in a keymap layer only apply when there are
 -- multiple cursors. This lets you have overlapping mappings.
