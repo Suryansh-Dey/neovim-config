@@ -192,14 +192,14 @@ end, { desc = "Signature help" })
 
 map("n", "[d",
     function()
-        vim.diagnostic.goto_prev { float = { border = "rounded" } }
+        vim.diagnostic.jump({ count = -1, float = { border = "rounded" } })
     end,
     { desc = "Goto prev" })
 
 
 map("n", "]d",
     function()
-        vim.diagnostic.goto_next { float = { border = "rounded" } }
+        vim.diagnostic.jump({ count = 1, float = { border = "rounded" } })
     end,
     { desc = "Goto next" }
 )

@@ -36,3 +36,18 @@ vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("2-space-indentation", { clear = true })
 })
 vim.api.nvim_set_hl(0, "FlashBackdrop", { fg = vim.api.nvim_get_hl(0, { name = "Comment" }).fg })
+
+vim.opt.laststatus = 0
+local status_toggle_grp = vim.api.nvim_create_augroup("StatusToggle", { clear = true })
+vim.api.nvim_create_autocmd({ "DiagnosticChanged", "BufEnter" }, {
+    group = status_toggle_grp,
+    callback = function()
+        local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+        local warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+        if errors > 0 or warnings > 0 then
+            vim.opt.laststatus = 3
+        else
+            vim.opt.laststatus = 0
+        end
+    end,
+})
