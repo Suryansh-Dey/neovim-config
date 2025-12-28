@@ -1,7 +1,11 @@
 return {
     window = {
         mappings = {
-            ["<leader>o"] = "open_and_close",
+            ["l"] = "open",
+            ["s"] = function()
+                require("flash").jump()
+            end,
+            ["S"] = "open_leftabove_vs",
         }
     },
     commands = {

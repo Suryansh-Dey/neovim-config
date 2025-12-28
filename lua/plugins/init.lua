@@ -1,18 +1,21 @@
 return {
     "nvim-tree/nvim-web-devicons",
     {
+        "neovim/nvim-lspconfig",
+        event = "VeryLazy",
+        config = function()
+            require "configs.lspconfig"
+        end
+    },
+    {
         "lewis6991/gitsigns.nvim",
-        event ={"BufReadPost", "BufNewFile"},
+        event = "VeryLazy",
         opts = {
             signs = {
                 delete = { text = "󰍵" },
                 changedelete = { text = "󱕖" },
             },
         }
-    },
-    {
-        "mason-org/mason.nvim",
-        cmd = { "Mason", "MasonInstall", "MasonUpdate" },
     },
     {
         "nvim-telescope/telescope.nvim",
@@ -51,7 +54,9 @@ return {
         }
     },
     {
-        "williamboman/mason.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        cmd = { "MasonToolsInstall" },
+        dependencies = { "williamboman/mason.nvim" },
         opts = {
             ensure_installed = {
                 "rust-analyzer",
@@ -61,9 +66,15 @@ return {
                 "html-lsp",
                 "css-lsp",
                 "pyright",
-                "tailwindcss"
+                "tailwindcss",
+                "lua-language-server"
             },
         },
+    },
+    {
+        cmd = { "Mason", "MasonInstall", "MasonUpdate" },
+        "williamboman/mason.nvim",
+        config = true,
     },
     {
         "numToStr/Comment.nvim",
@@ -177,9 +188,9 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            "nvim-tree/nvim-web-devicons", -- optional, but recommended
+            "nvim-tree/nvim-web-devicons",
         },
-        lazy = false,                      -- neo-tree will lazily load itself
+        lazy = false,
         opts = require("configs.neo-tree")
     },
     {
@@ -210,7 +221,8 @@ return {
     {
         "folke/which-key.nvim",
         ft = { 'text', "markdown" },
-        keys = { "z=" }
+        keys = { "z=", "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
+        cmd = "WhichKey",
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",

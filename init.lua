@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua/snippets"
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
