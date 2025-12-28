@@ -229,9 +229,9 @@ map("n", "<leader>wl",
     { desc = "List workspace folders" })
 
 -- toggle
-map("n", "<A-f>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle nvimtree" })
+map("n", "<A-f>", "<cmd> Neotree focus <CR>", { desc = "Toggle nvimtree" })
 -- focus
-map("n", "<leader>e", "<cmd> NvimTreeFocus <CR>", { desc = "Focus nvimtree" })
+map("n", "<leader>e", "<cmd> Neotree focus <CR>", { desc = "Focus nvimtree" })
 
 map("n", "<leader>ff", "<cmd> Telescope find_files <CR>", { desc = "Find files" })
 map("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", { desc = "Find all" })

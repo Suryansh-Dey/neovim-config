@@ -1,15 +1,38 @@
 return {
-    { import = "nvchad.blink.lazyspec" },
+    "nvim-tree/nvim-web-devicons",
     {
-        "nvchad/ui",
-        enbaled = false,
+        "lewis6991/gitsigns.nvim",
+        event ={"BufReadPost", "BufNewFile"},
+        opts = {
+            signs = {
+                delete = { text = "󰍵" },
+                changedelete = { text = "󱕖" },
+            },
+        }
     },
     {
-        "suryansh-dey/ui",
-        lazy = false,
-        config = function()
-            require "nvchad"
-        end,
+        "mason-org/mason.nvim",
+        cmd = { "Mason", "MasonInstall", "MasonUpdate" },
+    },
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        cmd = "Telescope",
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        branch = "master",
+        event = { "BufReadPost", "BufNewFile" },
+        cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+        build = ":TSUpdate",
+        opts = {
+            ensure_installed = { "lua", "luadoc", "printf", "vim", "vimdoc" },
+            highlight = {
+                enable = true,
+                use_languagetree = true,
+            },
+            indent = { enable = true },
+        }
     },
     {
         "suryansh-dey/to-future.nvim",
@@ -62,6 +85,7 @@ return {
         lazy = false,
         opts = {
             suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+            bypass_save_filetypes = { "neo-tree" },
             no_restore_cmds = {
                 function()
                     if vim.fn.argc() > 0 then
@@ -116,13 +140,6 @@ return {
         end
     },
     {
-        "neovim/nvim-lspconfig",
-        config = function()
-            require("nvchad.configs.lspconfig").defaults()
-            require "configs.lspconfig"
-        end,
-    },
-    {
         "windwp/nvim-ts-autotag",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
@@ -155,18 +172,19 @@ return {
         ft = "rust",
     },
     {
-        "nvim-tree/nvim-tree.lua",
-        opts = require("configs.nvim-tree")
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            "nvim-tree/nvim-web-devicons", -- optional, but recommended
+        },
+        lazy = false,                      -- neo-tree will lazily load itself
+        opts = require("configs.neo-tree")
     },
     {
         "nvim-treesitter/nvim-treesitter",
         opts = { ensure_installed = { "html", "css", "javascript", "tsx", "typescript", "json", "cpp", "rust", "markdown", "python", "java" } },
-    },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        opts = {
-            scope = { char = "┋" }
-        },
     },
     {
         "b0o/schemastore.nvim",
@@ -198,7 +216,9 @@ return {
         "nvim-treesitter/nvim-treesitter-textobjects",
         dependencies = "nvim-treesitter/nvim-treesitter",
         event = "VeryLazy",
-        require 'nvim-treesitter.configs'.setup(require("configs.TSTextobjects"))
+        config = function()
+            require 'nvim-treesitter.configs'.setup(require("configs.TSTextobjects"))
+        end
     },
     {
         'JoosepAlviste/nvim-ts-context-commentstring',
