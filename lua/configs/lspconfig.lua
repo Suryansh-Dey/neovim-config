@@ -1,11 +1,12 @@
-local on_init = function(client, _)
+local M = {}
+M.on_init = function(client, _)
     if client.supports_method "textDocument/semanticTokens" then
         client.server_capabilities.semanticTokensProvider = nil
     end
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem = {
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities.textDocument.completion.completionItem = {
     documentationFormat = { "markdown", "plaintext" },
     snippetSupport = true,
     preselectSupport = true,
@@ -22,65 +23,4 @@ capabilities.textDocument.completion.completionItem = {
         },
     },
 }
-
-local lua_lsp_settings = {
-    Lua = {
-        runtime = { version = "LuaJIT" },
-        workspace = {
-            library = {
-                vim.fn.expand "$VIMRUNTIME/lua",
-                vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
-                "${3rd}/luv/library",
-            },
-        },
-    },
-}
-
-vim.lsp.config("*", { capabilities = capabilities, on_init = on_init })
-vim.lsp.config("ts_ls", { init_options = { maxTsServerMemory = 4096 } })
-vim.lsp.enable "ts_ls"
-vim.lsp.enable "html"
-vim.lsp.enable "clangd"
-vim.lsp.enable "cssls"
-vim.lsp.enable "pyright"
-vim.lsp.enable "tailwindcss"
-vim.lsp.enable "jdtls"
-vim.lsp.config("jsonls", {
-    settings = {
-        json = {
-            schemas = require('schemastore').json.schemas(),
-            validate = { enable = true },
-        },
-    },
-})
-vim.lsp.enable "jsonls"
-vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
-vim.lsp.enable "lua_ls"
-
-vim.diagnostic.config({
-    virtual_text = {
-        spacing = 4,
-        prefix = '●',
-        severity_sort = true,
-    },
-    signs = true,
-    underline = true,
-    update_in_insert = false,
-})
-
-local preparing = true
-vim.api.nvim_create_autocmd("LspProgress", {
-    callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        local value = args.data.params.value
-        if not client then return end
-
-        if preparing == true and value.kind == 'report' then
-            vim.print(client.name .. " Preparing..")
-            preparing = false
-        end
-        if value.kind == 'end' then
-            vim.print(client.name .. " Ready!")
-        end
-    end,
-})
+return M

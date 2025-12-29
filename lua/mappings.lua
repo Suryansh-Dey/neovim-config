@@ -27,11 +27,7 @@ map("n", "<leader>q", function()
     vim.api.nvim_win_close(vim.fn.win_getid(vim.fn.winnr('#')), false)
 end, { desc = "Close the previously focused window" })
 
-map("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file", silent = true })
-map('n', '<leader>fs', function()
-    require('telescope.builtin').lsp_workspace_symbols()
-end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
-)
+--LSP mappings at ./configs/lspenable.lua
 map('n', "<leader>ct", ":set filetype=", { desc = "Set file type for lsp" })
 map('n', "<leader>y", "<cmd>Telescope neoclip \" extra=star<CR>",
     { noremap = true, silent = true, desc = "Open clipboard history" })
@@ -52,25 +48,6 @@ map('n', "<leader>a", "<C-^>"
 -- Save and format file with Ctrl-s
 map({ 'i', 'v', 'n' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
     { noremap = true, silent = true, desc = "Format then save the file then <Esc>" })
--- Reply to Shreyas
-local function buf_index(bufnr)
-    for i, value in ipairs(vim.t.bufs) do
-        if value == bufnr then
-            return i
-        end
-    end
-end
-
-map('n', "<M-Left>", function()
-    if buf_index(vim.api.nvim_get_current_buf()) > 1 then
-        require('nvchad.tabufline').move_buf(-1)
-    end
-end, { desc = "Move the tab left" })
-map('n', "<M-Right>", function()
-    if buf_index(vim.api.nvim_get_current_buf()) < #vim.t.bufs then
-        require('nvchad.tabufline').move_buf(1)
-    end
-end, { desc = "Move the tab right" })
 
 -- NVChad mappings
 map('n', "<leader>n", function()
@@ -113,13 +90,6 @@ map("n", "<leader>b", function()
 end, { desc = "New buffer" })
 map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
 
-map("n", "<leader>fm",
-    function()
-        vim.lsp.buf.format { async = true }
-    end,
-    { desc = "LSP formatting" }
-)
-
 map("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), { desc = "Escape terminal mode" })
 
 map("n", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
@@ -156,59 +126,6 @@ map("v", "<leader>/",
     "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
     { desc = "Toggle comment" }
 )
-
-map('n', 'K', function()
-    vim.lsp.buf.hover({ border = 'rounded' })
-end, { desc = 'LSP documentation' })
-
-map("n", "<leader>lf",
-    function()
-        vim.diagnostic.open_float { border = "rounded" }
-    end,
-    { desc = "Floating diagnostic" })
-
-map("n", "<leader>sh", function()
-    vim.lsp.buf.signature_help({ border = "rounded" })
-end, { desc = "Signature help" })
-
-map("n", "[d",
-    function()
-        vim.diagnostic.jump({ count = -1, float = { border = "rounded" } })
-    end,
-    { desc = "Goto prev" })
-
-
-map("n", "]d",
-    function()
-        vim.diagnostic.jump({ count = 1, float = { border = "rounded" } })
-    end,
-    { desc = "Goto next" }
-)
-
-map("n", "<leader>lq",
-    function()
-        vim.diagnostic.setloclist()
-    end,
-    { desc = "Diagnostic setloclist" })
-
-map("n", "<leader>wa",
-    function()
-        vim.lsp.buf.add_workspace_folder()
-    end,
-    { desc = "Add workspace folder" })
-
-map("n", "<leader>wr",
-    function()
-        vim.lsp.buf.remove_workspace_folder()
-    end,
-    { desc = "Remove workspace folder" })
-
-map("n", "<leader>wl",
-    function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end,
-    { desc = "List workspace folders" })
-
 -- toggle
 map("n", "<A-f>", "<cmd> Neotree toggle <CR>", { desc = "Toggle file tree" })
 -- focus
@@ -228,9 +145,6 @@ map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "Git status" 
 
 -- pick a hidden term
 map("n", "<leader>ft", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term" })
-
--- theme switcher
-map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" })
 
 map("n", "<leader>fb", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
 -- toggle in terminal mode
