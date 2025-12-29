@@ -44,14 +44,9 @@ return {
     },
     {
         "Saghen/blink.cmp",
-        opts = {
-            cmdline = {
-                completion = {
-                    menu = { auto_show = true },
-                    list = { selection = { preselect = false, auto_insert = true } }
-                },
-            }
-        }
+        event = { "InsertEnter", "CmdLineEnter" },
+        version = '1.*',
+        opts = require("configs.blink")
     },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",

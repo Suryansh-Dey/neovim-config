@@ -1,0 +1,18 @@
+return {
+    appearance = { nerd_font_variant = "normal" },
+    fuzzy = { implementation = "prefer_rust" },
+    sources = { default = { "lsp", "snippets", "buffer", "path" } },
+    keymap = {
+        preset = "default",
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+        ["<CR>"] = { "accept", "fallback" }
+    },
+    cmdline = {
+        enabled = true,
+        completion = {
+            menu = { auto_show = true },
+            list = { selection = { preselect = false, auto_insert = true } }
+        },
+    }
+}

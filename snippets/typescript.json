@@ -1,0 +1,17 @@
+{
+  "POST Fetch": {
+    "prefix": "post",
+    "body": [
+      "fetch(\"${1:url}\", {",
+      "\tmethod: \"POST\",",
+      "\theaders: {",
+      "\t\t\"Content-Type\": \"application/json;charset=UTF-8\"",
+      "\t},",
+      "\tbody: JSON.stringify({",
+      "\t\t$2",
+      "\t})",
+      "})"
+    ],
+    "description": "Fetch API POST request with JSON body"
+  }
+}
