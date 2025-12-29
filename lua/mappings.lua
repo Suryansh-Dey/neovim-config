@@ -50,14 +50,7 @@ end
 map('n', "<leader>a", "<C-^>"
 , { silent = true, desc = "Open the previously focused buffer" })
 
-vim.api.nvim_create_augroup("executeFile", { clear = true })
-for lang, keymap in pairs(require('executors')) do
-    vim.api.nvim_create_autocmd("FileType", {
-        pattern = lang,
-        callback = keymap,
-        group = "executeFile"
-    })
-end
+--Executors at ./../init.lua
 
 -- Save and format file with Ctrl-s
 map({ 'i', 'v', 'n' }, "<C-s>", "<Esc><cmd>lua vim.lsp.buf.format()<CR><cmd>w<CR>",
@@ -254,23 +247,23 @@ map("n", "<leader>th", "<cmd> Telescope themes <CR>", { desc = "Nvchad themes" }
 map("n", "<leader>fb", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
 -- toggle in terminal mode
 map({ "n", "t" }, "<A-v>", function()
-    require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
+    require("configs.nvterm").toggle { pos = "vsp", id = "vtoggleTerm" }
 end, { desc = "terminal toggleable vertical term" })
 
 map({ "n", "t" }, "<A-h>", function()
-    require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+    require("configs.nvterm").toggle { pos = "sp", id = "htoggleTerm" }
 end, { desc = "terminal toggleable horizontal term" })
 
 map({ "n", "t" }, "<A-i>", function()
-    require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+    require("configs.nvterm").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "terminal toggle floating term" })
 
 map("n", "<leader>h", function()
-    require("nvchad.term").new { pos = "sp" }
+    require("configs.nvterm").new { pos = "sp" }
 end, { desc = "terminal new horizontal term" })
 
 map("n", "<leader>v", function()
-    require("nvchad.term").new { pos = "vsp" }
+    require("configs.nvterm").new { pos = "vsp" }
 end, { desc = "terminal new vertical term" })
 
 map("n", "<leader>wK",

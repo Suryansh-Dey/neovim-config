@@ -2,15 +2,15 @@ local function execute_terminal(cmd)
     cmd = cmd .. ";exit"
     vim.keymap.set('n', '<leader>xi', function()
         vim.cmd('w')
-        require("nvchad.term").new { pos = "float", id = "floatTerm", cmd = cmd }
+        require("configs.nvterm").new { pos = "float", id = "floatTerm", cmd = cmd }
     end, { buffer = true, desc = "Execute current file in full screen terminal" })
     vim.keymap.set('n', '<leader>xv', function()
         vim.cmd('w')
-        require("nvchad.term").new { pos = "vsp", id = "vtoggleTerm", cmd = cmd }
+        require("configs.nvterm").new { pos = "vsp", id = "vtoggleTerm", cmd = cmd }
     end, { buffer = true, desc = "Execute current file in vertical terminal" })
     vim.keymap.set('n', '<leader>xh', function()
         vim.cmd('w')
-        require("nvchad.term").new { pos = "sp", id = "htoggleTerm", cmd = cmd }
+        require("configs.nvterm").new { pos = "sp", id = "htoggleTerm", cmd = cmd }
     end, { buffer = true, desc = "Execute current file in horizontal terminal" })
 end
 
@@ -18,15 +18,15 @@ local function execute_terminal_test(cmd)
     cmd = cmd .. ";exit"
     vim.keymap.set('n', '<leader>Xi', function()
         vim.cmd('w')
-        require("nvchad.term").new { pos = "float", id = "floatTerm", cmd = cmd }
+        require("configs.nvterm").new { pos = "float", id = "floatTerm", cmd = cmd }
     end, { buffer = true, desc = "Execute tests in full screen terminal" })
     vim.keymap.set('n', '<leader>Xv', function()
         vim.cmd('w')
-        require("nvchad.term").new { pos = "vsp", id = "vtoggleTerm", cmd = cmd }
+        require("configs.nvterm").new { pos = "vsp", id = "vtoggleTerm", cmd = cmd }
     end, { buffer = true, desc = "Execute tests in vertical terminal" })
     vim.keymap.set('n', '<leader>Xh', function()
         vim.cmd('w')
-        require("nvchad.term").new { pos = "sp", id = "htoggleTerm", cmd = cmd }
+        require("configs.nvterm").new { pos = "sp", id = "htoggleTerm", cmd = cmd }
     end, { buffer = true, desc = "Execute tests in horizontal terminal" })
 end
 

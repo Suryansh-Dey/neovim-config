@@ -21,6 +21,15 @@ require("lazy").setup({
 
 require "options"
 
+--mappings
+vim.api.nvim_create_augroup("executeFile", { clear = true })
+for lang, keymap in pairs(require('executors')) do
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = lang,
+        callback = keymap,
+        group = "executeFile"
+    })
+end
 vim.schedule(function()
     require "mappings"
 end)
