@@ -253,5 +253,11 @@ return {
             require("tokyonight").setup(opts)
             vim.cmd([[colorscheme tokyonight-night]])
         end
+    },
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        event = 'VeryLazy',
+        opts = require('configs.lualine')
     }
 }

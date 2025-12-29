@@ -56,3 +56,13 @@ vim.lsp.config("jsonls", {
 vim.lsp.enable "jsonls"
 vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
 vim.lsp.enable "lua_ls"
+vim.diagnostic.config({
+    virtual_text = {
+        spacing = 4,
+        prefix = '●',
+        severity_sort = true,
+    },
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+})
