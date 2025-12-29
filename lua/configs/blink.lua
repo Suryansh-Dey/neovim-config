@@ -1,10 +1,13 @@
+local key = vim.api.nvim_replace_termcodes("<Tab>", true, false, true)
 return {
     appearance = { nerd_font_variant = "normal" },
     fuzzy = { implementation = "prefer_rust" },
     sources = { default = { "lsp", "snippets", "buffer", "path" } },
     keymap = {
         preset = "default",
-        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<Tab>"] = { "select_next", "snippet_forward", function()
+            vim.api.nvim_feedkeys(key, "n", false)
+        end },
         ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
         ["<CR>"] = { "accept", "fallback" }
     },
