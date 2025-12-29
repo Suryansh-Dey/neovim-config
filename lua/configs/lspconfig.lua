@@ -56,6 +56,7 @@ vim.lsp.config("jsonls", {
 vim.lsp.enable "jsonls"
 vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
 vim.lsp.enable "lua_ls"
+
 vim.diagnostic.config({
     virtual_text = {
         spacing = 4,
@@ -65,4 +66,21 @@ vim.diagnostic.config({
     signs = true,
     underline = true,
     update_in_insert = false,
+})
+
+local preparing = true
+vim.api.nvim_create_autocmd("LspProgress", {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        local value = args.data.params.value
+        if not client then return end
+
+        if preparing == true and value.kind == 'report' then
+            vim.print(client.name .. " Preparing..")
+            preparing = false
+        end
+        if value.kind == 'end' then
+            vim.print(client.name .. " Ready!")
+        end
+    end,
 })

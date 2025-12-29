@@ -40,12 +40,9 @@ map('n', "<leader>Y", "<cmd>Telescope neoclip plus<CR>",
 --Multicursor mapping at ./configs/multicursor.lua
 --harpoon++
 for i = 1, 9, 1 do
-    map("n", string.format("<leader>%s", i), function()
-        if i > #vim.t.bufs then
-            i = #vim.t.bufs
-        end
-        require("nvchad.tabufline").goto_buf(vim.t.bufs[i])
-    end, { desc = string.format("Open %sth Tab", i) })
+    map("n", string.format("<leader>%s", i),
+        string.format('<cmd>LualineBuffersJump %s<cr>', i),
+        { desc = string.format("Open %sth Tab", i) })
 end
 map('n', "<leader>a", "<C-^>"
 , { silent = true, desc = "Open the previously focused buffer" })
@@ -137,24 +134,15 @@ map("x", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up"
 map("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text", silent = true })
 
 -- cycle through buffers
-map("n", "<tab>",
-    function()
-        require("nvchad.tabufline").next()
-    end,
+map("n", "L",
+    '<cmd>bnext<cr>',
     { desc = "Goto next buffer" })
-
-
-map("n", "<S-tab>",
-    function()
-        require("nvchad.tabufline").prev()
-    end,
-    { desc = "Goto prev buffer" })
-
+map("n", "H",
+    '<cmd>bprevious<cr>',
+    { desc = "Goto previous buffer" })
 -- close buffer + hide terminal buffer
 map("n", "<M-x>",
-    function()
-        require("nvchad.tabufline").close_buffer()
-    end,
+    "<cmd>bdelete<cr>",
     { desc = "Close buffer" })
 
 -- toggle comment in both modes
@@ -222,9 +210,9 @@ map("n", "<leader>wl",
     { desc = "List workspace folders" })
 
 -- toggle
-map("n", "<A-f>", "<cmd> Neotree focus <CR>", { desc = "Toggle nvimtree" })
+map("n", "<A-f>", "<cmd> Neotree toggle <CR>", { desc = "Toggle file tree" })
 -- focus
-map("n", "<leader>e", "<cmd> Neotree focus <CR>", { desc = "Focus nvimtree" })
+map("n", "<leader>e", "<cmd> Neotree focus reveal<CR>", { desc = "Focus file tree" })
 
 map("n", "<leader>ff", "<cmd> Telescope find_files <CR>", { desc = "Find files" })
 map("n", "<leader>fa", "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", { desc = "Find all" })
