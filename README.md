@@ -1,5 +1,6 @@
 ![Modern UI with git integration](https://github.com/user-attachments/assets/269a7232-c476-4d92-a64d-be19635df1c3)
-A fully-featured, blazing-fast Neovim setup designed for modern developers with multi-cursor support. This configuration integrates the latest plugins, a sleek UI, and more—built on top of [NvChad](https://nvchad.com) for maximum efficiency.
+A fully-featured, blazing-fast Neovim setup designed for modern developers with multi-cursor support. This configuration integrates the latest plugins, a sleek UI, and more.  
+*Moved away from [NvChad](https://nvchad.com) plugin*
 
 # Supported languages
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="5%"/> Python
@@ -22,7 +23,6 @@ A fully-featured, blazing-fast Neovim setup designed for modern developers with 
 # Pre-requisites
 - gcc/g++
 - npm
-- Pre-requisites of [NvChad](https://nvchad.com/docs/quickstart/install)
 
 # Installation
 Run the following command in your terminal
@@ -69,23 +69,12 @@ Go to `~/.config/nvim/lua/mappings.lua`, and search for the action. You will pro
 - `desc` tells what this key binding does so you can search using `/` to get related keybinding.
 - The second argument of `map` represents the key stoke needed for the action.
 
-OR just google or chatGPT like: *what is the NVChad keymap for opening terminal*. (Answer: *`A-i` for full screen and `A-v` or `A-h` for vertical and horizontal terminal*)
-
 If you need some feature which is not available in config already, just open an [GitHub issue](https://github.com/Suryansh-Dey/neovim-config/issues)! I love configuring neovim and maintaining this repository.
 
 # Default keymap changes
 1. The `s` motion is remapped to *flash-jump*.
 2. The `m` key is remapped to *Ctrl-o*. Use `<leader>m` for mark.
 3. The `M` key is remapped to *Ctrl-i*.
-
-## NVChad's default keymap changes
-1. `Ctrl-n` -> `Alt+f` for file tree
-2. `<leader>q` -> `<leader>lq` to put diagnostics in location list.
-3. `<leader>ph` -> `<leader>gh` to see git change.
-4. `<leader>pt` -> `<leader>ft` to find terminal.
-5. `<leader>x` -> `Alt-x` to close buffer.
-6. `]c` -> `]h` to jump to next hunk.
-7. `[c` -> `[h` to jump to previous hunk.
 
 ### nvim-surround remaps
 Since `s` is used for *flash-jump*, following remaps were done:

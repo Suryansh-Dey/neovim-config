@@ -2,6 +2,7 @@ return {
     window = {
         mappings = {
             ["l"] = "open",
+            ["h"] = "close_node",
             ["s"] = function()
                 require("flash").jump()
             end,
@@ -16,5 +17,13 @@ return {
                 vim.api.nvim_command("edit " .. node.path)
             end
         end
+    },
+    filesystem = {
+        filtered_items = {
+            visible = true,
+            hide_dotfiles = false,
+            hide_gitignored = false,
+            hide_hidden = false,
+        }
     }
 }
