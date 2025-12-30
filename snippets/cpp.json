@@ -43,7 +43,7 @@
   "Reverse For Loop": {
     "prefix": "frr",
     "body": [
-      "for(int i=${1:n}; i>=${2:0}; i--) {",
+      "for(int i=${1:n-1}; i>=${2:0}; i--) {",
       "\t${0}",
       "}"
     ],

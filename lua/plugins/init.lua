@@ -259,5 +259,10 @@ return {
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         event = 'VeryLazy',
         opts = require('configs.lualine')
+    },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
     }
 }
