@@ -100,7 +100,12 @@ return {
                         end
                     end
                 end
-            }
+            },
+            post_restore_cmds = {
+                function()
+                    vim.cmd("TSEnable highlight")
+                end
+            },
         }
     },
     {

@@ -25,5 +25,11 @@ return {
             auto_show_delay_ms = 200,
             window = { border = "single" },
         },
-    }
+    },
+    signature = {
+        enabled = true,
+        window = {
+            border = 'rounded',
+        }
+    },
 }
