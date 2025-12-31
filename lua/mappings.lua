@@ -217,7 +217,7 @@ map("n", "<leader>rh",
 
 map("n", "<leader>gh",
     function()
-        require("gitsigns").preview_hunk()
+        require("gitsigns").preview_hunk_inline()
     end,
     { desc = "Preview hunk" })
 

@@ -3,7 +3,6 @@ local o = vim.o
 local opt = vim.opt
 local g = vim.g
 
-o.laststatus = 3
 o.showmode = false
 o.splitkeep = "screen"
 

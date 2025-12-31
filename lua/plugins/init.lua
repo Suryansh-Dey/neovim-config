@@ -1,7 +1,7 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        event = { "BufReadPre", "BufNewFile" },
+        event = "VeryLazy",
         config = function()
             require "configs.lspenable"
         end
@@ -187,10 +187,6 @@ return {
         opts = require("configs.neo-tree")
     },
     {
-        "nvim-treesitter/nvim-treesitter",
-        opts = { ensure_installed = { "html", "css", "javascript", "tsx", "typescript", "json", "cpp", "rust", "markdown", "python", "java" } },
-    },
-    {
         "b0o/schemastore.nvim",
         ensure_installed = { "vscode-json-languageserver" }
     },
@@ -256,7 +252,7 @@ return {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         lazy = false,
-        priority = 0,
+        priority = 1,
         opts = require('configs.lualine')
     },
     {
