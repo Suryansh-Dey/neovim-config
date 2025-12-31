@@ -60,7 +60,7 @@ return {
                 "html-lsp",
                 "css-lsp",
                 "pyright",
-                "tailwindcss",
+                "tailwindcss-language-server",
                 "lua-language-server"
             },
         },
@@ -190,10 +190,6 @@ return {
         },
         lazy = false,
         opts = require("configs.neo-tree")
-    },
-    {
-        "b0o/schemastore.nvim",
-        ensure_installed = { "vscode-json-languageserver" }
     },
     {
         "AckslD/nvim-neoclip.lua",

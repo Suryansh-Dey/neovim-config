@@ -21,15 +21,6 @@ vim.lsp.enable "cssls"
 vim.lsp.enable "pyright"
 vim.lsp.enable "tailwindcss"
 vim.lsp.enable "jdtls"
-vim.lsp.config("jsonls", {
-    settings = {
-        json = {
-            schemas = require('schemastore').json.schemas(),
-            validate = { enable = true },
-        },
-    },
-})
-vim.lsp.enable "jsonls"
 vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
 vim.lsp.enable "lua_ls"
 
@@ -44,17 +35,28 @@ vim.diagnostic.config({
     update_in_insert = false,
 })
 
+local reported = false
+vim.api.nvim_create_autocmd("LspProgress", {
+    pattern = 'report',
+    callback = function(args)
+        if reported then return end
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client then
+            vim.notify(client.name .. " Preparing..", vim.log.levels.INFO)
+            reported = true
+        end
+    end
+})
 vim.api.nvim_create_autocmd("LspProgress", {
     pattern = 'end',
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
-        local value = args.data.params.value
-        if not client then return end
-        if value.kind == 'end' then
+        if client then
             vim.notify(client.name .. " Ready!", vim.log.levels.INFO)
         end
     end,
 })
+
 -- mappings
 local map = vim.keymap.set
 map("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file", silent = true })
