@@ -1,5 +1,4 @@
 return {
-    "nvim-tree/nvim-web-devicons",
     {
         "neovim/nvim-lspconfig",
         event = "VeryLazy",
@@ -183,7 +182,6 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            "nvim-tree/nvim-web-devicons",
         },
         lazy = false,
         opts = require("configs.neo-tree")

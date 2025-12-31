@@ -1,18 +1,51 @@
+local name_cache = {}
+vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "BufFilePost" }, {
+    callback = function() name_cache = {} end,
+})
+
+local function get_unique_name(filename, bufnr)
+    if name_cache[bufnr] then return name_cache[bufnr] end
+
+    local path = vim.api.nvim_buf_get_name(bufnr)
+
+    local clash = false
+    for _, b in ipairs(vim.api.nvim_list_bufs()) do
+        if b ~= bufnr and vim.bo[b].buflisted then
+            local other_path = vim.api.nvim_buf_get_name(b)
+            if vim.fn.fnamemodify(other_path, ':t') == filename and path ~= other_path then
+                clash = true
+                break
+            end
+        end
+    end
+
+    local result = clash and (vim.fn.fnamemodify(path, ':p:h:t') .. '/' .. filename) or filename
+    name_cache[bufnr] = result
+    return result
+end
+
 return {
     options = {
         theme = 'auto',
         section_separators = '',
         component_separators = '|',
+        ignore_focus = {
+            "neo-tree",
+            "TelescopePrompt",
+            "Messages",
+            "qf",
+        },
     },
     sections = {
         lualine_a = {
             {
                 'buffers',
-                show_filename_only = true,
-                hide_filename_extension = false,
-                show_modified_status = true,
+                icons_enabled = false,
                 mode = 2,
-                max_length = vim.o.columns
+                max_length = vim.o.columns,
+                fmt = function(name, context)
+                    return get_unique_name(name, context.bufnr)
+                end
             }
         },
         lualine_b = {},
