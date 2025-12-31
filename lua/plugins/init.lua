@@ -1,7 +1,7 @@
 return {
     {
         "neovim/nvim-lspconfig",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require "configs.lspenable"
         end
@@ -28,7 +28,7 @@ return {
         cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
         build = ":TSUpdate",
         opts = {
-            ensure_installed = { "lua", "luadoc", "printf", "vim", "vimdoc" },
+            ensure_installed = { "html", "css", "javascript", "tsx", "typescript", "json", "cpp", "rust", "markdown", "python", "java", "lua", "luadoc", "printf", "vim", "vimdoc" },
             highlight = {
                 enable = true,
                 use_languagetree = true,
@@ -45,7 +45,7 @@ return {
         "Saghen/blink.cmp",
         event = { "InsertEnter", "CmdLineEnter" },
         version = '1.*',
-        opts = require("configs.blink")
+        opts = require "configs.blink"
     },
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -255,7 +255,8 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
-        event = 'VeryLazy',
+        lazy = false,
+        priority = 0,
         opts = require('configs.lualine')
     },
     {

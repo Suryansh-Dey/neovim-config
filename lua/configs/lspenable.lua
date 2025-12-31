@@ -44,17 +44,12 @@ vim.diagnostic.config({
     update_in_insert = false,
 })
 
-local preparing = true
 vim.api.nvim_create_autocmd("LspProgress", {
+    pattern = 'end',
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         local value = args.data.params.value
         if not client then return end
-
-        if preparing == true and value.kind == 'report' then
-            vim.notify(client.name .. " Preparing..", vim.log.levels.INFO)
-            preparing = false
-        end
         if value.kind == 'end' then
             vim.notify(client.name .. " Ready!", vim.log.levels.INFO)
         end
