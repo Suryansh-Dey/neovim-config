@@ -15,8 +15,11 @@ map({ "n", "x", "o" }, "S", '"_S', { noremap = true, silent = true })
 map("v", "<C-c>", "\"+y", { desc = "Copy to system clipboard" })
 map({ "n", "v", "x" }, "<leader>p", '"0p', { desc = "Paste last yank" })
 map('n', '<leader>m', 'm', { noremap = true, desc = "Set mark" })
+
+--Removing control from my life
 map('n', 'm', '<C-o>', { desc = "Jump to previous position" })
 map('n', 'M', '<C-i>', { desc = "Jump next in jumplist" })
+map('n', 'U', '<C-r>', { desc = "Redo" })
 
 map("n", "<leader>k", "<cmd>cprev<CR><cmd>cclose<CR>", { desc = "Jump prev of quick fix list", silent = true })
 map("n", "<leader>j", "<cmd>cnext<CR><cmd>cclose<CR>", { desc = "Jump next of quick fix list", silent = true })
@@ -94,14 +97,9 @@ map("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true
 
 map("n", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
 map("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
-map("n", "<", "<gv", { desc = "Indent line" })
-map("n", ">", ">gv", { desc = "Indent line" })
 
 map("x", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 map("x", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
--- Don't copy the replaced text after pasting in visual mode
--- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
-map("x", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Dont copy replaced text", silent = true })
 
 -- cycle through buffers
 map("n", "L",

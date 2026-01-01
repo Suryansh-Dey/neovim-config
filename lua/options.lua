@@ -9,10 +9,6 @@ o.splitkeep = "screen"
 o.cursorline = true
 o.cursorlineopt = "number"
 
--- Indenting
-o.expandtab = true
-o.smartindent = true
-
 opt.fillchars = { eob = " " }
 o.ignorecase = true
 o.smartcase = true
@@ -56,8 +52,10 @@ o.shiftwidth = 4
 o.smartindent = true
 o.tabstop = 4
 o.softtabstop = 4
-vim.g.mkdp_auto_close = 0
 o.laststatus = 3
+
+--plugins
+vim.g.mkdp_auto_close = 0
 
 vim.api.nvim_set_hl(0, "GitSignsAdd", { fg = "#00ff00", bg = "NONE" })
 vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#ffaa00", bg = "NONE" })
@@ -76,7 +74,6 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         vim.bo.shiftwidth = 2
         vim.bo.tabstop = 2
-        vim.bo.expandtab = true
         vim.bo.softtabstop = 2
     end,
     group = vim.api.nvim_create_augroup("2-space-indentation", { clear = true })
