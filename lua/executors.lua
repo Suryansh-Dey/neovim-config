@@ -1,14 +1,14 @@
 local function execute_terminal(cmd)
     cmd = cmd .. ";exit"
-    vim.keymap.set('n', '<leader>xi', function()
+    vim.keymap.set('n', '<leader>Xi', function()
         vim.cmd('w')
         require("configs.nvterm").new { pos = "float", id = "floatTerm", cmd = cmd }
     end, { buffer = true, desc = "Execute current file in full screen terminal" })
-    vim.keymap.set('n', '<leader>xv', function()
+    vim.keymap.set('n', '<leader>Xv', function()
         vim.cmd('w')
         require("configs.nvterm").new { pos = "vsp", id = "vtoggleTerm", cmd = cmd }
     end, { buffer = true, desc = "Execute current file in vertical terminal" })
-    vim.keymap.set('n', '<leader>xh', function()
+    vim.keymap.set('n', '<leader>Xh', function()
         vim.cmd('w')
         require("configs.nvterm").new { pos = "sp", id = "htoggleTerm", cmd = cmd }
     end, { buffer = true, desc = "Execute current file in horizontal terminal" })
@@ -16,15 +16,15 @@ end
 
 local function execute_terminal_test(cmd)
     cmd = cmd .. ";exit"
-    vim.keymap.set('n', '<leader>Xi', function()
+    vim.keymap.set('n', '<leader>xi', function()
         vim.cmd('w')
         require("configs.nvterm").new { pos = "float", id = "floatTerm", cmd = cmd }
     end, { buffer = true, desc = "Execute tests in full screen terminal" })
-    vim.keymap.set('n', '<leader>Xv', function()
+    vim.keymap.set('n', '<leader>xv', function()
         vim.cmd('w')
         require("configs.nvterm").new { pos = "vsp", id = "vtoggleTerm", cmd = cmd }
     end, { buffer = true, desc = "Execute tests in vertical terminal" })
-    vim.keymap.set('n', '<leader>Xh', function()
+    vim.keymap.set('n', '<leader>xh', function()
         vim.cmd('w')
         require("configs.nvterm").new { pos = "sp", id = "htoggleTerm", cmd = cmd }
     end, { buffer = true, desc = "Execute tests in horizontal terminal" })
@@ -43,21 +43,16 @@ return {
 
     ["cpp"] = function()
         local filename = vim.fn.expand("%")
-        local outname = vim.fn.expand("%:t:r")
-        local fast_flags = "-std=c++17 -O2 -Wall"
-        local fast_compile = string.format("g++ %s %s -o %s", fast_flags, filename, outname)
-        local fast_cmd = string.format("%s && ./%s", fast_compile, outname)
-        local fast_test_cmd = string.format("%s && ./%s < test.txt", fast_compile, outname)
-
-        execute_terminal(fast_cmd)
-        execute_terminal_test(fast_test_cmd)
-
         local debug_flags =
-        "-std=c++17 -Wall -Wextra -Wshadow -g -O0 -D_GLIBCXX_DEBUG -fsanitize=address -fsanitize=undefined"
-        local debug_outname = outname .. "_debug"
+        "-std=c++17 -Wall -Wextra -Wshadow -g -O0 -D_GLIBCXX_DEBUG -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer -pipe"
+        local debug_outname = "/tmp/nvim_cpp_compile"
         local debug_compile = string.format("g++ %s %s -o %s", debug_flags, filename, debug_outname)
-        local debug_cmd = string.format("%s && ./%s", debug_compile, debug_outname)
-        local debug_test_cmd = string.format("%s && ./%s < test.txt", debug_compile, debug_outname)
+        local debug_cmd = string.format("%s && %s", debug_compile, debug_outname)
+        local debug_test_cmd = debug_cmd .. " < test.txt"
+
+        if vim.fn.filereadable("output.txt") then
+            debug_test_cmd = debug_test_cmd.." | cp_test output.txt"
+        end
 
         execute_terminal(debug_cmd)
         execute_terminal_test(debug_test_cmd)

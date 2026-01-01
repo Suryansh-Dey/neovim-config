@@ -2,15 +2,8 @@
   "Competitive Programming Template": {
     "prefix": "cp",
     "body": [
-      "#include <bits/stdc++.h>",
-      "#include <ext/pb_ds/assoc_container.hpp>",
-      "#include <ext/pb_ds/tree_policy.hpp>",
+      "#include <iostream>",
       "using namespace std;",
-      "using namespace __gnu_pbds;",
-      "template <typename T>",
-      "using Oset = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;",
-      "template <typename T>",
-      "using Omset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;",
       "constexpr int M = 1000000007;",
       "//constexpr int M = 998244353;",
       "#define int long long",
@@ -22,14 +15,13 @@
       "signed main() {",
       "    ios::sync_with_stdio(false);",
       "    cin.tie(nullptr);",
-      "    cout << fixed << setprecision(6);",
       "    int tc;",
       "    cin >> tc;",
       "    while (tc--)",
       "        solve();",
       "}"
     ],
-    "description": "C++ Competitive Programming Template with PBDS"
+    "description": "C++ Competitive Programming Template"
   },
   "For Loop": {
     "prefix": "fr",
@@ -38,7 +30,7 @@
       "\t${0}",
       "}"
     ],
-    "description": "Standard for loop"
+    "description": "For loop"
   },
   "Reverse For Loop": {
     "prefix": "frr",
@@ -48,5 +40,18 @@
       "}"
     ],
     "description": "Reverse for loop"
+  },
+  "PBDS":{
+    "prefix":"pbds",
+    "body":[
+      "#include <ext/pb_ds/assoc_container.hpp>",
+      "#include <ext/pb_ds/tree_policy.hpp>",
+      "using namespace __gnu_pbds;",
+      "template <typename T>",
+      "using Oset = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;",
+      "template <typename T>",
+      "using Omset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;"
+    ],
+    "description":"PBDS Oset"
   }
 }
