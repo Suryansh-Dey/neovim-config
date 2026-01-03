@@ -16,7 +16,15 @@ vim.lsp.config("*", { capabilities = lspconfig.capabilities, on_init = lspconfig
 vim.lsp.config("ts_ls", { init_options = { maxTsServerMemory = 4096 } })
 vim.lsp.enable "ts_ls"
 vim.lsp.enable "html"
-vim.lsp.config("clangd", { cmd = { "clangd", "--function-arg-placeholders=0" } })
+vim.lsp.config("clangd", {
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--completion-style=detailed",
+        "--function-arg-placeholders=0",
+    }
+})
 vim.lsp.enable "clangd"
 vim.lsp.enable "cssls"
 vim.lsp.enable "pyright"
@@ -62,6 +70,7 @@ vim.api.nvim_create_autocmd("LspProgress", {
 -- mappings
 local map = vim.keymap.set
 map("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file", silent = true })
+map("n", "gd", vim.lsp.buf.definition, { desc = "goto definition" })
 map('n', '<leader>fs', function()
     require('telescope.builtin').lsp_workspace_symbols()
 end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
