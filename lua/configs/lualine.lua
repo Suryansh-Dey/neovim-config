@@ -3,6 +3,17 @@ vim.api.nvim_create_autocmd({ "BufAdd", "BufDelete", "BufFilePost" }, {
     callback = function() name_cache = {} end,
 })
 
+local function truncate_word(word)
+    local limit = vim.o.columns / 8;
+    local len = #word
+    if len < limit then
+        local pad = limit - len
+        return word .. string.rep(" ", pad)
+    elseif len > limit then
+        return string.sub(word, 1, limit - 1) .. "…"
+    end
+    return word
+end
 local function get_unique_name(filename, bufnr)
     if name_cache[bufnr] then return name_cache[bufnr] end
 
@@ -20,6 +31,7 @@ local function get_unique_name(filename, bufnr)
     end
 
     local result = clash and (vim.fn.fnamemodify(path, ':p:h:t') .. '/' .. filename) or filename
+    result = truncate_word(result)
     name_cache[bufnr] = result
     return result
 end
