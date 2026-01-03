@@ -1,15 +1,27 @@
-local key = vim.api.nvim_replace_termcodes("<Tab>", true, false, true)
 return {
     appearance = { nerd_font_variant = "normal" },
     fuzzy = { implementation = "prefer_rust" },
     sources = { default = { "lsp", "snippets", "buffer", "path" } },
     keymap = {
         preset = "default",
-        ["<Tab>"] = { "select_next", "snippet_forward", function()
-            vim.api.nvim_feedkeys(key, "n", false)
+        ["<Tab>"] = { "snippet_forward", function(cmp)
+            if cmp.is_menu_visible() then
+                return cmp.select_next()
+            else
+                return cmp.show()
+            end
         end },
         ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
-        ["<CR>"] = { "accept", "fallback" }
+        ['<CR>'] = {
+            function(cmp)
+                local item = cmp.get_selected_item()
+                if item and item.additionalTextEdits and #item.additionalTextEdits > 0 and cmp.is_menu_visible() == false then
+                    return cmp.show()
+                end
+                return cmp.accept()
+            end,
+            'fallback',
+        },
     },
     cmdline = {
         enabled = true,
@@ -25,6 +37,7 @@ return {
             auto_show_delay_ms = 200,
             window = { border = "single" },
         },
+        menu = { auto_show = false },
     },
     signature = {
         enabled = true,

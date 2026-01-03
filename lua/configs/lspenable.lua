@@ -16,6 +16,7 @@ vim.lsp.config("*", { capabilities = lspconfig.capabilities, on_init = lspconfig
 vim.lsp.config("ts_ls", { init_options = { maxTsServerMemory = 4096 } })
 vim.lsp.enable "ts_ls"
 vim.lsp.enable "html"
+vim.lsp.config("clangd", { cmd = { "clangd", "--function-arg-placeholders=0" } })
 vim.lsp.enable "clangd"
 vim.lsp.enable "cssls"
 vim.lsp.enable "pyright"

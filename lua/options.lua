@@ -43,7 +43,6 @@ g.loaded_ruby_provider = 0
 
 --my options
 o.clipboard = ""
-o.cursorlineopt = 'both'
 o.relativenumber = true
 o.number = true
 o.scrolloff = 5
