@@ -24,6 +24,7 @@ vim.lsp.enable "tailwindcss"
 vim.lsp.enable "jdtls"
 vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
 vim.lsp.enable "lua_ls"
+vim.lsp.enable "rust_analyzer"
 
 vim.diagnostic.config({
     virtual_text = {

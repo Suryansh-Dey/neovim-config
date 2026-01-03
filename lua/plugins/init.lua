@@ -157,17 +157,6 @@ return {
         end,
     },
     {
-        "simrat39/rust-tools.nvim",
-        dependencies = "neovim/nvim-lspconfig",
-        ft = "rust",
-        opts = function()
-            return require "configs.rust-tools"
-        end,
-        config = function(_, opts)
-            require("rust-tools").setup(opts)
-        end
-    },
-    {
         'saecki/crates.nvim',
         ft = { "toml" },
         tag = 'stable',
@@ -176,10 +165,6 @@ return {
             crates.setup(opts)
             crates.show()
         end,
-    },
-    {
-        "rust-lang/rust.vim",
-        ft = "rust",
     },
     {
         "nvim-neo-tree/neo-tree.nvim",
