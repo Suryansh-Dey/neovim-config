@@ -13,7 +13,6 @@ local lua_lsp_settings = {
 }
 
 vim.lsp.config("*", { capabilities = lspconfig.capabilities, on_init = lspconfig.on_init })
-vim.lsp.config("ts_ls", { init_options = { maxTsServerMemory = 4096 } })
 vim.lsp.enable "ts_ls"
 vim.lsp.enable "html"
 vim.lsp.config("clangd", {

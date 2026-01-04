@@ -15,7 +15,8 @@ return {
         ['<CR>'] = {
             function(cmp)
                 local item = cmp.get_selected_item()
-                if item and item.additionalTextEdits and #item.additionalTextEdits > 0 and cmp.is_menu_visible() == false then
+                if not item then return end
+                if item.data and item.data.imports and #item.data.imports > 0 and not cmp.is_menu_visible() then
                     return cmp.show()
                 end
                 return cmp.accept()
