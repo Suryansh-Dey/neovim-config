@@ -14,9 +14,11 @@ return {
         ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
         ['<CR>'] = {
             function(cmp)
-                local item = cmp.get_selected_item()
-                if not item then return end
-                if item.data and item.data.imports and #item.data.imports > 0 and not cmp.is_menu_visible() then
+                if not cmp.is_visible() then return end
+                local items = cmp.get_items();
+                if not cmp.is_menu_visible() and
+                    (vim.bo.filetype ~= 'cpp' or (items[1].additionalTextEdits and #items[1].additionalTextEdits > 0))
+                    and #items > 1 and (items[1].label == items[2].label or (#items > 2 and items[1].label == items[3].label)) then
                     return cmp.show()
                 end
                 return cmp.accept()

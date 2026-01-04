@@ -61,12 +61,15 @@ end, { desc = "Use relative number" })
 map('i', "<C-i>", "<ESC>^i", { desc = "Beginning of line" })
 map('i', "<C-e>", "<End>", { desc = "End of line" })
 
--- navigate within insert mode
-map('i', "<C-h>", "<Left>", { desc = "Move left" })
-map('i', "<C-l>", "<Right>", { desc = "Move right" })
-map('i', "<C-j>", "<Down>", { desc = "Move down" })
-map('i', "<C-k>", "<Up>", { desc = "Move up" })
-map('i', "<C-b>", "<ESC>bi", { desc = "Move up" })
+-- Move cursor right if > is pressed while > is already on right
+vim.keymap.set('i', '>', function()
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+  local line = vim.api.nvim_get_current_line()
+  if line:sub(col + 1, col + 1) == ">" then
+    return "<Right>"
+  end
+  return ">"
+end, { expr = true, replace_keycodes = true, desc = "Jump over > if present" })
 
 map("n", "<Esc>", "<cmd> noh <CR>", { desc = "Clear highlights" })
 -- switch between windows

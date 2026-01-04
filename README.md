@@ -60,7 +60,7 @@ git clone https://github.com/Suryansh-Dey/neovim-config.git $HOME/AppData/Local/
 </details>
 
 *`mv` commands might raise error if no nvim config file is already there but ignore that. Following command will still do the job!*  
-Now run `:MasonInstallAll` command in neovim  
+Now run `:MasonToolsInstall` command in neovim  
 All done!! *Refer [troubleshooting](https://github.com/Suryansh-Dey/neovim-config/wiki/Troubleshooting) for help.*
 # Tip to find a keybinding
 Go to `~/.config/nvim/lua/mappings.lua`, and search for the action. You will probably get it's corresponding keybinding here.
