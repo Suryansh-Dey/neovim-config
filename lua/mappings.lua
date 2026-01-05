@@ -105,10 +105,10 @@ map("x", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move dow
 map("x", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
 
 -- cycle through buffers
-map("n", "L",
+map("n", "<Tab>",
     '<cmd>bnext<cr>',
     { desc = "Goto next buffer" })
-map("n", "H",
+map("n", "<S-Tab>",
     '<cmd>bprevious<cr>',
     { desc = "Goto previous buffer" })
 -- close buffer + hide terminal buffer

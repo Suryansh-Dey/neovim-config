@@ -48,7 +48,7 @@ return {
         local debug_outname = "/tmp/nvim_cpp_compile"
         local debug_compile = string.format("g++ %s %s -o %s", debug_flags, filename, debug_outname)
         local debug_cmd = string.format("%s && %s", debug_compile, debug_outname)
-        local debug_test_cmd = debug_cmd .. " < test.txt"
+        local debug_test_cmd = debug_cmd .. " < input.txt"
 
         if vim.fn.filereadable("output.txt") then
             debug_test_cmd = debug_test_cmd.." | cp_test output.txt"
