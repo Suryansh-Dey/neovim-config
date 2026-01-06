@@ -14,7 +14,9 @@ map({ "n", "x", "o" }, "S", '"_S', { noremap = true, silent = true })
 -- yank to system clipboard
 map("v", "<C-c>", "\"+y", { desc = "Copy to system clipboard" })
 map({ "n", "v", "x" }, "<leader>p", '"0p', { desc = "Paste last yank" })
-map('n', '<leader>m', 'm', { noremap = true, desc = "Set mark" })
+map("n", "<leader>m", "m", { noremap = true, desc = "Set mark" })
+map("x", "p", "P", { noremap = true, desc = "Paste without yank" })
+map("x", "P", "p", { noremap = true, desc = "Paste with yank" })
 
 --Removing control from my life
 map("n", "m", "<C-d>", { desc = "Jump to previous position" })
@@ -63,12 +65,12 @@ map('i', "<C-e>", "<End>", { desc = "End of line" })
 
 -- Move cursor right if > is pressed while > is already on right
 vim.keymap.set('i', '>', function()
-  local col = vim.api.nvim_win_get_cursor(0)[2]
-  local line = vim.api.nvim_get_current_line()
-  if line:sub(col + 1, col + 1) == ">" then
-    return "<Right>"
-  end
-  return ">"
+    local col = vim.api.nvim_win_get_cursor(0)[2]
+    local line = vim.api.nvim_get_current_line()
+    if line:sub(col + 1, col + 1) == ">" then
+        return "<Right>"
+    end
+    return ">"
 end, { expr = true, replace_keycodes = true, desc = "Jump over > if present" })
 
 map("n", "<Esc>", "<cmd> noh <CR>", { desc = "Clear highlights" })
