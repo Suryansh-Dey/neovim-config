@@ -17,9 +17,9 @@ map({ "n", "v", "x" }, "<leader>p", '"0p', { desc = "Paste last yank" })
 map('n', '<leader>m', 'm', { noremap = true, desc = "Set mark" })
 
 --Removing control from my life
-map('n', 'm', '<C-o>', { desc = "Jump to previous position" })
-map('n', 'M', '<C-i>', { desc = "Jump next in jumplist" })
-map('n', 'U', '<C-r>', { desc = "Redo" })
+map("n", "m", "<C-d>", { desc = "Jump to previous position" })
+map("n", "M", "<C-u>", { desc = "Jump next in jumplist" })
+map("n", "U", "<C-r>", { desc = "Redo" })
 
 map("n", "<leader>k", "<cmd>cprev<CR><cmd>cclose<CR>", { desc = "Jump prev of quick fix list", silent = true })
 map("n", "<leader>j", "<cmd>cnext<CR><cmd>cclose<CR>", { desc = "Jump next of quick fix list", silent = true })
