@@ -7,16 +7,15 @@ return {
                 require("flash").jump()
             end,
             ["S"] = "open_leftabove_vs",
+            ["<leader>s"] = "system_open"
         }
     },
     commands = {
-        open_and_close = function(state)
+        system_open = function(state)
             local node = state.tree:get_node()
-            if node.type == "file" then
-                require("neo-tree.sources.manager").close_all()
-                vim.api.nvim_command("edit " .. node.path)
-            end
-        end
+            local path = node:get_id()
+            vim.fn.jobstart({ "xdg-open", path }, { detach = true })
+        end,
     },
     filesystem = {
         filtered_items = {
