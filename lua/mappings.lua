@@ -46,8 +46,7 @@ for i = 1, 9, 1 do
         string.format('<cmd>LualineBuffersJump %s<cr>', i),
         { desc = string.format("Open %sth Tab", i) })
 end
-map('n', "<leader>a", "<C-^>"
-, { silent = true, desc = "Open the previously focused buffer" })
+map('n', "<leader>a", "<C-^>", { silent = true, desc = "Open the previously focused buffer" })
 
 --Executors at ./../init.lua
 
@@ -84,14 +83,12 @@ map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
 -- select all
 map("n", "<C-c>", "<ESC>ggVG", { desc = "Select whole file" })
 
--- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
+-- Allow moving the cursor through wrapped lines with j, k
 -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
 -- empty mode is same as using <cmd> :map
 -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
 map("n", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 map("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
-map("n", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
-map("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
 
 -- new buffer
 map("n", "<leader>b", function()
@@ -100,12 +97,6 @@ end, { desc = "New buffer" })
 map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
 
 map("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), { desc = "Escape terminal mode" })
-
-map("n", "<Up>", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
-map("n", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
-
-map("x", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { desc = "Move down", expr = true })
-map("x", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up", expr = true })
 
 -- cycle through buffers
 map("n", "<Tab>",
@@ -149,8 +140,7 @@ map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "Git status" 
 
 -- pick a hidden term
 map("n", "<leader>ft", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term" })
-
-map("n", "<leader>fb", "<cmd> Telescope marks <CR>", { desc = "telescope bookmarks" })
+map("n", "<leader>fb", "<cmd> Telescope marks <CR>", { desc = "Telescope bookmarks" })
 -- toggle in terminal mode
 map({ "n", "t" }, "<A-v>", function()
     require("configs.nvterm").toggle { pos = "vsp", id = "vtoggleTerm" }
