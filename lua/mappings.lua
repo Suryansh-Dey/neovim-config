@@ -17,7 +17,6 @@ map({ "n", "v", "x" }, "<leader>p", '"0p', { desc = "Paste last yank" })
 map("n", "<leader>m", "m", { noremap = true, desc = "Set mark" })
 map("x", "p", "P", { noremap = true, desc = "Paste without yank" })
 map("x", "P", "p", { noremap = true, desc = "Paste with yank" })
-map('n', 'X', 'xh', { noremap = true, silent = true, desc="Delete char in cursor and move right" })
 
 --Removing control from my life
 map("n", "m", "<C-d>", { desc = "Jump to previous position" })
