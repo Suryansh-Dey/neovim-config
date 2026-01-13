@@ -1,14 +1,13 @@
 return {
     window = {
         mappings = {
-            ["l"] = "open",
+            ["l"] = "open_and_close",
             ["h"] = "close_node",
             ["s"] = function()
                 require("flash").jump()
             end,
             ["S"] = "open_leftabove_vs",
             ["<leader>s"] = "system_open",
-            ["<CR>"] = "open_and_close"
         }
     },
     commands = {
@@ -19,9 +18,9 @@ return {
         end,
         open_and_close = function(state)
             local node = state.tree:get_node()
-            vim.cmd 'Neotree close'
+            state.commands["open"](state)
             if node.type == "file" then
-                vim.api.nvim_command("edit " .. node.path)
+                vim.cmd 'Neotree close'
             end
         end
     },

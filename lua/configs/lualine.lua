@@ -41,6 +41,8 @@ local ignore = {
     "TelescopePrompt",
     "Messages",
     "qf",
+    "NvTerm_vsp",
+    "NvTerm_sp"
 }
 
 return {
