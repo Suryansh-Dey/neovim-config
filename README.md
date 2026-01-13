@@ -1,3 +1,5 @@
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c8595cd0-8c76-414d-849b-2732a0964928" />
+
 A dead minimal but extremely powerful configuration, helping your at work instead of distraction you from work.
 
 # Supported languages
@@ -87,6 +89,8 @@ change = "c<leader>", --"cs"
 }
 ```
 ### neo-tree remaps
-2. `s` -> `<leader>s` since s is used for *flash-jump*
+`s` -> `<leader>s` since s is used for *flash-jump*
+### Blink.cmp remaps
+`<Tab>` -> opens and cycle through completion menu
 # Daily usage
 Refer to the [wiki](https://github.com/Suryansh-Dey/neovim-config/wiki/Key-bindings-to-get-started) tab to know how I use it to be blazingly fast!

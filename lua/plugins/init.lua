@@ -117,17 +117,10 @@ return {
         "folke/flash.nvim",
         event = "VeryLazy",
         opts = {
-            search = {
-                multi_window = false,
-            },
-            jump = {
-                nohlsearch = true,
-            },
-            modes = {
-                char = {
-                    enabled = false,
-                }
-            },
+            highlight = { backdrop = false },
+            search = { multi_window = false },
+            jump = { nohlsearch = true },
+            modes = { char = { enabled = false } },
         },
         keys = {
             { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,   desc = "Jump cursor" },
