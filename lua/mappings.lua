@@ -19,8 +19,8 @@ map("x", "p", "P", { noremap = true, desc = "Paste without yank" })
 map("x", "P", "p", { noremap = true, desc = "Paste with yank" })
 
 --Removing control from my life
-map("n", "m", "<C-d>", { desc = "Jump to previous position" })
-map("n", "M", "<C-u>", { desc = "Jump next in jumplist" })
+map("n", "m", "<C-e>", { desc = "Scroll to down" })
+map("n", "M", "<C-y>", { desc = "Scroll to up" })
 map("n", "U", "<C-r>", { desc = "Redo" })
 
 map("n", "<leader>k", "<cmd>cprev<CR><cmd>cclose<CR>", { desc = "Jump prev of quick fix list", silent = true })

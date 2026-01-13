@@ -71,8 +71,8 @@ If you need some feature which is not available in config already, just open an 
 
 # Default keymap changes
 1. The `s` motion is remapped to *flash-jump*.
-2. The `m` key is remapped to *Ctrl-d*. Use `<leader>m` for mark.
-3. The `M` key is remapped to *Ctrl-u*.
+2. The `m` key is remapped to *Ctrl-e*. Use `<leader>m` for mark.
+3. The `M` key is remapped to *Ctrl-y*.
 
 ### nvim-surround remaps
 Since `s` is used for *flash-jump*, following remaps were done:
