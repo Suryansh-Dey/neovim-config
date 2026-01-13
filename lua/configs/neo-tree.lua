@@ -19,7 +19,7 @@ return {
         end,
         open_and_close = function(state)
             local node = state.tree:get_node()
-            require("neo-tree.sources.manager").close_all()
+            vim.cmd 'Neotree close'
             if node.type == "file" then
                 vim.api.nvim_command("edit " .. node.path)
             end

@@ -51,7 +51,6 @@ o.shiftwidth = 4
 o.smartindent = true
 o.tabstop = 4
 o.softtabstop = 4
-o.laststatus = 3
 
 --plugins
 vim.g.mkdp_auto_close = 0

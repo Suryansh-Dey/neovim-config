@@ -36,16 +36,22 @@ local function get_unique_name(filename, bufnr)
     return result
 end
 
+local ignore = {
+    "neo-tree",
+    "TelescopePrompt",
+    "Messages",
+    "qf",
+}
+
 return {
     options = {
         theme = 'auto',
         section_separators = '',
         component_separators = '|',
-        ignore_focus = {
-            "neo-tree",
-            "TelescopePrompt",
-            "Messages",
-            "qf",
+        ignore_focus = ignore,
+        disabled_filetypes = {
+            statusline = ignore,
+            winbar = ignore,
         },
     },
     sections = {
@@ -60,6 +66,14 @@ return {
                 end
             }
         },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = { 'diagnostics' },
+        lualine_y = {},
+        lualine_z = {}
+    },
+    inactive_sections = {
+        lualine_a = { { 'filename', color = { fg = '#000000', bg = '#aaaaaa', gui = 'bold' } } },
         lualine_b = {},
         lualine_c = {},
         lualine_x = { 'diagnostics' },

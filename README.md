@@ -86,7 +86,7 @@ delete = "d<leader>", --"ds"
 change = "c<leader>", --"cs"
 }
 ```
-### nvim-tree remaps
+### neo-tree remaps
 2. `s` -> `<leader>s` since s is used for *flash-jump*
 # Daily usage
 Refer to the [wiki](https://github.com/Suryansh-Dey/neovim-config/wiki/Key-bindings-to-get-started) tab to know how I use it to be blazingly fast!
