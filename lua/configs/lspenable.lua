@@ -65,6 +65,21 @@ vim.api.nvim_create_autocmd("LspProgress", {
         end
     end,
 })
+vim.api.nvim_create_autocmd("BufWritePost", {
+    callback = function()
+        vim.schedule(function()
+            local errors = #vim.diagnostic.get(nil, { severity = vim.diagnostic.severity.ERROR }) -
+                #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+
+            if errors > 0 then
+                vim.notify(
+                    string.format("Found %d error in other files!", errors),
+                    vim.log.levels.WARN, { title = "Project ERROR alert" }
+                )
+            end
+        end)
+    end,
+})
 
 -- mappings
 local map = vim.keymap.set
@@ -110,11 +125,7 @@ map("n", "]d",
     { desc = "Goto next" }
 )
 
-map("n", "<leader>lq",
-    function()
-        vim.diagnostic.setloclist()
-    end,
-    { desc = "Diagnostic setloclist" })
+map("n", "<leader>fd", '<cmd>Telescope diagnostics<CR>', { desc = "Find diagnostics" })
 
 map("n", "<leader>wa",
     function()

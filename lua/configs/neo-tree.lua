@@ -31,5 +31,10 @@ return {
             hide_gitignored = false,
             hide_hidden = false,
         }
+    },
+    default_component_configs = {
+        diagnostics = {
+            symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 " },
+        }
     }
 }
