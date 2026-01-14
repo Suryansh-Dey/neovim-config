@@ -7,8 +7,6 @@ end, { expr = true, desc = "1 char CMD" })
 
 map({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 map({ "n", "v" }, "X", '"_X', { noremap = true, silent = true })
-map({ "n", "x", "o" }, "c", '"_c', { noremap = true, silent = true })
-map({ "n", "x", "o" }, "C", '"_C', { noremap = true, silent = true })
 map({ "n", "x", "o" }, "S", '"_S', { noremap = true, silent = true })
 
 -- yank to system clipboard
@@ -19,9 +17,11 @@ map("x", "p", "P", { noremap = true, desc = "Paste without yank" })
 map("x", "P", "p", { noremap = true, desc = "Paste with yank" })
 
 --Removing control from my life
-map("n", "m", "<C-e>", { desc = "Scroll to down" })
-map("n", "M", "<C-y>", { desc = "Scroll to up" })
+map("n", "J", "<C-e>", { desc = "Scroll to down" })
+map("n", "K", "<C-y>", { desc = "Scroll to up" })
 map("n", "U", "<C-r>", { desc = "Redo" })
+
+map("n", "L", "J", { desc = "Concatenate lines" })
 
 map("n", "<leader>k", "<cmd>cprev<CR>", { desc = "Jump prev of quick fix list", silent = true })
 map("n", "<leader>j", "<cmd>cnext<CR>", { desc = "Jump next of quick fix list", silent = true })

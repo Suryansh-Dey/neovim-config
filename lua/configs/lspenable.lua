@@ -85,19 +85,18 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 local map = vim.keymap.set
 map("n", "gs", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "Search symbols in file", silent = true })
 map("n", "gd", vim.lsp.buf.definition, { desc = "goto definition" })
+
 map('n', '<leader>fs', function()
     require('telescope.builtin').lsp_workspace_symbols()
-end, { noremap = true, silent = true, desc = "Search symbols in workspace" }
-)
-
+end, { noremap = true, silent = true, desc = "Search symbols in workspace" })
+map("n", "<leader>fd", '<cmd>Telescope diagnostics<CR>', { desc = "Find diagnostics" })
 map("n", "<leader>fm",
     function()
         vim.lsp.buf.format { async = true }
     end,
-    { desc = "LSP formatting" }
-)
+    { desc = "LSP formatting" })
 
-map('n', 'K', function()
+map('n', 'H', function()
     vim.lsp.buf.hover({ border = 'rounded' })
 end, { desc = 'LSP documentation' })
 
@@ -117,15 +116,11 @@ map("n", "[d",
     end,
     { desc = "Goto prev" })
 
-
 map("n", "]d",
     function()
         vim.diagnostic.jump({ count = 1, float = { border = "rounded" } })
     end,
-    { desc = "Goto next" }
-)
-
-map("n", "<leader>fd", '<cmd>Telescope diagnostics<CR>', { desc = "Find diagnostics" })
+    { desc = "Goto next" })
 
 map("n", "<leader>wa",
     function()
