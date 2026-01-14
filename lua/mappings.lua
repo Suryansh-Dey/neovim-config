@@ -23,10 +23,10 @@ map("n", "m", "<C-e>", { desc = "Scroll to down" })
 map("n", "M", "<C-y>", { desc = "Scroll to up" })
 map("n", "U", "<C-r>", { desc = "Redo" })
 
-map("n", "<leader>k", "<cmd>cprev<CR><cmd>cclose<CR>", { desc = "Jump prev of quick fix list", silent = true })
-map("n", "<leader>j", "<cmd>cnext<CR><cmd>cclose<CR>", { desc = "Jump next of quick fix list", silent = true })
-map("n", "<leader>K", "<cmd>lprev<CR><cmd>lclose<CR>", { desc = "Jump prev of location list", silent = true })
-map("n", "<leader>J", "<cmd>lnext<CR><cmd>lclose<CR>", { desc = "Jump next of location list", silent = true })
+map("n", "<leader>k", "<cmd>cprev<CR>", { desc = "Jump prev of quick fix list", silent = true })
+map("n", "<leader>j", "<cmd>cnext<CR>", { desc = "Jump next of quick fix list", silent = true })
+map("n", "<leader>K", "<cmd>lprev<CR>", { desc = "Jump prev of location list", silent = true })
+map("n", "<leader>J", "<cmd>lnext<CR>", { desc = "Jump next of location list", silent = true })
 
 map("n", "<leader>q", function()
     vim.api.nvim_win_close(vim.fn.win_getid(vim.fn.winnr('#')), false)
@@ -93,21 +93,14 @@ map("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up"
 map("n", "<leader>b", function()
     vim.cmd [[enew]]
 end, { desc = "New buffer" })
-map("n", "<leader>ch", "<cmd> NvCheatsheet <CR>", { desc = "Mapping cheatsheet" })
 
 map("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), { desc = "Escape terminal mode" })
 
 -- cycle through buffers
-map("n", "<Tab>",
-    '<cmd>bnext<cr>',
-    { desc = "Goto next buffer" })
-map("n", "<S-Tab>",
-    '<cmd>bprevious<cr>',
-    { desc = "Goto previous buffer" })
+map("n", "<Tab>", '<cmd>bnext<cr>', { desc = "Goto next buffer" })
+map("n", "<S-Tab>", '<cmd>bprevious<cr>', { desc = "Goto previous buffer" })
 -- close buffer + hide terminal buffer
-map("n", "<M-x>",
-    "<cmd>bdelete<cr>",
-    { desc = "Close buffer" })
+map("n", "<M-x>", "<cmd>confirm bd<cr>", { desc = "Close buffer" })
 
 -- toggle comment in both modes
 map("n", "<leader>/",
@@ -188,7 +181,7 @@ map("n", "]g",
         end)
         return "<Ignore>"
     end,
-    { desc = "Jump to next hunk", expr = true }
+    { desc = "Jump to next diff", expr = true }
 )
 
 map("n", "[g",
@@ -198,7 +191,7 @@ map("n", "[g",
         end)
         return "<Ignore>"
     end,
-    { desc = "Jump to prev hunk", expr = true }
+    { desc = "Jump to prev diff", expr = true }
 )
 
 -- Actions
@@ -206,28 +199,28 @@ map("n", "<leader>gr",
     function()
         require("gitsigns").reset_hunk()
     end,
-    { desc = "Reset hunk" })
+    { desc = "Reset diff" })
 
-map("n", "<leader>gh",
+map("n", "<leader>gd",
     function()
-        require("gitsigns").preview_hunk_inline()
+        require("gitsigns").preview_hunk()
     end,
-    { desc = "Preview hunk" })
+    { desc = "Preview diff" })
 
 map("n", "<leader>gs",
     function()
         require("gitsigns").stage_hunk()
     end,
-    { desc = "Stage hunk" })
+    { desc = "Stage diff" })
 
 map("n", "<leader>gb",
     function()
-        package.loaded.gitsigns.blame_line()
+        require("gitsigns").blame_line()
     end,
     { desc = "Blame line" })
 
-map("n", "<leader>td",
+map("n", "<leader>ga",
     function()
         require("gitsigns").toggle_deleted()
     end,
-    { desc = "Toggle deleted" })
+    { desc = "Show all deleted" })

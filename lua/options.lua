@@ -76,4 +76,3 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
     group = vim.api.nvim_create_augroup("2-space-indentation", { clear = true })
 })
-vim.api.nvim_set_hl(0, "FlashBackdrop", { fg = vim.api.nvim_get_hl(0, { name = "Comment" }).fg })
