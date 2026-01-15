@@ -17,11 +17,21 @@ map("x", "p", "P", { noremap = true, desc = "Paste without yank" })
 map("x", "P", "p", { noremap = true, desc = "Paste with yank" })
 
 --Removing control from my life
-map("n", "J", "<C-e>", { desc = "Scroll to down" })
-map("n", "K", "<C-y>", { desc = "Scroll to up" })
+map({ "n", "x" }, "J", "<C-e>", { desc = "Scroll to down" })
+map({ "n", "x" }, "K", "<C-y>", { desc = "Scroll to up" })
 map("n", "U", "<C-r>", { desc = "Redo" })
 
-map("n", "L", "J", { desc = "Concatenate lines" })
+map({ "n", "x" }, "L", "J", { desc = "Concatenate lines" })
+map("n", "g;", function()
+    local last_change = vim.fn.getpos("'.")
+    local current_pos = vim.fn.getpos(".")
+
+    if last_change[2] == current_pos[2] and last_change[3] == current_pos[3] then
+        return "2g;"
+    else
+        return "g;"
+    end
+end, { expr = true, desc = "Jump to previous change (skipping current pos)" })
 
 map("n", "<leader>k", "<cmd>cprev<CR>", { desc = "Jump prev of quick fix list", silent = true })
 map("n", "<leader>j", "<cmd>cnext<CR>", { desc = "Jump next of quick fix list", silent = true })

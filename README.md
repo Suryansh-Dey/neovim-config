@@ -127,6 +127,11 @@ If you need some feature which is not available in config already, just open an 
 6. The `U` key is remapped to *Ctrl-r* (redo).
 7. Use `<leader>m` for setting marks (since `m` is used for surround).
 
+### Blink.cmp remaps
+- `<Tab>` -> opens and cycles through completion menu
+- `<CR>` -> accepts completion (with smart handling for ambiguous completions)  
+**To keep completion menu always open** go to `./lua/configs/blink.lua` update line 43 to `menu = { auto_show = true }`
+
 ### nvim-surround remaps
 Since `s` is used for *flash-jump*, following remaps were done:
 ``` lua
@@ -143,11 +148,6 @@ change = "mc",        -- Change surround (original: "cs")
 ### neo-tree remaps
 - `s` -> triggers *flash-jump* (since `s` is used for flash-jump globally)
 - `<leader>s` -> system open (open file with system default application)
-
-### Blink.cmp remaps
-- `<Tab>` -> opens and cycles through completion menu
-- `<S-Tab>` -> cycles backward through completion menu
-- `<CR>` -> accepts completion (with smart handling for ambiguous completions)
 
 # Common Keybindings
 

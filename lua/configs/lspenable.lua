@@ -56,12 +56,15 @@ vim.api.nvim_create_autocmd("LspProgress", {
         end
     end
 })
+local reported_end = false
 vim.api.nvim_create_autocmd("LspProgress", {
     pattern = 'end',
     callback = function(args)
+        if reported_end then return end
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if client then
             vim.notify(client.name .. " Ready!", vim.log.levels.INFO)
+            reported_end = true
         end
     end,
 })
@@ -139,3 +142,7 @@ map("n", "<leader>wl",
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end,
     { desc = "List workspace folders" })
+
+map("n", "<leader>st", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Show types and paramenters inline" })
