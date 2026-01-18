@@ -142,7 +142,7 @@ map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "Git status" 
 
 -- pick a hidden term
 map("n", "<leader>ft", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term" })
-map("n", "<leader>fb", "<cmd> Telescope marks <CR>", { desc = "Telescope bookmarks" })
+map("n", "<leader>fm", "<cmd> Telescope marks <CR>", { desc = "Telescope bookmarks" })
 -- toggle in terminal mode
 map({ "n", "t" }, "<A-v>", function()
     require("configs.nvterm").toggle { pos = "vsp", id = "vtoggleTerm" }
