@@ -50,7 +50,9 @@ return {
         local debug_cmd = string.format("%s && %s", debug_compile, debug_outname)
         local debug_test_cmd = debug_cmd .. " < input.txt"
 
-        if vim.fn.filereadable("output.txt") then
+        local f = io.open("output.txt", "r")
+        if f ~= nil then
+            io.close(f)
             debug_test_cmd = debug_test_cmd.." | cp_test output.txt"
         end
 

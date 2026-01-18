@@ -93,7 +93,7 @@ map('n', '<leader>fs', function()
     require('telescope.builtin').lsp_workspace_symbols()
 end, { noremap = true, silent = true, desc = "Search symbols in workspace" })
 map("n", "<leader>fd", '<cmd>Telescope diagnostics<CR>', { desc = "Find diagnostics" })
-map("n", "<leader>fm",
+map("n", "<leader>lf",
     function()
         vim.lsp.buf.format { async = true }
     end,
@@ -109,7 +109,7 @@ map("n", "<leader>lf",
     end,
     { desc = "Floating diagnostic" })
 
-map("n", "<leader>sh", function()
+map("n", "<leader>ls", function()
     vim.lsp.buf.signature_help({ border = "rounded" })
 end, { desc = "Signature help" })
 
@@ -143,6 +143,8 @@ map("n", "<leader>wl",
     end,
     { desc = "List workspace folders" })
 
-map("n", "<leader>st", function()
+map("n", "<leader>s", function()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "Show types and paramenters inline" })
+
+map("n", "<leader>lr", vim.lsp.buf.document_highlight, { desc = "Highlight references" })

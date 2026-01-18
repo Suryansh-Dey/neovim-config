@@ -1,6 +1,6 @@
 local map = vim.keymap.set
 
-map("n", "<leader>;", function()
+map({ "n", "x" }, "<leader>;", function()
     local char = vim.fn.getcharstr()
     return '<cmd>' .. char .. '<CR>'
 end, { expr = true, desc = "1 char CMD" })
@@ -82,7 +82,11 @@ vim.keymap.set('i', '>', function()
     return ">"
 end, { expr = true, replace_keycodes = true, desc = "Jump over > if present" })
 
-map("n", "<Esc>", "<cmd> noh <CR>", { desc = "Clear highlights" })
+map("n", "<Esc>", function()
+    vim.cmd("noh")
+    vim.lsp.buf.clear_references()
+    return "<Esc>"
+end, { expr = true, desc = "Clear highlights" })
 -- switch between windows
 map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
 map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
@@ -142,7 +146,7 @@ map("n", "<leader>gt", "<cmd> Telescope git_status <CR>", { desc = "Git status" 
 
 -- pick a hidden term
 map("n", "<leader>ft", "<cmd> Telescope terms <CR>", { desc = "Pick hidden term" })
-map("n", "<leader>fb", "<cmd> Telescope marks <CR>", { desc = "Telescope bookmarks" })
+map("n", "<leader>fm", "<cmd> Telescope marks <CR>", { desc = "Telescope bookmarks" })
 -- toggle in terminal mode
 map({ "n", "t" }, "<A-v>", function()
     require("configs.nvterm").toggle { pos = "vsp", id = "vtoggleTerm" }
