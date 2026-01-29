@@ -103,7 +103,7 @@ map('n', 'H', function()
     vim.lsp.buf.hover({ border = 'rounded' })
 end, { desc = 'LSP documentation' })
 
-map("n", "<leader>lf",
+map("n", "<leader>ld",
     function()
         vim.diagnostic.open_float { border = "rounded" }
     end,
