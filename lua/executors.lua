@@ -76,16 +76,17 @@ return {
         local debug_outname = "/tmp/nvim_cpp_compile"
         local debug_compile = string.format("g++ %s %s -o %s", debug_flags, filename, debug_outname)
         local debug_cmd = string.format("%s && %s", debug_compile, debug_outname)
-        local debug_test_cmd = debug_cmd .. " < input.txt"
 
-        local f = io.open("output.txt", "r")
-        if f ~= nil then
-            io.close(f)
-            debug_test_cmd = debug_test_cmd.." | cp_test output.txt"
+        local debug_test = function()
+            local debug_test_cmd = debug_cmd .. " < input.txt"
+            if vim.loop.fs_stat("output.txt") then
+                debug_test_cmd = debug_test_cmd .. " | cp_test output.txt"
+            end
+            return debug_test_cmd
         end
 
         execute_terminal(debug_cmd)
-        execute_terminal_test(debug_test_cmd)
+        execute_terminal_test(debug_test)
     end,
 
     ["c"] = function()
