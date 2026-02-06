@@ -33,6 +33,7 @@ return {
         }
     },
     default_component_configs = {
+        symlink_target = { enabled = true },
         diagnostics = {
             symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 " },
         }

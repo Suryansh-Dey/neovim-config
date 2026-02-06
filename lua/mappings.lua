@@ -106,6 +106,7 @@ map("n", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { desc = "Move up"
 -- new buffer
 map("n", "<leader>b", function()
     vim.cmd [[enew]]
+    vim.bo.filetype = "text"
 end, { desc = "New buffer" })
 
 map("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), { desc = "Escape terminal mode" })
