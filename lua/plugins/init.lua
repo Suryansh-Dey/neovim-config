@@ -37,17 +37,18 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         branch = "master",
-        event = { "BufReadPost", "BufNewFile" },
-        cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+        lazy = false,
         build = ":TSUpdate",
-        opts = {
-            ensure_installed = { "html", "css", "javascript", "tsx", "typescript", "json", "cpp", "rust", "markdown", "python", "java", "lua", "luadoc", "printf", "vim", "vimdoc" },
-            highlight = {
-                enable = true,
-                use_languagetree = true,
-            },
-            indent = { enable = true },
-        }
+        config = function()
+            require('nvim-treesitter.configs').setup({
+                ensure_installed = { "html", "css", "javascript", "tsx", "typescript", "json", "cpp", "rust", "markdown", "python", "java", "lua", "luadoc", "printf", "vim", "vimdoc" },
+                highlight = {
+                    enable = true,
+                    use_languagetree = true,
+                },
+                indent = { enable = true },
+            })
+        end
     },
     {
         "suryansh-dey/to-future.nvim",
@@ -112,11 +113,6 @@ return {
                             vim.cmd 'normal! g`"'
                         end
                     end
-                end
-            },
-            post_restore_cmds = {
-                function()
-                    vim.cmd("TSEnable highlight")
                 end
             },
         }
