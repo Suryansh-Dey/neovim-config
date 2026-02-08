@@ -78,3 +78,4 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
     group = vim.api.nvim_create_augroup("2-space-indentation", { clear = true })
 })
+vim.o.jumpoptions = 'view'
