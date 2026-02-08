@@ -75,7 +75,8 @@ return {
                 "css-lsp",
                 "pyright",
                 "tailwindcss-language-server",
-                "lua-language-server"
+                "lua-language-server",
+                "json-lsp"
             },
         },
     },

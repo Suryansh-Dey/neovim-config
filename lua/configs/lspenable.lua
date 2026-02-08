@@ -32,6 +32,7 @@ vim.lsp.enable "jdtls"
 vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
 vim.lsp.enable "lua_ls"
 vim.lsp.enable "rust_analyzer"
+vim.lsp.enable "jsonls"
 
 vim.diagnostic.config({
     virtual_text = {
