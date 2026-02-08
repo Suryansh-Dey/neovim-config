@@ -33,3 +33,12 @@ end
 vim.schedule(function()
     require "mappings"
 end)
+
+vim.api.nvim_create_user_command("TSInstallAll", function()
+    local parsers = {
+        "html", "css", "javascript", "tsx", "typescript", "json",
+        "cpp", "rust", "markdown", "python", "java", "lua",
+        "luadoc", "printf", "vim", "vimdoc"
+    }
+    require('nvim-treesitter').install(parsers)
+end, {})
