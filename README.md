@@ -1,6 +1,6 @@
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c8595cd0-8c76-414d-849b-2732a0964928" />
 
-A dead minimal but extremely powerful configuration, helping you at work instead of distracting you from work.
+A dead minimal (by look) but extremely powerful configuration, helping you at work instead of distracting you from work.
 
 # Supported languages
 
@@ -28,6 +28,7 @@ A dead minimal but extremely powerful configuration, helping you at work instead
 # Features
 
 ## Core Features
+- **Blazingly fast**: Use nvim-treesitter new main branch which uses built in treesitter from nvim core. Making it fastest!
 - **LSP Support**: Full language server protocol support with auto-installation via Mason
 - **Treesitter**: Advanced syntax highlighting and text objects
 - **Auto-session**: Automatically saves and restores your editing sessions
@@ -101,7 +102,8 @@ git clone https://github.com/Suryansh-Dey/neovim-config.git $HOME/AppData/Local/
 
 *`mv` commands might raise error if no nvim config file is already there but ignore that. Following command will still do the job!*
 
-After installation, run `:MasonToolsInstall` command in neovim to install all LSP servers and tools.
+After installation, run `:MasonToolsInstall` command in neovim to install all LSP servers and tools.  
+Then run `TSInstallAll` to install all treesitter parser.
 
 All done!! *Refer [troubleshooting](https://github.com/Suryansh-Dey/neovim-config/wiki/Troubleshooting) for help.*
 
@@ -109,7 +111,7 @@ All done!! *Refer [troubleshooting](https://github.com/Suryansh-Dey/neovim-confi
 - **Leader Key**: `<Space>` (spacebar)
 - **Lazy Loading**: Plugins are loaded on-demand for optimal performance
 - **Session Management**: Auto-session saves your workspace automatically (excludes home, Projects, Downloads directories)
-- **Snippets**: Custom snippets available for C++, JavaScript, and TypeScript (located in `snippets/` directory)
+- **Snippets**: Custom snippets available for C++, JavaScript, and TypeScript (located in `~/.config/nvim/snippets/` directory)
 
 # Tip to find a keybinding
 Go to `~/.config/nvim/lua/mappings.lua`, and search for the action. You will probably get it's corresponding keybinding here.

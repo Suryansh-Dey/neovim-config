@@ -2,12 +2,7 @@ vim.keymap.set({ "n", "x" }, "<Plug>(repeat-forward)", ";")
 vim.keymap.set({ "n", "x" }, "<Plug>(repeat-backward)", ",")
 
 JUMP_CMD = { "<Plug>(repeat-forward)", "<Plug>(repeat-backward)" }
-IGNORE_SET_JUMP_CMD = false
 function SET_JUMP_CMD(forward, backward)
-    if IGNORE_SET_JUMP_CMD then
-        IGNORE_SET_JUMP_CMD = false
-        return
-    end
     vim.fn.setcharsearch({ char = '' })
     JUMP_CMD = { forward, backward }
 end
@@ -15,20 +10,20 @@ end
 local map = vim.keymap.set
 
 map({ "n", "x" }, ";", function()
-    if vim.fn.getcharsearch().char == '' then
-        IGNORE_SET_JUMP_CMD = true
+    local search = vim.fn.getcharsearch()
+    if search.char == '' then
         return JUMP_CMD[1]
     else
-        return "<Plug>(repeat-forward)"
+        return search.forward == 1 and "<Plug>(repeat-forward)" or "<Plug>(repeat-backward)"
     end
 end, { expr = true, remap = true, desc = "next item" })
 
 map({ "n", "x" }, ",", function()
-    if vim.fn.getcharsearch().char == '' then
-        IGNORE_SET_JUMP_CMD = true
+    local search = vim.fn.getcharsearch()
+    if search.char == '' then
         return JUMP_CMD[2]
     else
-        return "<Plug>(repeat-backward)"
+        return search.forward == 1 and "<Plug>(repeat-backward)" or "<Plug>(repeat-forward)"
     end
 end, { expr = true, remap = true, desc = "previous item" })
 
@@ -237,7 +232,7 @@ map("n", "]g",
 map("n", "[g",
     function()
         vim.schedule(function()
-            SET_JUMP_CMD("[g", "]g")
+            SET_JUMP_CMD("]g", "[g")
             require("gitsigns").prev_hunk()
         end)
         return "<Ignore>"
