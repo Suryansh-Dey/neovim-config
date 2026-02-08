@@ -1,104 +1,8 @@
 return {
     {
-        "neovim/nvim-lspconfig",
-        event = "VeryLazy",
-        config = function()
-            require "configs.lspenable"
-        end
-    },
-    {
-        "lewis6991/gitsigns.nvim",
-        event = "VeryLazy",
-        opts = {
-            preview_config = { border = 'rounded' },
-            signs = {
-                delete = { text = "󰍵" },
-                changedelete = { text = "󱕖" },
-            },
-        }
-    },
-    {
-        "nvim-telescope/telescope.nvim",
-        dependencies = { "nvim-treesitter/nvim-treesitter" },
-        cmd = "Telescope",
-        opts = {
-            defaults = {
-                layout_strategy = 'horizontal',
-                layout_config = {
-                    horizontal = {
-                        preview_width = 0.7,
-                        results_width = 0.3,
-                    },
-                    width = 0.99
-                },
-            },
-        }
-    },
-    {
-        "nvim-treesitter/nvim-treesitter",
-        branch = "master",
-        lazy = false,
-        build = ":TSUpdate",
-        config = function()
-            require('nvim-treesitter.configs').setup({
-                ensure_installed = { "html", "css", "javascript", "tsx", "typescript", "json", "cpp", "rust", "markdown", "python", "java", "lua", "luadoc", "printf", "vim", "vimdoc" },
-                highlight = {
-                    enable = true,
-                    use_languagetree = true,
-                },
-                indent = { enable = true },
-            })
-        end
-    },
-    {
-        "suryansh-dey/to-future.nvim",
-        event = "VeryLazy",
-        opts = {}
-    },
-    {
-        "Saghen/blink.cmp",
-        event = { "InsertEnter", "CmdLineEnter" },
-        version = '1.*',
-        opts = require "configs.blink"
-    },
-    {
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
-        cmd = { "MasonToolsInstall" },
-        dependencies = { "williamboman/mason.nvim" },
-        opts = {
-            ensure_installed = {
-                "rust-analyzer",
-                "jdtls",
-                "typescript-language-server",
-                "clangd",
-                "html-lsp",
-                "css-lsp",
-                "pyright",
-                "tailwindcss-language-server",
-                "lua-language-server",
-                "json-lsp"
-            },
-        },
-    },
-    {
-        cmd = { "Mason", "MasonInstall", "MasonUpdate" },
-        "williamboman/mason.nvim",
-        config = true,
-    },
-    {
-        "numToStr/Comment.nvim",
-        keys = {
-            { "gcc", mode = "n",          desc = "Comment toggle current line" },
-            { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
-            { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
-            { "gbc", mode = "n",          desc = "Comment toggle current block" },
-            { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-            { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
-        },
-        config = function(_, opts)
-            opts.pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()
-            require("Comment").setup(opts)
-        end,
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
     },
     {
         'rmagatti/auto-session',
@@ -124,42 +28,6 @@ return {
         ft = { 'markdown' },
     },
     {
-        "folke/flash.nvim",
-        event = "VeryLazy",
-        opts = {
-            highlight = { backdrop = false },
-            search = { multi_window = false },
-            jump = { nohlsearch = true },
-            modes = { char = { enabled = false } },
-        },
-        keys = {
-            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,   desc = "Jump cursor" },
-            { "m", mode = "o",               function() require("flash").remote() end, desc = "Remote Flash" },
-        },
-    },
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        event = "VeryLazy",
-        config = function()
-            require("configs.treesitter_context")
-        end,
-    },
-    {
-        "kylechui/nvim-surround",
-        version = "*",
-        event = "VeryLazy",
-        config = function()
-            require("nvim-surround").setup(require "configs.nvim-surround")
-        end
-    },
-    {
-        "windwp/nvim-ts-autotag",
-        event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            require("nvim-ts-autotag").setup()
-        end,
-    },
-    {
         'saecki/crates.nvim',
         ft = { "toml" },
         tag = 'stable',
@@ -170,16 +38,6 @@ return {
         end,
     },
     {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-        },
-        lazy = false,
-        opts = require("configs.neo-tree")
-    },
-    {
         "AckslD/nvim-neoclip.lua",
         event = 'TextYankPost',
         dependencies = { 'nvim-telescope/telescope.nvim' },
@@ -188,65 +46,8 @@ return {
         end,
     },
     {
-
-        "nvim-telescope/telescope.nvim",
-        opts = {
-            defaults = {
-                file_ignore_patterns = { "node_modules" }
-            }
-        }
-    },
-    {
-        "folke/which-key.nvim",
-        ft = { 'text', "markdown" },
-        keys = { "z=", "<leader>", "<c-w>", '"', "'", "`", "c", "v", "g" },
-        cmd = "WhichKey",
-    },
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        dependencies = "nvim-treesitter/nvim-treesitter",
+        "suryansh-dey/to-future.nvim",
         event = "VeryLazy",
-        config = function()
-            require 'nvim-treesitter.configs'.setup(require("configs.TSTextobjects"))
-        end
+        opts = {}
     },
-    {
-        'JoosepAlviste/nvim-ts-context-commentstring',
-        opts = { enable_autocmd = false }
-    },
-    {
-        "jake-stewart/multicursor.nvim",
-        branch = "1.0",
-        event = "VeryLazy",
-        config = function()
-            require("configs.multicursor")
-        end
-    },
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {
-            on_highlights = function(hl, c)
-                hl.Substitute = { bg = c.cyan, fg = c.black }
-                hl.FlashLabel = { bg = c.cyan, fg = c.black }
-            end,
-        },
-        config = function(_, opts)
-            require("tokyonight").setup(opts)
-            vim.cmd([[colorscheme tokyonight-night]])
-        end
-    },
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        lazy = false,
-        priority = 1,
-        opts = require('configs.lualine')
-    },
-    {
-        'windwp/nvim-autopairs',
-        event = "InsertEnter",
-        config = true
-    }
 }

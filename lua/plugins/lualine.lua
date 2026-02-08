@@ -14,6 +14,7 @@ local function truncate_word(word)
     end
     return word
 end
+
 local function get_unique_name(filename, bufnr)
     if name_cache[bufnr] then return name_cache[bufnr] end
 
@@ -46,42 +47,47 @@ local ignore = {
 }
 
 return {
-    options = {
-        theme = 'auto',
-        section_separators = '',
-        component_separators = '|',
-        ignore_focus = ignore,
-        disabled_filetypes = {
-            statusline = ignore,
-            winbar = ignore,
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    lazy = false,
+    priority = 1,
+    opts = {
+        options = {
+            theme = 'auto',
+            section_separators = '',
+            component_separators = '|',
+            ignore_focus = ignore,
+            disabled_filetypes = {
+                statusline = ignore,
+                winbar = ignore,
+            },
         },
-    },
-    sections = {
-        lualine_a = {
-            {
-                'buffers',
-                icons_enabled = false,
-                mode = 2,
-                max_length = vim.o.columns,
-                fmt = function(name, context)
-                    return get_unique_name(name, context.bufnr)
-                end
-            }
+        sections = {
+            lualine_a = {
+                {
+                    'buffers',
+                    icons_enabled = false,
+                    mode = 2,
+                    max_length = vim.o.columns,
+                    fmt = function(name, context)
+                        return get_unique_name(name, context.bufnr)
+                    end
+                }
+            },
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = { 'diagnostics' },
+            lualine_y = {},
+            lualine_z = {}
         },
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = { 'diagnostics' },
-        lualine_y = {},
-        lualine_z = {}
-    },
-    inactive_sections = {
-        lualine_a = { { 'filename', color = { fg = '#000000', bg = '#aaaaaa', gui = 'bold' } } },
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = { 'diagnostics' },
-        lualine_y = {},
-        lualine_z = {}
-    },
-
-    tabline = {},
+        inactive_sections = {
+            lualine_a = { { 'filename', color = { fg = '#000000', bg = '#aaaaaa', gui = 'bold' } } },
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = { 'diagnostics' },
+            lualine_y = {},
+            lualine_z = {}
+        },
+        tabline = {},
+    }
 }
