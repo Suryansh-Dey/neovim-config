@@ -26,7 +26,7 @@
   "For Loop": {
     "prefix": "fr",
     "body": [
-      "for(int i=0; i<n; i++) {",
+      "for(int i=0; i<${1:n}; i++) {",
       "\t${0}",
       "}"
     ],
@@ -35,15 +35,15 @@
   "Reverse For Loop": {
     "prefix": "frr",
     "body": [
-      "for(int i=${1:n-1}; i>=${2:0}; i--) {",
+      "for(int i=${1:n-1}; i>=0; i--) {",
       "\t${0}",
       "}"
     ],
     "description": "Reverse for loop"
   },
-  "PBDS":{
-    "prefix":"pbds",
-    "body":[
+  "PBDS": {
+    "prefix": "pbds",
+    "body": [
       "#include <ext/pb_ds/assoc_container.hpp>",
       "#include <ext/pb_ds/tree_policy.hpp>",
       "using namespace __gnu_pbds;",
@@ -52,6 +52,6 @@
       "template <typename T>",
       "using Omset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;"
     ],
-    "description":"PBDS Oset"
+    "description": "PBDS Oset"
   }
 }

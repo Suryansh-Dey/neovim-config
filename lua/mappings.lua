@@ -22,6 +22,7 @@ map({ "n", "x" }, "K", "<C-y>", { desc = "Scroll to up" })
 map("n", "U", "<C-r>", { desc = "Redo" })
 
 map({ "n", "x" }, "L", "J", { desc = "Concatenate lines" })
+
 map("n", "g;", function()
     local last_change = vim.fn.getpos("'.")
     local current_pos = vim.fn.getpos(".")
