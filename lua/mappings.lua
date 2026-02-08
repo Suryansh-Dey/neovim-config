@@ -1,4 +1,36 @@
+vim.keymap.set({ "n", "x" }, "<Plug>(repeat-forward)", ";")
+vim.keymap.set({ "n", "x" }, "<Plug>(repeat-backward)", ",")
+
+JUMP_CMD = { "<Plug>(repeat-forward)", "<Plug>(repeat-backward)" }
+IGNORE_SET_JUMP_CMD = false
+function SET_JUMP_CMD(forward, backward)
+    if IGNORE_SET_JUMP_CMD then
+        IGNORE_SET_JUMP_CMD = false
+        return
+    end
+    vim.fn.setcharsearch({ char = '' })
+    JUMP_CMD = { forward, backward }
+end
+
 local map = vim.keymap.set
+
+map({ "n", "x" }, ";", function()
+    if vim.fn.getcharsearch().char == '' then
+        IGNORE_SET_JUMP_CMD = true
+        return JUMP_CMD[1]
+    else
+        return "<Plug>(repeat-forward)"
+    end
+end, { expr = true, remap = true, desc = "next item" })
+
+map({ "n", "x" }, ",", function()
+    if vim.fn.getcharsearch().char == '' then
+        IGNORE_SET_JUMP_CMD = true
+        return JUMP_CMD[2]
+    else
+        return "<Plug>(repeat-backward)"
+    end
+end, { expr = true, remap = true, desc = "previous item" })
 
 map({ "n", "x" }, "<leader>;", function()
     local char = vim.fn.getcharstr()
@@ -27,6 +59,7 @@ map("n", "g;", function()
     local last_change = vim.fn.getpos("'.")
     local current_pos = vim.fn.getpos(".")
 
+    SET_JUMP_CMD("g;", "g,")
     if last_change[2] == current_pos[2] and last_change[3] == current_pos[3] then
         return "2g;"
     else
@@ -193,6 +226,7 @@ map("n", "<leader>cc",
 map("n", "]g",
     function()
         vim.schedule(function()
+            SET_JUMP_CMD("]g", "[g")
             require("gitsigns").next_hunk()
         end)
         return "<Ignore>"
@@ -203,6 +237,7 @@ map("n", "]g",
 map("n", "[g",
     function()
         vim.schedule(function()
+            SET_JUMP_CMD("[g", "]g")
             require("gitsigns").prev_hunk()
         end)
         return "<Ignore>"
