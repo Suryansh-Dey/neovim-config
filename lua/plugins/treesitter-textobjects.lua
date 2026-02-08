@@ -51,19 +51,19 @@ return {
 
         -- Prev start
         vim.keymap.set({ "n", "x", "o" }, "[f", function()
-            SET_JUMP_CMD("[f", "]F")
+            SET_JUMP_CMD("]F", "[f")
             ts_move.goto_previous_start("@function.outer", "textobjects")
         end, { desc = "Prev function start" })
         vim.keymap.set({ "n", "x", "o" }, "[c", function()
-            SET_JUMP_CMD("[c", "]C")
+            SET_JUMP_CMD("]C", "[c")
             ts_move.goto_previous_start("@class.outer", "textobjects")
         end, { desc = "Prev class start" })
         vim.keymap.set({ "n", "x", "o" }, "[z", function()
-            SET_JUMP_CMD("[z", "]Z")
+            SET_JUMP_CMD("]Z", "[z")
             ts_move.goto_previous_start("@fold", "folds")
         end, { desc = "Prev fold start" })
         vim.keymap.set({ "n", "x", "o" }, "[l", function()
-            SET_JUMP_CMD("[l", "]L")
+            SET_JUMP_CMD("]L", "[l")
             ts_move.goto_previous_start({ "@loop.outer" }, "textobjects")
         end, { desc = "Prev loop start" })
 
@@ -92,22 +92,22 @@ return {
         -- Prev end
         vim.keymap.set({ "n", "x", "o" }, "[F",
             function()
-                SET_JUMP_CMD("[F", "]f")
+                SET_JUMP_CMD("]f", "[F")
                 ts_move.goto_previous_end("@function.outer", "textobjects")
             end, { desc = "Prev function end" })
         vim.keymap.set({ "n", "x", "o" }, "[C", function()
-                SET_JUMP_CMD("[C", "]c")
+                SET_JUMP_CMD("]c", "[C")
                 ts_move.goto_previous_end("@class.outer", "textobjects")
             end,
             { desc = "Prev class end" })
         vim.keymap.set({ "n", "x", "o" }, "[Z", function()
-                SET_JUMP_CMD("[Z", "]z")
+                SET_JUMP_CMD("]z", "[Z")
                 ts_move.goto_previous_end("@fold", "folds")
             end,
             { desc = "Prev fold end" })
         vim.keymap.set({ "n", "x", "o" }, "[L",
             function()
-                SET_JUMP_CMD("[L", "]l")
+                SET_JUMP_CMD("]l", "[L")
                 ts_move.goto_previous_end({ "@loop.outer" }, "textobjects")
             end, { desc = "Prev loop end" })
     end
