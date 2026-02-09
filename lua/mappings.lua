@@ -114,6 +114,7 @@ end, { expr = true, replace_keycodes = true, desc = "Jump over > if present" })
 map("n", "<Esc>", function()
     vim.cmd("noh")
     vim.lsp.buf.clear_references()
+    vim.snippet.stop()
     return "<Esc>"
 end, { expr = true, desc = "Clear highlights" })
 -- switch between windows
