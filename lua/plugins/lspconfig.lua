@@ -2,8 +2,7 @@ return {
     "neovim/nvim-lspconfig",
     event = "VeryLazy",
     config = function()
-        -- local lspconfig = require("configs.lspconfig")
-        local on_init = function(client, _)
+        local on_init = function(client)
             if client:supports_method "textDocument/semanticTokens" then
                 client.server_capabilities.semanticTokensProvider = nil
             end
@@ -160,6 +159,35 @@ return {
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
         end, { desc = "Show types and paramenters inline" })
 
-        map("n", "<leader>lr", vim.lsp.buf.document_highlight, { desc = "Highlight references" })
+        vim.api.nvim_create_autocmd("LspAttach", {
+            callback = function(ev)
+                local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+                if client and client.server_capabilities.documentHighlightProvider then
+                    local highlight_augroup = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = false })
+
+                    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+                        buffer = ev.buf,
+                        group = highlight_augroup,
+                        callback = vim.lsp.buf.document_highlight,
+                    })
+
+                    vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+                        buffer = ev.buf,
+                        group = highlight_augroup,
+                        callback = vim.lsp.buf.clear_references,
+                    })
+
+                    vim.api.nvim_create_autocmd("LspDetach", {
+                        group = vim.api.nvim_create_augroup("lsp_detach_cleanup", { clear = true }),
+                        buffer = ev.buf,
+                        callback = function()
+                            vim.lsp.buf.clear_references()
+                            vim.api.nvim_clear_autocmds({ group = "lsp_document_highlight", buffer = ev.buf })
+                        end,
+                    })
+                end
+            end,
+        })
     end
 }

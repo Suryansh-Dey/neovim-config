@@ -35,6 +35,7 @@ end, { expr = true, desc = "1 char CMD" })
 map({ "n", "v" }, "x", '"_x', { noremap = true, silent = true })
 map({ "n", "v" }, "X", '"_X', { noremap = true, silent = true })
 map({ "n", "x", "o" }, "S", '"_S', { noremap = true, silent = true })
+map({ "n", "x", "o" }, "_", "^", { noremap = true, silent = true })
 
 -- yank to system clipboard
 map("v", "<C-c>", "\"+y", { desc = "Copy to system clipboard" })
