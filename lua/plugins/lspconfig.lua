@@ -127,12 +127,14 @@ return {
 
         map("n", "[d",
             function()
+                SET_JUMP_CMD(']d', '[d')
                 vim.diagnostic.jump({ count = -1, float = { border = "rounded" } })
             end,
             { desc = "Goto prev" })
 
         map("n", "]d",
             function()
+                SET_JUMP_CMD(']d', '[d')
                 vim.diagnostic.jump({ count = 1, float = { border = "rounded" } })
             end,
             { desc = "Goto next" })
