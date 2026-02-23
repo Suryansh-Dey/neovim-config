@@ -140,9 +140,9 @@ Since `s` is used for *flash-jump*, following remaps were done:
 ``` lua
 {
 normal = "m",        -- Add surround (original: "ys")
-normal_cur = "M",     -- Add surround to current line (original: "yss")
+normal_cur = "mm",     -- Add surround to current line (original: "yss")
 visual = "m",         -- Add surround in visual mode
-visual_line = "M",    -- Add surround in visual line mode
+visual_line = "mm",    -- Add surround in visual line mode
 delete = "md",        -- Delete surround (original: "ds")
 change = "mc",        -- Change surround (original: "cs")
 }

@@ -5,14 +5,14 @@ return {
     opts = {
         keymaps = {
             normal = "m",
-            normal_cur = "M",
+            normal_cur = "mm",
             visual = "m",
-            visual_line = "M",
+            visual_line = "mm",
             delete = "md",
             change = "mc",
-            normal_line = "Ms", --Don't care
-            normal_cur_line = "MSS", --Don't care
-            change_line = "MS", --Don't care
+            normal_line = "mS", --Don't care
+            normal_cur_line = "mSS", --Don't care
+            change_line = "mS", --Don't care
         },
         move_cursor = "sticky",
         surrounds = {

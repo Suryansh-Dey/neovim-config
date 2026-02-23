@@ -48,6 +48,7 @@ map("x", "P", "p", { noremap = true, desc = "Paste with yank" })
 map({ "n", "x" }, "J", "<C-e>", { desc = "Scroll to down" })
 map({ "n", "x" }, "K", "<C-y>", { desc = "Scroll to up" })
 map("n", "U", "<C-r>", { desc = "Redo" })
+map("n", "M", "<C-o>", { desc = "Jump to previous position" })
 
 map({ "n", "x" }, "L", "J", { desc = "Concatenate lines" })
 
