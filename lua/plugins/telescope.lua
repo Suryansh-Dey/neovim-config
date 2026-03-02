@@ -7,8 +7,8 @@ return {
             layout_strategy = 'horizontal',
             layout_config = {
                 horizontal = {
-                    preview_width = 0.7,
-                    results_width = 0.3,
+                    preview_width = 0.6,
+                    results_width = 0.4,
                 },
                 width = 0.99
             },
