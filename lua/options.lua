@@ -51,6 +51,8 @@ o.shiftwidth = 4
 o.smartindent = true
 o.tabstop = 4
 o.softtabstop = 4
+vim.opt_global.spell = true
+vim.opt_global.spelllang = { 'en_us' }
 
 --plugins
 vim.g.mkdp_auto_close = 0
@@ -63,14 +65,6 @@ vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "LspReferenceRead", { bold = true, bg = "NONE" })
 vim.api.nvim_set_hl(0, "LspReferenceWrite", { bold = true, bg = "NONE" })
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "markdown", "text" },
-    callback = function()
-        vim.opt_local.spell = true
-        vim.opt_local.spelllang = { 'en_us' }
-    end,
-    group = vim.api.nvim_create_augroup("SpellCheck", { clear = true })
-})
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "json",
     callback = function()

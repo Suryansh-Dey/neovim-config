@@ -1,7 +1,7 @@
 local config = {
     startinsert = true,
     base46_colors = true,
-    winopts = { number = false, relativenumber = false },
+    winopts = { number = false, relativenumber = false, spell = false },
     sizes = { sp = 0.3, vsp = 0.5, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
     float = {
         relative = "editor",
