@@ -51,8 +51,8 @@ o.shiftwidth = 4
 o.smartindent = true
 o.tabstop = 4
 o.softtabstop = 4
-vim.opt_global.spell = true
-vim.opt_global.spelllang = { 'en_us' }
+opt.spell = true
+opt.spelllang = { 'en_us' }
 
 --plugins
 vim.g.mkdp_auto_close = 0
