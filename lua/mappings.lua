@@ -275,3 +275,11 @@ map("n", "<leader>ga",
         require("gitsigns").toggle_deleted()
     end,
     { desc = "Show all deleted" })
+
+-- nvim-surround keymaps
+map("n", "m", "<Plug>(nvim-surround-normal)", { desc = "Surround motion" })
+map("n", "mm", "<Plug>(nvim-surround-normal_cur)", { desc = "Surround current line" })
+map("x", "m", "<Plug>(nvim-surround-visual)", { desc = "Surround selection" })
+map("x", "mm", "<Plug>(nvim-surround-visual_line)", { desc = "Surround selection (line-wise)" })
+map("n", "md", "<Plug>(nvim-surround-delete)", { desc = "Delete surrounding pair" })
+map("n", "mc", "<Plug>(nvim-surround-change)", { desc = "Change surrounding pair" })
