@@ -6,6 +6,7 @@ return {
         search = { multi_window = false },
         jump = { nohlsearch = true },
         modes = { char = { enabled = false } },
+        prompt = { enabled = false }
     },
     keys = {
         { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end,   desc = "Jump cursor" },

@@ -65,5 +65,13 @@
       "using Omset = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;"
     ],
     "description": "PBDS Oset"
+  },
+  "Include all": {
+    "prefix": "iall",
+    "body": [
+      "#include <bits/stdc++.h>",
+      "using namespace std;"
+    ],
+    "description": "Include bits/stdc++.h"
   }
 }

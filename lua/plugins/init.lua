@@ -19,6 +19,7 @@ return {
     },
     {
         'rmagatti/auto-session',
+        enabled = not vim.g.started_by_firenvim,
         lazy = false,
         opts = {
             suppressed_dirs = { '~/', '~/Projects', '~/Downloads', '/' },

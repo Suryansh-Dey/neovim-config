@@ -286,3 +286,7 @@ map("x", "m", "<Plug>(nvim-surround-visual)", { desc = "Surround selection" })
 map("x", "mm", "<Plug>(nvim-surround-visual_line)", { desc = "Surround selection (line-wise)" })
 map("n", "md", "<Plug>(nvim-surround-delete)", { desc = "Delete surrounding pair" })
 map("n", "mc", "<Plug>(nvim-surround-change)", { desc = "Change surrounding pair" })
+
+if vim.g.started_by_firenvim then
+    map({"i", "x", "n"}, "<C-CR>", "<esc><cmd>x<cr>", { silent = true, desc = "Save and quit firenvim" })
+end
