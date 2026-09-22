@@ -1,3 +1,6 @@
+vim.keymap.set('i', '<C-v>', '<C-r>+', { noremap = true, silent = true })
+vim.keymap.set('c', '<C-v>', '<C-r>+', { noremap = true, silent = true })
+
 vim.keymap.set({ "n", "x" }, "<Plug>(repeat-forward)", ";")
 vim.keymap.set({ "n", "x" }, "<Plug>(repeat-backward)", ",")
 

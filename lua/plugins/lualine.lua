@@ -49,6 +49,7 @@ local ignore = {
 return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    enabled = not vim.g.started_by_firenvim,
     lazy = false,
     priority = 1,
     opts = {

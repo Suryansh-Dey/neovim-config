@@ -43,6 +43,7 @@ A dead minimal (by look) but extremely powerful configuration, helping you at wo
 - **Comment Toggle**: Easy commenting with context-aware comment strings
 - **Tokyo Night Theme**: Beautiful color scheme with custom highlights
 - **Lualine**: Minimal and fast statusline
+- **Firenvim**: Embed Neovim in your browser text areas
 
 ## Code Execution
 Built-in executors for quick code execution:
@@ -204,6 +205,7 @@ change = "mc",        -- Change surround (original: "cs")
 - `<leader>Y` - Clipboard history (system clipboard)
 - `<leader>wK` - Show all keybindings (which-key)
 - `<Esc>` - Clear search highlights
+- `Firenvim` - Download this extension in browser to use neovim there also!
 
 # Daily usage
 Refer to the [wiki](https://github.com/Suryansh-Dey/neovim-config/wiki/Key-bindings-to-get-started) tab to know how I use it to be blazingly fast!

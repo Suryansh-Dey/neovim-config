@@ -75,3 +75,17 @@ vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("2-space-indentation", { clear = true })
 })
 vim.o.jumpoptions = 'view'
+vim.g.firenvim_config = {
+    localSettings = {
+        ['.*'] = {
+            takeover = 'always',
+            filename = '/tmp/{hostname}_{pathname%10}.md'
+        },
+        ['https?://web\\.whatsapp\\.com/.*'] = { takeover = 'never', priority = 1 }
+    }
+}
+
+if vim.g.started_by_firenvim then
+    vim.o.laststatus = 0
+    vim.o.guifont = "monospace:h14"
+end
