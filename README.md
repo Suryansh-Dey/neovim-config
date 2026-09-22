@@ -58,10 +58,12 @@ Use `<leader>Xi`, `<leader>Xv`, or `<leader>Xh` to execute in floating, vertical
 Use `<leader>xi`, `<leader>xv`, or `<leader>xh` for test execution (where applicable).
 
 # Pre-requisites
+- **tree-sitter-cli**: **Necessary** for tree-sitter syntax highlighting to work
 - **gcc/g++**: For C/C++ compilation
 - **npm**: For markdown-preview plugin and other Node.js tools
 - **cargo**: For Rust development (optional, if using Rust)
 - **live-server**: For HTML live preview (optional, install via npm: `npm install -g live-server`)
+- **unizp**: Used by many plugins
 
 # Installation
 Run the following command in your terminal
