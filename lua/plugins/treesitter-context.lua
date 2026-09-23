@@ -4,7 +4,7 @@ return {
     config = function()
         require("treesitter-context").setup({
             enable = true,
-            max_lines = math.floor(vim.api.nvim_win_get_height(0) * 0.3),
+            max_lines = vim.g.started_by_firenvim and 2 or math.floor(vim.api.nvim_win_get_height(0) * 0.3),
             trim_scope = "outer",
             min_window_height = 0,
             mode = "topline",

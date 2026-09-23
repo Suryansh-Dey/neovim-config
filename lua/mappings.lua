@@ -225,7 +225,7 @@ map("n", "<leader>cc",
 )
 
 -- Navigation through hunks
-map("n", "]g",
+map({ "n", "x" }, "]g",
     function()
         vim.schedule(function()
             SET_JUMP_CMD("]g", "[g")
@@ -236,7 +236,7 @@ map("n", "]g",
     { desc = "Jump to next diff", expr = true }
 )
 
-map("n", "[g",
+map({ "n", "x" }, "[g",
     function()
         vim.schedule(function()
             SET_JUMP_CMD("]g", "[g")

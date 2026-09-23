@@ -75,24 +75,3 @@ vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("2-space-indentation", { clear = true })
 })
 vim.o.jumpoptions = 'view'
-
-if vim.g.started_by_firenvim then
-    vim.o.laststatus = 0
-    vim.o.guifont = "monospace:h14"
-    vim.opt.swapfile = false
-    vim.opt.shadafile = "NONE"
-    vim.opt.report = 999999
-    -- Put in insert mode if empty
-    vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
-        callback = function()
-            if vim.bo.filetype ~= "markdown" then return end
-
-            local line_count = vim.api.nvim_buf_line_count(0)
-            local lines = vim.api.nvim_buf_get_lines(0, 0, 2, false)
-
-            if (line_count == 1 and #lines[1] == 0) or (line_count == 2 and #lines[1] == 0 and #lines[2] == 0) then
-                vim.cmd("startinsert")
-            end
-        end
-    })
-end

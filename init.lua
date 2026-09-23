@@ -1,3 +1,17 @@
+function CREATE_FILE_IF_MISSING(filepath, content)
+    filepath = vim.fn.expand(filepath)
+    if not vim.uv.fs_stat(filepath) then
+        local file = io.open(filepath, "w")
+        if file then
+            file:write(content)
+            file:close()
+            print("File created: " .. filepath)
+        else
+            print("Error creating file: " .. filepath)
+        end
+    end
+end
+
 vim.g.mapleader = " "
 vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "/lua/snippets"
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
@@ -8,6 +22,11 @@ local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
     local repo = "https://github.com/folke/lazy.nvim.git"
     vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+
+    CREATE_FILE_IF_MISSING("~/.clang-format", [[BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never]])
 end
 
 vim.opt.rtp:prepend(lazypath)
