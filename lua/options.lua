@@ -26,7 +26,6 @@ o.signcolumn = "yes"
 o.splitbelow = true
 o.splitright = true
 o.timeoutlen = 400
-o.undofile = true
 
 -- interval for writing swap file to disk, also used by gitsigns
 o.updatetime = 250
@@ -75,3 +74,15 @@ vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("2-space-indentation", { clear = true })
 })
 vim.o.jumpoptions = 'view'
+vim.api.nvim_create_autocmd("BufReadPre", {
+    callback = function()
+        local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(0))
+        if ok and stats and stats.size > 100 * 1024 * 1024 then
+            vim.bo.undofile = false
+            vim.print("More than 100MB file, deactivated undofile")
+        else
+            vim.bo.undofile = true
+        end
+    end,
+    group = vim.api.nvim_create_augroup("smart-undofile", { clear = true }),
+})

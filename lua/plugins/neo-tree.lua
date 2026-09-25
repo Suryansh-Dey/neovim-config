@@ -16,6 +16,7 @@ return {
                 end,
                 ["S"] = "open_leftabove_vs",
                 ["<leader>s"] = "system_open",
+                ["d"] = "trash",
             }
         },
         commands = {
