@@ -18,6 +18,33 @@ if vim.g.started_by_firenvim then
         end
     })
 
+    -- Auto-save on new line additions
+    local firenvim_group = vim.api.nvim_create_augroup("FirenvimAutoSave", { clear = true })
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
+        group = firenvim_group,
+        callback = function(args)
+            vim.b[args.buf].prev_line_count = vim.api.nvim_buf_line_count(args.buf)
+        end,
+    })
+    vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
+        group = firenvim_group,
+        nested = true,
+        callback = function(args)
+            if vim.bo[args.buf].buftype ~= "" or vim.api.nvim_buf_get_name(args.buf) == "" then
+                return
+            end
+
+            local current_line_count = vim.api.nvim_buf_line_count(args.buf)
+            local prev_line_count = vim.b[args.buf].prev_line_count
+
+            if prev_line_count and current_line_count > prev_line_count then
+                vim.cmd("silent! write")
+            end
+
+            vim.b[args.buf].prev_line_count = current_line_count
+        end,
+    })
+
     vim.g.firenvim_config = {
         globalSettings = {
             ignoreKeys = {
