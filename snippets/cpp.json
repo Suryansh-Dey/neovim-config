@@ -67,7 +67,7 @@
     "description": "PBDS Oset"
   },
   "Include all": {
-    "prefix": "iall",
+    "prefix": "inall",
     "body": [
       "#include <bits/stdc++.h>",
       "using namespace std;"
