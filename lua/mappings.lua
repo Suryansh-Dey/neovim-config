@@ -151,7 +151,7 @@ map("t", "<C-x>", vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true
 map("n", "<Tab>", '<cmd>bnext<cr>', { desc = "Goto next buffer" })
 map("n", "<S-Tab>", '<cmd>bprevious<cr>', { desc = "Goto previous buffer" })
 -- close buffer + hide terminal buffer
-map("n", "<M-x>", "<cmd>confirm bd<cr>", { desc = "Close buffer" })
+map("n", "<M-x>", "<cmd>LualineBuffersDelete<cr>", { desc = "Close buffer" })
 
 -- toggle comment in both modes
 map("n", "<leader>/",
