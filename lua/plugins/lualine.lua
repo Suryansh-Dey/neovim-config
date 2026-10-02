@@ -100,7 +100,7 @@ end, {
 })
 
 local function truncate_word(word)
-    local limit = math.floor(vim.o.columns / 8)
+    local limit = math.floor(vim.o.columns / 6)
     local len = vim.api.nvim_strwidth(word)
     if len < limit then
         local pad = limit - len
