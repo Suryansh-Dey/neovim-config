@@ -29,6 +29,14 @@ map({ "n", "x" }, ",", function()
     end
 end, { expr = true, remap = true, desc = "previous item" })
 
+map({ "n", "x", "o" }, "n", function()
+    return vim.v.searchforward == 1 and "n" or "N"
+end, { expr = true, desc = "Next search match" })
+
+map({ "n", "x", "o" }, "N", function()
+    return vim.v.searchforward == 1 and "N" or "n"
+end, { expr = true, desc = "Previous search match" })
+
 map({ "n", "x" }, "<leader>;", function()
     local char = vim.fn.getcharstr()
     return '<cmd>' .. char .. '<CR>'
