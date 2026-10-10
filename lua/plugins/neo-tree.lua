@@ -17,6 +17,12 @@ return {
                 ["S"] = "open_leftabove_vs",
                 ["<leader>s"] = "system_open",
                 ["d"] = "trash",
+                ["<C-c>"] = function(state)
+                    local node = state.tree:get_node()
+                    local path = node.path
+                    vim.fn.setreg("+", path)
+                    vim.notify("Copied path to clipboard: " .. path)
+                end,
             }
         },
         commands = {
