@@ -112,100 +112,20 @@ All done!! *Refer [troubleshooting](https://github.com/Suryansh-Dey/neovim-confi
 
 ## Configuration Details
 - **Leader Key**: `<Space>` (spacebar)
-- **Lazy Loading**: Plugins are loaded on-demand for optimal performance
+- **Auto-complete**: Use `<Enter>` to take completion, `<TAB>` to activate or cycle through options. If you want auto show options, comment this line
+https://github.com/Suryansh-Dey/neovim-config/blob/ab458b096a785d7e105dd67ea075b849e1e8bd47/lua/plugins/blink.lua?plain=1#L47
 - **Session Management**: Auto-session saves your workspace automatically (excludes home, Projects, Downloads directories)
 - **Snippets**: Custom snippets available for C++, JavaScript, and TypeScript (located in `~/.config/nvim/snippets/` directory)
 
-# Tip to find a keybinding
-Go to `~/.config/nvim/lua/mappings.lua`, and search for the action. You will probably get it's corresponding keybinding here.
-- `desc` tells what this key binding does so you can search using `/` to get related keybinding.
-- The second argument of `map` represents the key stoke needed for the action.
+# Keybindings
 
-If you need some feature which is not available in config already, just open an [GitHub issue](https://github.com/Suryansh-Dey/neovim-config/issues)! I love configuring neovim and maintaining this repository.
+All daily keybindings, custom ergonomic remaps, and plugin shortcuts are comprehensively documented in:
+👉 **[Key bindings to get started](https://github.com/Suryansh-Dey/neovim-config/wiki/Key-bindings-to-get-started)**
 
-# Default keymap changes
-1. The `s` motion is remapped to *flash-jump* (smart cursor jumping).
-2. The `J` key is remapped to *Ctrl-e* (scroll to down).
-3. The `K` key is remapped to *Ctrl-y* (scroll to up).
-4. The `H` key is remapped to *K* (shows documentation).
-5. The `L` key is remapped to *J* (concatenate lines).
-6. The `U` key is remapped to *Ctrl-r* (redo).
-7. Use `<leader>m` for setting marks (since `m` is used for surround).
-8. `;` always moves right or down and `,` always moves left or up.
+### Discovering Keymaps Inside Neovim
+- Press `<leader>wK` to open **WhichKey** and browse all registered shortcuts.
+- Press `<leader>wk` to look up keymaps by prefix.
+- Search `lua/mappings.lua` directly for any specific custom action.
 
-### Blink.cmp remaps
-- `<Tab>` -> opens and cycles through completion menu
-- `<CR>` -> accepts completion (with smart handling for ambiguous completions)  
-**To keep completion menu always open** go to `./lua/plugins/blink.lua` update line 47 to `menu = { auto_show = true }`
+If you need a feature or mapping that is not available yet, feel free to open a [GitHub issue](https://github.com/Suryansh-Dey/neovim-config/issues)!
 
-### nvim-surround remaps
-Since `s` is used for *flash-jump*, following remaps were done:
-``` lua
-{
-normal = "m",        -- Add surround (original: "ys")
-normal_cur = "mm",     -- Add surround to current line (original: "yss")
-visual = "m",         -- Add surround in visual mode
-visual_line = "mm",    -- Add surround in visual line mode
-delete = "md",        -- Delete surround (original: "ds")
-change = "mc",        -- Change surround (original: "cs")
-}
-```
-
-### neo-tree remaps
-- `s` -> triggers *flash-jump* (since `s` is used for flash-jump globally)
-- `<leader>s` -> system open (open file with system default application)
-
-# Common Keybindings
-
-## Navigation
-- `<leader>ff` - Find files
-- `<leader>fa` - Find all files (including hidden)
-- `<leader>fw` - Live grep (search in files)
-- `<leader>fb` - Find buffers
-- `<leader>fo` - Find oldfiles
-- `<leader>fz` - Fuzzy find in current buffer
-- `s` - Flash jump (smart cursor jumping)
-- `<C-h/j/k/l>` - Navigate between windows
-- `<Tab>` / `<S-Tab>` - Cycle through buffers
-
-## File Management
-- `<A-f>` - Toggle file tree (neo-tree)
-- `<leader>e` - Focus file tree
-- `<leader>b` - New buffer
-- `<M-x>` - Close buffer
-- `<leader>a` - Switch to previous buffer
-- `<leader>1-9` - Jump to buffer by number
-
-## Git
-- `]g` / `[g` - Jump to next/prev git hunk
-- `<leader>gs` - Stage hunk
-- `<leader>gr` - Reset hunk
-- `<leader>gd` - Preview hunk
-- `<leader>gb` - Blame line
-- `<leader>gc` - Git commits
-- `<leader>gt` - Git status
-
-## Code Actions
-- `<leader>/` - Toggle comment
-- `<C-s>` - Format and save
-- `<leader>ct` - Set filetype for LSP
-- `gcc` - Toggle comment on current line
-- `gbc` - Toggle block comment
-
-## Terminal
-- `<A-v>` - Toggle vertical terminal
-- `<A-h>` - Toggle horizontal terminal
-- `<A-i>` - Toggle floating terminal
-- `<leader>v` - New vertical terminal
-- `<leader>h` - New horizontal terminal
-- `<C-x>` - Exit terminal mode
-
-## Other
-- `<leader>y` - Clipboard history
-- `<leader>Y` - Clipboard history (system clipboard)
-- `<leader>wK` - Show all keybindings (which-key)
-- `<Esc>` - Clear search highlights
-- `Firenvim` - Download this extension in browser to use neovim there also!
-
-# Daily usage
-Refer to the [wiki](https://github.com/Suryansh-Dey/neovim-config/wiki/Key-bindings-to-get-started) tab to know how I use it to be blazingly fast!
