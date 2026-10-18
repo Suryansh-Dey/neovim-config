@@ -61,3 +61,21 @@ vim.api.nvim_create_user_command("TSInstallAll", function()
     }
     require('nvim-treesitter').install(parsers)
 end, {})
+
+-- On-demand TOhtml command
+local function tohtml(args)
+    vim.cmd.packadd "nvim.tohtml"
+    vim.cmd.TOhtml {
+        range = { args.line1, args.line2 },
+        args = args.args ~= "" and { args.args } or {},
+    }
+end
+
+local tohtml_opts = {
+    bar = true,
+    nargs = "?",
+    range = "%",
+    complete = "file",
+    desc = "Convert buffer to HTML",
+}
+vim.api.nvim_create_user_command("Tohtml", tohtml, tohtml_opts)
