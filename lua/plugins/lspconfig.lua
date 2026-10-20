@@ -42,6 +42,15 @@ return {
         vim.lsp.enable "jdtls"
         vim.lsp.config("lua_ls", { settings = lua_lsp_settings })
         vim.lsp.enable "lua_ls"
+        vim.lsp.config("rust_analyzer", {
+            settings = {
+                ["rust-analyzer"] = {
+                    check = {
+                        command = "clippy",
+                    },
+                },
+            },
+        })
         vim.lsp.enable "rust_analyzer"
         vim.lsp.enable "jsonls"
 
