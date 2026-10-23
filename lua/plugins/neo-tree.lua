@@ -39,7 +39,23 @@ return {
                 end
             end
         },
+        git_status = {
+            window = {
+                mappings = {
+                    ["gs"] = function()
+                        vim.cmd 'Neotree filesystem'
+                    end,
+                }
+            }
+        },
         filesystem = {
+            window = {
+                mappings = {
+                    ["gs"] = function()
+                        vim.cmd 'Neotree git_status'
+                    end,
+                }
+            },
             filtered_items = {
                 visible = true,
                 hide_dotfiles = false,
