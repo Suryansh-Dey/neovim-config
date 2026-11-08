@@ -98,7 +98,7 @@ for i = 1, 9, 1 do
         string.format('<cmd>LualineBuffersJump %s<cr>', i),
         { desc = string.format("Open %sth Tab", i) })
 end
-map('n', "<leader>a", "<C-^>", { silent = true, desc = "Open the previously focused buffer" })
+map('n', "<leader>,", "<C-^>", { silent = true, desc = "Open the previously focused buffer" })
 
 --Executors at ./../init.lua
 
