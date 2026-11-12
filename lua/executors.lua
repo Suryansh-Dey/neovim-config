@@ -115,5 +115,12 @@ return {
     ["java"] = function()
         local cmd = string.format("java %s", vim.fn.expand("%"))
         execute_terminal(cmd)
+    end,
+    ["tex"] = function()
+        local tex = vim.fn.shellescape(vim.fn.expand("%:p"))
+        local pdf = vim.fn.shellescape(vim.fn.expand("%:p:r") .. ".pdf")
+        -- setsid -f: xdg-open waits for the viewer, which would hold the terminal open
+        local cmd = string.format("tectonic %s && setsid -f xdg-open %s >/dev/null 2>&1", tex, pdf)
+        execute_terminal(cmd)
     end
 }

@@ -23,7 +23,7 @@ A dead minimal (by look) but extremely powerful configuration, helping you at wo
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="5%"/> **React** 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" width="5%"/> **C** 
 
-**Markdown** (with preview), **JSON**
+**Markdown** (with preview), **LaTeX** (with PDF view), **JSON**
 
 # Features
 
@@ -54,6 +54,7 @@ Built-in executors for quick code execution:
 - **Rust**: `cargo run` and `cargo test`
 - **HTML**: Live server
 - **Java**: Direct execution
+- **LaTeX**: Compiles with `tectonic` and opens the PDF in your default PDF viewer
 
 Use `<leader>Xi`, `<leader>Xv`, or `<leader>Xh` to execute in floating, vertical, or horizontal terminal respectively.
 Use `<leader>xi`, `<leader>xv`, or `<leader>xh` for test execution (where applicable).
@@ -64,6 +65,7 @@ Use `<leader>xi`, `<leader>xv`, or `<leader>xh` for test execution (where applic
 - **npm**: For markdown-preview plugin and other Node.js tools
 - **cargo**: For Rust development (optional, if using Rust)
 - **live-server**: For HTML live preview (optional, install via npm: `npm install -g live-server`)
+- **tectonic**: For compiling LaTeX (optional, if using LaTeX)
 - **unizp**: Used by many plugins
 
 # Installation
